@@ -54,6 +54,37 @@ module.list = {
 		},
 	},
 
+	['Client swap'] = {
+		{
+			{module.modkey, 'Shift'}, 'h',
+			function()
+				AwesomeWM.awful.client.swap.bydirection('left')
+			end,
+			'Swap client with left',
+		},
+		{
+			{module.modkey, 'Shift'}, 'j',
+			function()
+				AwesomeWM.awful.client.swap.bydirection('down')
+			end,
+			'Swap client with bottom',
+		},
+		{
+			{module.modkey, 'Shift'}, 'k',
+			function()
+				AwesomeWM.awful.client.swap.bydirection('up')
+			end,
+			'Swap client with top',
+		},
+		{
+			{module.modkey, 'Shift'}, 'l',
+			function()
+				AwesomeWM.awful.client.swap.bydirection('right')
+			end,
+			'Swap client with right',
+		},
+	},
+
 	['Tag movement'] = {}
 
 }
