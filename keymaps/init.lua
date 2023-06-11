@@ -23,6 +23,37 @@ module.list = {
 		}
 	},
 
+	['Client movement'] = {
+		{
+			{module.modkey}, 'h',
+			function()
+				AwesomeWM.awful.client.focus.bydirection('left')
+			end,
+			'Move focus to left',
+		},
+		{
+			{module.modkey}, 'j',
+			function()
+				AwesomeWM.awful.client.focus.bydirection('down')
+			end,
+			'Move focus to bottom',
+		},
+		{
+			{module.modkey}, 'k',
+			function()
+				AwesomeWM.awful.client.focus.bydirection('up')
+			end,
+			'Move focus to top',
+		},
+		{
+			{module.modkey}, 'l',
+			function()
+				AwesomeWM.awful.client.focus.bydirection('right')
+			end,
+			'Move focus to right',
+		},
+	},
+
 	['Tag movement'] = {}
 
 }

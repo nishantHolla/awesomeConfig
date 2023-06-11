@@ -8,6 +8,7 @@ AwesomeWM.awesome = awesome
 AwesomeWM.root = root
 AwesomeWM.screen = screen
 AwesomeWM.tag = tag
+AwesomeWM.client = client
 AwesomeWM.gears = require('gears')
 AwesomeWM.awful = require('awful')
 AwesomeWM.wibox = require('wibox')
