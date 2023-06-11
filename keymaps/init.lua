@@ -61,6 +61,22 @@ module.list = {
 			end,
 			'Move focus to right',
 		},
+		{
+			{module.modkey}, 'i',
+			function()
+				AwesomeWM.awful.client.focus.byidx(-1)
+			end,
+			'Move focus to previous client',
+		},
+		{
+			{module.modkey}, 'o',
+			function()
+				AwesomeWM.awful.client.focus.byidx(1)
+			end,
+			'Move focus to next client',
+		},
+
+
 	},
 
 	['Client swap'] = {
@@ -104,7 +120,22 @@ module.list = {
 		}
 	},
 
-	['Tag movement'] = {},
+	['Tag movement'] = {
+		{
+			{module.modkey}, 'w',
+			function()
+				AwesomeWM.functions.moveToTag('previous')
+			end,
+			'View previous tag'
+		},
+		{
+			{module.modkey}, 'e',
+			function()
+				AwesomeWM.functions.moveToTag('next')
+			end,
+			'View next tag'
+		}
+	},
 
 	['Tag shift'] = {}
 
