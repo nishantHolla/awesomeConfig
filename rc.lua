@@ -11,6 +11,7 @@ AwesomeWM.tag = tag
 AwesomeWM.client = client
 AwesomeWM.gears = require('gears')
 AwesomeWM.awful = require('awful')
+AwesomeWM.autofocus = require('awful.autofocus')
 AwesomeWM.wibox = require('wibox')
 AwesomeWM.beautiful = require('beautiful')
 AwesomeWM.naughty = require('naughty')
@@ -34,4 +35,5 @@ AwesomeWM.values.initValues()
 AwesomeWM.functions.initScreens()
 AwesomeWM.keymaps.initKeymaps()
 AwesomeWM.theme.initTheme()
+AwesomeWM.functions.initClients()
 

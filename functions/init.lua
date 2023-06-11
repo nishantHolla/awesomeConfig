@@ -37,6 +37,43 @@ module.initScreens = function()
 
 	end)
 end
+module.initClients = function()
+	AwesomeWM.awful.rules.rules = {
+		{
+			rule = {},
+			properties = {
+				border_width = AwesomeWM.beautiful.border_width,
+				border_color = AwesomeWM.beautiful.border_normal,
+				focus = AwesomeWM.awful.client.focus.filter,
+				raise = true,
+				screen = AwesomeWM.awful.screen.preferred,
+				placement = AwesomeWM.awful.placement.no_overlap + AwesomeWM.awful.placement.no_offscreen
+			}
+
+		}
+	}
+
+	AwesomeWM.client.connect_signal('manage', function(_client)
+		if AwesomeWM.awesome.startup
+		 and not _client.size_hints.user_position
+		 and not _client.size_hints.program_position then
+		 	AwesomeWM.awful.placement.no_offscreen(_client)
+		end
+	end)
+
+	AwesomeWM.client.connect_signal('mouse::enter', function(_client)
+		_client:emit_signal('request::activate', 'mouse_enter', {raise = true})
+	end)
+
+	AwesomeWM.client.connect_signal('focus', function(_client)
+		_client.border_color = AwesomeWM.beautiful.border_focus
+	end)
+
+	AwesomeWM.client.connect_signal('unfocus', function(_client)
+		_client.border_color = AwesomeWM.beautiful.border_normal
+	end)
+
+end
 
 module.moveToTag = function(_tagName)
 

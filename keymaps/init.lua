@@ -75,7 +75,13 @@ module.list = {
 			end,
 			'Move focus to next client',
 		},
-
+		{
+			{module.modkey}, 'Tab',
+			function()
+				AwesomeWM.awful.client.focus.history.previous()
+				if AwesomeWM.client.focus then AwesomeWM.client.focus:raise() end
+			end
+		},
 
 	},
 
@@ -137,7 +143,17 @@ module.list = {
 		}
 	},
 
-	['Tag shift'] = {}
+	['Tag shift'] = {},
+
+	['Tag management'] = {
+		{
+			{module.modkey}, 'q',
+			function()
+				AwesomeWM.awful.layout.inc(1)
+			end,
+			'Cycle tag layout'
+		}
+	},
 
 }
 
