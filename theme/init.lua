@@ -8,6 +8,13 @@ module.dpi = module.xresources.apply_dpi
 
 local b = AwesomeWM.beautiful
 
+module.setWallpaper = function(_screen, _wallpaperPath)
+	_screen = _screen or AwesomeWM.awful.screen.focused()
+	_wallpaperPath = _wallpaperPath or AwesomeWM.assets.getWallpaper()
+
+	AwesomeWM.gears.wallpaper.maximized(_wallpaperPath, _screen, true)
+end
+
 module.initTheme = function()
 
 	b.font = 'SometypeMono NFM 12'
