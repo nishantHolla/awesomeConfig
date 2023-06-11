@@ -21,9 +21,23 @@ module.list = {
 			end,
 			'Spawn ' .. AwesomeWM.values.browser,
 		}
-	}
+	},
+
+	['Tag movement'] = {}
 
 }
+
+module.addTagMovementKeymaps = function()
+	for _, t in pairs(AwesomeWM.values.tags) do
+		table.insert(module.list['Tag movement'], {
+			{module.modkey}, t.key,
+			function()
+				AwesomeWM.functions.moveToTag(t.name)
+			end,
+			'Move to tag ' .. t.name,
+		})
+	end
+end
 
 module.makeKeymap = function(_map, _groupName)
 	return AwesomeWM.awful.key(_map[1], _map[2], _map[3], {description=_map[4], group=_groupName})
@@ -31,6 +45,7 @@ end
 
 module.initKeymaps = function()
 	modkey = module.modkey
+	module.addTagMovementKeymaps()
 	
 	local keymaps = {}
 	for groupName, groupList in pairs(module.list) do
