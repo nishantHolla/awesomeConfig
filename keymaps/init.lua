@@ -4,6 +4,15 @@ local module = {}
 
 module.modkey = 'Mod4'
 module.list = {
+	['Awesome'] = {
+		{
+			{module.modkey}, '1',
+			function()
+				AwesomeWM.awesome.restart()
+			end,
+			'Restart awesome'
+		}
+	},
 	
 	['Applications'] = {
 		{
@@ -83,6 +92,16 @@ module.list = {
 			end,
 			'Swap client with right',
 		},
+	},
+
+	['Client management'] = {
+		{
+			{module.modkey}, 'c',
+			function()
+				AwesomeWM.client.focus:kill()
+			end,
+			'Close client'
+		}
 	},
 
 	['Tag movement'] = {}
