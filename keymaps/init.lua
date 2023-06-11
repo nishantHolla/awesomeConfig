@@ -104,7 +104,9 @@ module.list = {
 		}
 	},
 
-	['Tag movement'] = {}
+	['Tag movement'] = {},
+
+	['Tag shift'] = {}
 
 }
 
@@ -120,6 +122,21 @@ module.addTagMovementKeymaps = function()
 	end
 end
 
+module.addTagShiftKeymaps = function()
+	for _, t in pairs(AwesomeWM.values.tags) do
+		table.insert(module.list['Tag shift'], {
+			{module.modkey, 'Shift'}, t.key,
+			function()
+				local focusedScreen = AwesomeWM.awful.screen.focused()
+				local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, t.name)
+				AwesomeWM.client.focus:move_to_tag(tag)
+				AwesomeWM.functions.moveToTag(t.name)
+			end,
+			'Move current client to tag ' .. t.name
+		})
+	end
+end
+
 module.makeKeymap = function(_map, _groupName)
 	return AwesomeWM.awful.key(_map[1], _map[2], _map[3], {description=_map[4], group=_groupName})
 end
@@ -127,6 +144,7 @@ end
 module.initKeymaps = function()
 	modkey = module.modkey
 	module.addTagMovementKeymaps()
+	module.addTagShiftKeymaps()
 	
 	local keymaps = {}
 	for groupName, groupList in pairs(module.list) do
