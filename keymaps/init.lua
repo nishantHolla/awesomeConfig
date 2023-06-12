@@ -68,6 +68,30 @@ module.list = {
 			'Increase volume'
 		},
 	},
+
+	['Player keys'] = {
+		{
+			{}, 'XF86AudioPrev',
+			function()
+				AwesomeWM.functions.player.previous()
+			end,
+			'Play previous audio'
+		},
+		{
+			{}, 'XF86AudioNext',
+			function()
+				AwesomeWM.functions.player.next()
+			end,
+			'Play previous audio'
+		},
+		{
+			{}, 'XF86AudioPlay',
+			function()
+				AwesomeWM.functions.player.toggle()
+			end,
+			'Play previous audio'
+		},
+	},
 	
 	['Applications'] = {
 		{

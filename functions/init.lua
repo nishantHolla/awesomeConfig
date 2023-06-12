@@ -95,5 +95,6 @@ end
 
 module.volume = require('functions.volume')
 module.brightness = require('functions.brightness')
+module.player = require('functions.player')
 
 return module
