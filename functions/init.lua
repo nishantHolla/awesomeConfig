@@ -73,6 +73,8 @@ module.initClients = function()
 		_client.border_color = AwesomeWM.beautiful.border_normal
 	end)
 
+	AwesomeWM.awful.spawn('picom')
+
 end
 
 module.moveToTag = function(_tagName)

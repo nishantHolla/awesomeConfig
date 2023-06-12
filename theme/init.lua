@@ -20,9 +20,9 @@ module.initTheme = function()
 	b.font = 'SometypeMono NFM 12'
 
 	b.useless_gap = module.dpi(3)
-	b.border_width = module.dpi(2)
+	b.border_width = module.dpi(3)
 	b.border_normal = '#000000'
-	b.border_focus = '#ffffff'
+	b.border_focus = '#f20746'
 	b.border_marked = '#91231c'
 	
 	b.notification_font = b.font

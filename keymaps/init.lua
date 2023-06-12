@@ -11,7 +11,14 @@ module.list = {
 				AwesomeWM.awesome.restart()
 			end,
 			'Restart awesome'
-		}
+		},
+		{
+			{module.modkey}, '2',
+			function()
+				AwesomeWM.awful.spawn('rofi -show window')
+			end,
+			'Show open clients'
+		},
 	},
 	
 	['Applications'] = {
@@ -29,7 +36,15 @@ module.list = {
 				AwesomeWM.awful.spawn(AwesomeWM.values.browser)
 			end,
 			'Spawn ' .. AwesomeWM.values.browser,
-		}
+		},
+
+		{
+			{module.modkey}, 'space',
+			function()
+				AwesomeWM.awful.spawn('rofi -show drun')
+			end,
+			'Launcher'
+		},
 	},
 
 	['Client movement'] = {
