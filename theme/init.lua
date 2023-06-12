@@ -27,8 +27,8 @@ module.initTheme = function()
 	
 	b.notification_font = b.font
 	b.notification_width = AwesomeWM.values.screenWidth
-	b.notification_height = AwesomeWM.values.screenHeight
-	b.notification_border_color = b.border_focus
+	b.notification_height = AwesomeWM.values.screenHeight * 0.28
+	b.notification_border_color = b.border_normal
 	b.notification_border_width = b.border_width
 
 	b.redLight = "#ff8785"
