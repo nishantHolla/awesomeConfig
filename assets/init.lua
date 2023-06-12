@@ -4,7 +4,24 @@ local module = {}
 module.wallpaperDir = AwesomeWM.values.awesomeDir .. '/assets/wallpapers'
 
 module.getIcon = function(_iconName)
-	return ('/usr/share/icons/GI/GI_' .. _iconName .. '.svg')
+	local location1 = '/usr/share/icons/GI/GI_' .. _iconName .. '.svg'
+	local f1 = io.open(location1, 'r')
+
+	if f1 ~= nil then
+		io.close(f1)
+		return location1
+	end
+
+	local location2 = os.getenv('HOME') .. '/.local/share/icons/GI/GI_' .. _iconName .. '.svg'
+	local f2 = io.open(location2, 'r')
+	
+	if f2 ~= nil then
+		io.close(f2)
+		return location2
+	end
+
+	return ''
+
 end
 
 module.getWallpaper = function(_tagName)
