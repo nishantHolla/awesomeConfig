@@ -3,6 +3,10 @@
 local module = {}
 module.wallpaperDir = AwesomeWM.values.awesomeDir .. '/assets/wallpapers'
 
+module.getIcon = function(_iconName)
+	return ('/usr/share/icons/GI/GI_' .. _iconName .. '.svg')
+end
+
 module.getWallpaper = function(_tagName)
 
 	local focusedScreen = AwesomeWM.awful.screen.focused()

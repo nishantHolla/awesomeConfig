@@ -30,6 +30,18 @@ module.initTheme = function()
 	b.notification_height = AwesomeWM.values.screenHeight
 	b.notification_border_color = b.border_focus
 	b.notification_border_width = b.border_width
+
+	b.redLight = "#ff8785"
+	b.redDark = "#F20F38"
+
+	b.greenLight = "#A1FF7B"
+	b.greenDark = "#038C4C"
+
+	b.blueLight = "#A7E7F6"
+	b.blueDark = "#304269"
+
+	b.yellowLight = "#F0C56B"
+	b.yellowDark = "#F29F05"
 end
 
 return module

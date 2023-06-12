@@ -27,6 +27,47 @@ module.list = {
 			'Show powermenu',
 		},
 	},
+
+	['Brightness keys'] = {
+		{
+			{}, 'XF86MonBrightnessUp',
+			function()
+				AwesomeWM.functions.brightness.increase()
+			end,
+			'Increase brightness',
+		},
+		{
+			{}, 'XF86MonBrightnessDown',
+			function()
+				AwesomeWM.functions.brightness.decrease()
+			end,
+			'Decrease brightness',
+		}
+	},
+
+	['Volume keys'] = {
+		{
+			{}, 'XF86AudioRaiseVolume',
+			function()
+				AwesomeWM.functions.volume.increase()
+			end,
+			'Increase volume',
+		},
+		{
+			{}, 'XF86AudioLowerVolume',
+			function()
+				AwesomeWM.functions.volume.decrease()
+			end,
+			'Increase volume'
+		},
+		{
+			{}, 'XF86AudioMute',
+			function()
+				AwesomeWM.functions.volume.toggle()
+			end,
+			'Increase volume'
+		},
+	},
 	
 	['Applications'] = {
 		{

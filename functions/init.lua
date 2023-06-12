@@ -93,5 +93,7 @@ module.moveToTag = function(_tagName)
 	AwesomeWM.theme.setWallpaper()
 end
 
+module.volume = require('functions.volume')
+module.brightness = require('functions.brightness')
 
 return module

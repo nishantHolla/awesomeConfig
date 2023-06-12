@@ -21,8 +21,8 @@ AwesomeWM.hotkeysPopupKeys = require('awful.hotkeys_popup.keys')
 
 -- user modules
 
-AwesomeWM.functions = require('functions')
 AwesomeWM.values = require('values')
+AwesomeWM.functions = require('functions')
 AwesomeWM.assets = require('assets')
 AwesomeWM.keymaps = require('keymaps')
 AwesomeWM.notify = require('notify')
@@ -37,4 +37,5 @@ AwesomeWM.functions.initScreens()
 AwesomeWM.keymaps.initKeymaps()
 AwesomeWM.theme.initTheme()
 AwesomeWM.functions.initClients()
+AwesomeWM.widgets.initWidgets()
 

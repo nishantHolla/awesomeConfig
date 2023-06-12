@@ -22,6 +22,10 @@ module.tagLayouts = {
 	module.layoutSuit.max.fullscreen,
 }
 
+module.getScript = function(_name)
+	return (module.awesomeDir .. '/scripts/' .. _name .. '.sh')
+end
+
 module.initValues = function()
 
 	terminal = module.terminal
