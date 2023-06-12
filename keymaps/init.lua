@@ -19,6 +19,13 @@ module.list = {
 			end,
 			'Show open clients'
 		},
+		{
+			{module.modkey}, 'Escape',
+			function()
+				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/powermenu.sh')
+			end,
+			'Show powermenu',
+		},
 	},
 	
 	['Applications'] = {
