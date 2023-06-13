@@ -132,6 +132,13 @@ module.list = {
 			end,
 			'Launcher'
 		},
+		{
+			{module.modkey}, 'Print',
+			function()
+				AwesomeWM.awful.spawn('flameshot gui')
+			end,
+			'Screenshot'
+		}
 	},
 
 	['Client movement'] = {
