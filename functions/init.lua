@@ -93,6 +93,21 @@ module.moveToTag = function(_tagName)
 	AwesomeWM.theme.setWallpaper()
 end
 
+module.toggleClientProperty = function(_propertyName)
+	local focusedClient = AwesomeWM.client.focus
+	
+	if focusedClient == nil then return end
+
+	if _propertyName == 'sticky' then
+		focusedClient.sticky = not focusedClient.sticky
+		if focusedClient.sticky then
+			focusedClient.border_color = AwesomeWM.beautiful.border_sticky
+		else
+			focusedClient.border_color = AwesomeWM.beautiful.border_normal
+		end
+	end
+end
+
 module.volume = require('functions.volume')
 module.brightness = require('functions.brightness')
 module.player = require('functions.player')

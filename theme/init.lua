@@ -19,18 +19,6 @@ module.initTheme = function()
 
 	b.font = 'SometypeMono NFM 12'
 
-	b.useless_gap = module.dpi(3)
-	b.border_width = module.dpi(7)
-	b.border_normal = '#000000'
-	b.border_focus = '#f20746'
-	b.border_marked = '#91231c'
-	
-	b.notification_font = b.font
-	b.notification_width = AwesomeWM.values.screenWidth
-	b.notification_height = AwesomeWM.values.screenHeight * 0.28
-	b.notification_border_color = b.border_normal
-	b.notification_border_width = b.border_width
-
 	b.redLight = "#ff8785"
 	b.redDark = "#F20F38"
 
@@ -42,6 +30,23 @@ module.initTheme = function()
 
 	b.yellowLight = "#F0C56B"
 	b.yellowDark = "#F29F05"
+
+	b.black = '#000000'
+	b.blackLight = '#333333'
+	b.white = '#000000'
+
+	b.useless_gap = module.dpi(3)
+	b.border_width = module.dpi(7)
+	b.border_normal = b.blackLight
+	b.border_focus = b.redDark
+	b.border_sticky = b.yellowDark
+	b.border_marked = b.blueDark
+	
+	b.notification_font = b.font
+	b.notification_width = AwesomeWM.values.screenWidth
+	b.notification_height = AwesomeWM.values.screenHeight * 0.28
+	b.notification_border_color = b.border_normal
+	b.notification_border_width = b.border_width
 end
 
 return module

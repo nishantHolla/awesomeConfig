@@ -210,6 +210,13 @@ module.list = {
 				AwesomeWM.client.focus:kill()
 			end,
 			'Close client'
+		},
+		{
+			{module.modkey}, '.',
+			function()
+				AwesomeWM.functions.toggleClientProperty('sticky')
+			end,
+			'Make client sticky'
 		}
 	},
 
