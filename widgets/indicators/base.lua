@@ -5,7 +5,7 @@ module.height = 360
 module.width = 60
 module.margins = 5
 module.timeout = 3
-module.opacity = 0.9
+module.opacity = 0.7
 
 module.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
 	local indicator = {}

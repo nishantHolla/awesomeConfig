@@ -75,6 +75,7 @@ module.initClients = function()
 	end)
 
 	AwesomeWM.awful.spawn('picom')
+	AwesomeWM.awful.spawn('nm-applet')
 
 end
 
@@ -144,6 +145,10 @@ module.isFile = function(_filePath)
 	else
 		return false
 	end
+end
+
+module.lowBattery = function()
+	AwesomeWM.notify.critical('Low battery', 'Battery less than ' .. tostring(AwesomeWM.values.lowBatteryThreshold .. '. Connect your laptop to a charger.'))
 end
 
 module.restart = function()

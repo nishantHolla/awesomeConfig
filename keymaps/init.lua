@@ -26,6 +26,13 @@ module.list = {
 			end,
 			'Show powermenu',
 		},
+		{
+			{module.modkey}, 'v',
+			function()
+				AwesomeWM.widgets.list.systemInfo.toggle()
+			end,
+			'Show system info'
+		}
 	},
 
 	['Brightness keys'] = {
