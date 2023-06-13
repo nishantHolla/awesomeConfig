@@ -7,4 +7,5 @@ Configuration files for awesome window manager
 - playerctl for player control
 - brightnessctl for brightness control
 - alsa and pulseaudio for volume control
+- acpi for battery indication
 - [My collection of icons](https://github.com/nishantHolla/icons)
