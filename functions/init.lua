@@ -66,7 +66,7 @@ module.initClients = function()
 	end)
 
 	AwesomeWM.client.connect_signal('focus', function(_client)
-		_client.border_color = AwesomeWM.beautiful.border_focus
+		AwesomeWM.functions.applyBorderColor(_client)
 	end)
 
 	AwesomeWM.client.connect_signal('unfocus', function(_client)
@@ -95,17 +95,58 @@ end
 
 module.toggleClientProperty = function(_propertyName)
 	local focusedClient = AwesomeWM.client.focus
+	local focusedTag = AwesomeWM.awful.screen.focused().selected_tag
 	
 	if focusedClient == nil then return end
 
 	if _propertyName == 'sticky' then
-		focusedClient.sticky = not focusedClient.sticky
-		if focusedClient.sticky then
-			focusedClient.border_color = AwesomeWM.beautiful.border_sticky
+		if focusedClient.sticky == false then
+			focusedClient.sticky = true
 		else
-			focusedClient.border_color = AwesomeWM.beautiful.border_normal
+			focusedClient.sticky = false
+			focusedClient:move_to_tag(focusedTag)
+		end
+
+	elseif _propertyName == 'fullscreen' then
+		if focusedClient.fullscreen == false then
+			focusedClient.fullscreen = true
+		else
+			focusedClient.fullscreen = false
+		end
+	
+	elseif _propertyName == 'floating' then
+		if focusedClient.floating == false then
+			focusedClient.floating = true
+		else
+			focusedClient.floating = false
 		end
 	end
+
+	AwesomeWM.functions.applyBorderColor(focusedClient)
+
+end
+
+module.applyBorderColor = function(_client)
+	if _client.floating then _client.border_color = AwesomeWM.beautiful.border_floating
+	elseif _client.sticky then _client.border_color = AwesomeWM.beautiful.border_sticky
+	elseif _client.fullscreen then _client.border_color = AwesomeWM.beautiful.border_fullscreen
+	else _client.border_color = AwesomeWM.beautiful.border_focus
+	end
+end
+
+module.isFile = function(_filePath)
+	local f = io.open(_filePath, 'r')
+
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
+module.restart = function()
+	AwesomeWM.awesome.restart()
 end
 
 module.volume = require('functions.volume')

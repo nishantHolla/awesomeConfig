@@ -8,7 +8,7 @@ module.list = {
 		{
 			{module.modkey}, '1',
 			function()
-				AwesomeWM.awesome.restart()
+				AwesomeWM.functions.restart()
 			end,
 			'Restart awesome'
 		},
@@ -212,11 +212,25 @@ module.list = {
 			'Close client'
 		},
 		{
+			{module.modkey}, ',',
+			function()
+				AwesomeWM.functions.toggleClientProperty('floating')
+			end,
+			'Make client floating'
+		},
+		{
 			{module.modkey}, '.',
 			function()
 				AwesomeWM.functions.toggleClientProperty('sticky')
 			end,
 			'Make client sticky'
+		},
+		{
+			{module.modkey}, '/',
+			function()
+				AwesomeWM.functions.toggleClientProperty('fullscreen')
+			end,
+			'Make client fullscreen'
 		}
 	},
 

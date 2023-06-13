@@ -41,6 +41,8 @@ module.initTheme = function()
 	b.border_focus = b.redDark
 	b.border_sticky = b.yellowDark
 	b.border_marked = b.blueDark
+	b.border_floating = b.greenDark
+	b.border_fullscreen = b.blueDark
 	
 	b.notification_font = b.font
 	b.notification_width = AwesomeWM.values.screenWidth
