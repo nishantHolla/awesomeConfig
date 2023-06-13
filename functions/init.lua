@@ -74,8 +74,10 @@ module.initClients = function()
 		_client.border_color = AwesomeWM.beautiful.border_normal
 	end)
 
+	-- startup applications
 	AwesomeWM.awful.spawn('picom')
 	AwesomeWM.awful.spawn('nm-applet')
+	AwesomeWM.awful.spawn('flameshot')
 
 end
 
