@@ -46,6 +46,7 @@ module.initClients = function()
 				border_color = AwesomeWM.beautiful.border_normal,
 				focus = AwesomeWM.awful.client.focus.filter,
 				raise = true,
+				buttons = AwesomeWM.keymaps.getClientButtons(),
 				screen = AwesomeWM.awful.screen.preferred,
 				placement = AwesomeWM.awful.placement.no_overlap + AwesomeWM.awful.placement.no_offscreen
 			}

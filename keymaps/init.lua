@@ -292,6 +292,27 @@ module.addTagShiftKeymaps = function()
 	end
 end
 
+module.getClientButtons = function()
+	local clientButtons = AwesomeWM.gears.table.join(
+		AwesomeWM.awful.button({}, 1, function(_client)
+			_client:emit_signal('request::activate', 'mouse_click', {raise = true})
+		end),
+		AwesomeWM.awful.button({module.modkey}, 1, function(_client)
+			_client:emit_signal('request::activate', 'mouse_click', {raise = true})
+			AwesomeWM.awful.mouse.client.move(_client)
+		end),
+		AwesomeWM.awful.button({module.modkey}, 3, function(_client)
+			_client:emit_signal('request::activate', 'mouse_click', {raise = true})
+			AwesomeWM.awful.mouse.client.resize(_client)
+		end),
+		AwesomeWM.awful.button({module.modkey}, 2, function(_client)
+			_client:kill()
+		end)
+	)
+
+	return clientButtons
+end
+
 module.makeKeymap = function(_map, _groupName)
 	return AwesomeWM.awful.key(_map[1], _map[2], _map[3], {description=_map[4], group=_groupName})
 end
