@@ -118,6 +118,14 @@ module.list = {
 		},
 
 		{
+			{module.modkey}, ";",
+			function()
+				AwesomeWM.awful.spawn(AwesomeWM.values.fileManager)
+			end,
+			'Spawn ' .. AwesomeWM.values.fileManager,
+		},
+
+		{
 			{module.modkey}, 'space',
 			function()
 				AwesomeWM.awful.spawn('rofi -show drun')

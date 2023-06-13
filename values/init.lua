@@ -6,6 +6,7 @@ module.awesomeDir = os.getenv('HOME') .. '/.config/awesome'
 module.terminal = os.getenv('TERMINAL') or 'contour'
 module.editor = os.getenv('EDITOR') or 'nvim'
 module.browser = os.getenv('BROWSER') or 'firefox'
+module.fileManager = os.getenv('FILE_MANAGER') or 'pcmanfm'
 module.editorCmd = module.terminal .. ' -e ' .. module.editor
 module.layoutSuit = AwesomeWM.awful.layout.suit
 module.tags = {
