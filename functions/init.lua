@@ -157,6 +157,10 @@ module.restart = function()
 	AwesomeWM.awesome.restart()
 end
 
+module.spawn = function(_application)
+	AwesomeWM.awful.spawn(_application, {tag = AwesomeWM.awful.screen.focused().selected_tag})
+end
+
 module.volume = require('functions.volume')
 module.brightness = require('functions.brightness')
 module.player = require('functions.player')

@@ -15,7 +15,7 @@ module.list = {
 		{
 			{module.modkey}, '2',
 			function()
-				AwesomeWM.awful.spawn('rofi -show window')
+				AwesomeWM.functions.spawn('rofi -show window')
 			end,
 			'Show open clients'
 		},
@@ -104,7 +104,7 @@ module.list = {
 		{
 			{module.modkey}, 'Return',
 			function()
-				AwesomeWM.awful.spawn(AwesomeWM.values.terminal)
+				AwesomeWM.functions.spawn(AwesomeWM.values.terminal)
 			end,
 			'Spawn ' .. AwesomeWM.values.terminal,
 		},
@@ -112,7 +112,7 @@ module.list = {
 		{
 			{module.modkey}, "'",
 			function()
-				AwesomeWM.awful.spawn(AwesomeWM.values.browser)
+				AwesomeWM.functions.spawn(AwesomeWM.values.browser)
 			end,
 			'Spawn ' .. AwesomeWM.values.browser,
 		},
@@ -120,7 +120,7 @@ module.list = {
 		{
 			{module.modkey}, ";",
 			function()
-				AwesomeWM.awful.spawn(AwesomeWM.values.fileManager)
+				AwesomeWM.functions.spawn(AwesomeWM.values.fileManager)
 			end,
 			'Spawn ' .. AwesomeWM.values.fileManager,
 		},
@@ -128,14 +128,14 @@ module.list = {
 		{
 			{module.modkey}, 'space',
 			function()
-				AwesomeWM.awful.spawn('rofi -show drun')
+				AwesomeWM.functions.spawn('rofi -show drun')
 			end,
 			'Launcher'
 		},
 		{
 			{module.modkey}, 'Print',
 			function()
-				AwesomeWM.awful.spawn('flameshot gui')
+				AwesomeWM.functions.spawn('flameshot gui')
 			end,
 			'Screenshot'
 		}
