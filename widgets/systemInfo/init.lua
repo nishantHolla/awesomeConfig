@@ -105,7 +105,7 @@ module.refresh = function()
 		hour = tostring(date.hour - 12)
 		endString = 'PM'
 	else
-		hout = tostring(date.hour)
+		hour = tostring(date.hour)
 	end
 	local time = (tostring(date.day) .. '/' .. tostring(date.month) .. '/' .. tostring(date.year) .. ' | ' .. hour .. ':' .. tostring(date.min) .. ' ' .. endString)
 	module.clockValue.text = time
