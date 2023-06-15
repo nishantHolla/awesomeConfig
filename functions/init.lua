@@ -95,6 +95,7 @@ module.moveToTag = function(_tagName)
 	end
 
 	AwesomeWM.theme.setWallpaper()
+	AwesomeWM.widgets.list.tagsIndicator.show()
 end
 
 module.toggleClientProperty = function(_propertyName)

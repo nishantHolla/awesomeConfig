@@ -1,7 +1,9 @@
 -- Assets module
 
 local module = {}
-module.wallpaperDir = AwesomeWM.values.awesomeDir .. '/assets/wallpapers'
+module.assetsDir = AwesomeWM.values.awesomeDir .. '/assets'
+module.wallpaperDir = module.assetsDir .. '/wallpapers'
+module.layoutsDir = module.assetsDir .. '/layouts'
 
 module.getIcon = function(_iconName)
 	local location1 = '/usr/share/icons/GI/GI_' .. _iconName .. '.svg'
@@ -18,6 +20,12 @@ module.getIcon = function(_iconName)
 
 	return ''
 
+end
+
+module.getLayout = function(_layoutName)
+	_layoutName = _layoutName or tostring(AwesomeWM.awful.screen.focused().selected_tag.layout.name)
+	if _layoutName ~= 'spiral' and _layoutName ~= 'fullscreen' and _layoutName ~= 'floating' and _layoutName ~= 'fairh' then return '' end
+	return (module.layoutsDir .. '/' .. _layoutName .. '.jpg')
 end
 
 module.getWallpaper = function(_tagName)

@@ -40,7 +40,7 @@ module.batteryValueBG = AwesomeWM.wibox.widget({
 
 module.clockValueBG = AwesomeWM.wibox.widget({
 	module.clockValue,
-	fg = AwesomeWM.beautiful.greenLight,
+	fg = AwesomeWM.beautiful.blueLight,
 	widget = AwesomeWM.wibox.container.background,
 })
 

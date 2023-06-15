@@ -4,8 +4,8 @@ local module = {}
 module.height = 360
 module.width = 60
 module.margins = 5
-module.timeout = 3
-module.opacity = 0.7
+module.timeout = 1
+module.opacity = 0.8
 
 module.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
 	local indicator = {}

@@ -20,16 +20,16 @@ module.initTheme = function()
 	b.font = 'SometypeMono NFM 12'
 
 	b.redLight = "#ff8785"
-	b.redDark = "#F20F38"
+	b.redDark = "#f50746"
 
 	b.greenLight = "#A1FF7B"
-	b.greenDark = "#038C4C"
+	b.greenDark = "#69eb36"
 
 	b.blueLight = "#A7E7F6"
-	b.blueDark = "#304269"
+	b.blueDark = "#18b8db"
 
 	b.yellowLight = "#F0C56B"
-	b.yellowDark = "#F29F05"
+	b.yellowDark = "#fab725"
 
 	b.black = '#000000'
 	b.blackLight = '#333333'
@@ -49,6 +49,10 @@ module.initTheme = function()
 	b.notification_height = AwesomeWM.values.screenHeight * 0.28
 	b.notification_border_color = b.border_normal
 	b.notification_border_width = b.border_width
+
+	b.tagIndicatorDead = b.blackLight
+	b.tagIndicatorActive = b.redDark
+	b.tagIndicatorAlive = b.blueDark
 end
 
 return module

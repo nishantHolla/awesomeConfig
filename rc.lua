@@ -39,3 +39,4 @@ AwesomeWM.theme.initTheme()
 AwesomeWM.functions.initClients()
 AwesomeWM.widgets.initWidgets()
 
+AwesomeWM.widgets.list.tagsIndicator.show()
