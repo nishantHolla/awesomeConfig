@@ -131,6 +131,11 @@ module.toggleClientProperty = function(_propertyName)
 
 end
 
+module.cycleLayout = function()
+	AwesomeWM.awful.layout.inc(1)
+	AwesomeWM.widgets.list.tagsIndicator.show()
+end
+
 module.applyBorderColor = function(_client)
 	if _client.floating then _client.border_color = AwesomeWM.beautiful.border_floating
 	elseif _client.sticky then _client.border_color = AwesomeWM.beautiful.border_sticky

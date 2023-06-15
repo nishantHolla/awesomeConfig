@@ -229,7 +229,9 @@ module.list = {
 		{
 			{module.modkey}, 'c',
 			function()
-				AwesomeWM.client.focus:kill()
+				if AwesomeWM.client.focus then
+					AwesomeWM.client.focus:kill()
+				end
 			end,
 			'Close client'
 		},
@@ -279,7 +281,7 @@ module.list = {
 		{
 			{module.modkey}, 'q',
 			function()
-				AwesomeWM.awful.layout.inc(1)
+				AwesomeWM.functions.cycleLayout()
 			end,
 			'Cycle tag layout'
 		}
@@ -328,7 +330,9 @@ module.getClientButtons = function()
 			AwesomeWM.awful.mouse.client.resize(_client)
 		end),
 		AwesomeWM.awful.button({module.modkey}, 2, function(_client)
-			_client:kill()
+			if _client then
+				_client:kill()
+			end
 		end)
 	)
 
