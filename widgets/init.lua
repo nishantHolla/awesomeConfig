@@ -10,7 +10,6 @@ module.initWidgets = function()
 		tagsIndicator = require('widgets.indicators.tags'),
 	}
 
-	module.list.systemInfo.refresh()
 end
 
 

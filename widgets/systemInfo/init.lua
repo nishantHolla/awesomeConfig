@@ -6,6 +6,7 @@ module.width = 360
 module.height = 60
 module.padding = 13
 module.margins = 5
+module.refreshRate = 3
 
 module.batteryIcon = AwesomeWM.wibox.widget({
 	image = '',
@@ -122,6 +123,9 @@ module.refresh = function()
 			if charging then
 				module.batteryValueBG.fg = AwesomeWM.beautiful.greenLight
 				icon = AwesomeWM.assets.getIcon('batteryChargingWhite')
+			elseif value > 95 then
+				module.batteryValueBG.fg = AwesomeWM.beautiful.greenLight
+				icon = AwesomeWM.assets.getIcon('batteryFullWhite')
 			elseif value > 75 then
 				module.batteryValueBG.fg = AwesomeWM.beautiful.greenLight
 				icon = AwesomeWM.assets.getIcon('batteryHighWhite')
@@ -139,7 +143,6 @@ module.refresh = function()
 
 			module.batteryIcon.image = icon
 			module.batteryValue.text = tostring(value) .. '%'
-			module.timer:again()
 
 		end)
 
@@ -150,14 +153,23 @@ module.refresh = function()
 end
 
 module.timer = AwesomeWM.gears.timer({
-	timeout = 20,
-	callback = module.refresh
+	timeout = module.refreshRate,
+	callback = function()
+		if module.leftBox.visible == true then
+			module.refresh()
+			return true
+		end
+
+		return false
+	end
 })
 
 module.toggle = function()
 
+	module.refresh()
 	module.leftBox.visible = not module.leftBox.visible
 	module.rightBox.visible = not module.rightBox.visible
+	module.timer:again()
 
 end
 

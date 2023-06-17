@@ -3,7 +3,7 @@ local module = {}
 local base = require('widgets.indicators.base')
 
 module.height = base.width
-module.width = base.height
+module.width = (60 * #(AwesomeWM.values.tags)) + 60
 module.margins = base.margins
 module.padding = 10
 module.timeout = base.timeout
@@ -31,6 +31,7 @@ for _, t in pairs(AwesomeWM.values.tags) do
 		shape = AwesomeWM.gears.shape.rounded_rect,
 		shape_border_width = 3,
 		shape_border_color = AwesomeWM.beautiful.tagIndicatorDead,
+		fg = AwesomeWM.beautiful.tagIndicatorDead,
 		widget = AwesomeWM.wibox.container.background,
 		tagName = t.name
 
@@ -86,10 +87,13 @@ module.show = function()
 		local numberOfClients = #(currentTag:clients())
 		if t.tagName == selectedTagName then
 			t.shape_border_color = AwesomeWM.beautiful.tagIndicatorActive
+			t.fg = AwesomeWM.beautiful.tagIndicatorActive
 		elseif numberOfClients > 0 then
 			t.shape_border_color = AwesomeWM.beautiful.tagIndicatorAlive
+			t.fg = AwesomeWM.beautiful.tagIndicatorAlive
 		else
 			t.shape_border_color = AwesomeWM.beautiful.tagIndicatorDead
+			t.fg = AwesomeWM.beautiful.tagIndicatorDead
 		end
 	end
 
