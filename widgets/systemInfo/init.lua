@@ -6,7 +6,7 @@ module.width = 360
 module.height = 60
 module.padding = 13
 module.margins = 5
-module.refreshRate = 3
+module.timeout = 3
 
 module.batteryIcon = AwesomeWM.wibox.widget({
 	image = '',
@@ -153,13 +153,10 @@ module.refresh = function()
 end
 
 module.timer = AwesomeWM.gears.timer({
-	timeout = module.refreshRate,
+	timeout = module.timeout,
 	callback = function()
-		if module.leftBox.visible == true then
-			module.refresh()
-			return true
-		end
-
+		module.leftBox.visible = false
+		module.rightBox.visible = false
 		return false
 	end
 })
@@ -167,10 +164,17 @@ module.timer = AwesomeWM.gears.timer({
 module.toggle = function()
 
 	module.refresh()
+	module.timer:stop()
 	module.leftBox.visible = not module.leftBox.visible
 	module.rightBox.visible = not module.rightBox.visible
-	module.timer:again()
 
+end
+
+module.peak = function()
+	module.refresh()
+	module.leftBox.visible = true
+	module.rightBox.visible = true
+	module.timer:again()
 end
 
 return module
