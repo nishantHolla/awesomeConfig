@@ -308,6 +308,7 @@ module.addTagShiftKeymaps = function()
 			function()
 				local focusedScreen = AwesomeWM.awful.screen.focused()
 				local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, t.name)
+				if AwesomeWM.client.focus == nil then return end
 				AwesomeWM.client.focus:move_to_tag(tag)
 				AwesomeWM.functions.moveToTag(t.name)
 			end,
