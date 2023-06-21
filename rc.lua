@@ -40,3 +40,5 @@ AwesomeWM.functions.clients.initClients()
 AwesomeWM.widgets.initWidgets()
 
 AwesomeWM.widgets.list.tagsIndicator.show()
+AwesomeWM.functions.passTimer:start()
+AwesomeWM.functions.startup()

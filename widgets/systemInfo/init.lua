@@ -101,14 +101,27 @@ module.refresh = function()
 
 	local date = os.date('*t')
 	local hour = ''
+	local min = ''
 	local endString = 'AM'
+
 	if date.hour > 12 then
 		hour = tostring(date.hour - 12)
 		endString = 'PM'
 	else
 		hour = tostring(date.hour)
 	end
-	local time = (tostring(date.day) .. '/' .. tostring(date.month) .. '/' .. tostring(date.year) .. ' | ' .. hour .. ':' .. tostring(date.min) .. ' ' .. endString)
+
+	if tonumber(hour) < 10 then
+		hour = '0' .. hour
+	end
+
+	if date.min > 9 then
+		min = tostring(date.min)
+	else
+		min = '0' .. tostring(date.min)
+	end
+
+	local time = (tostring(date.day) .. '/' .. tostring(date.month) .. '/' .. tostring(date.year) .. ' | ' .. hour .. ':' .. min .. ' ' .. endString)
 	module.clockValue.text = time
 
 	AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' charging', function(_stdout, _stderr, _errorReason, _errorCode)
@@ -152,7 +165,7 @@ module.refresh = function()
 
 end
 
-module.timer = AwesomeWM.gears.timer({
+module.peakTimer = AwesomeWM.gears.timer({
 	timeout = module.timeout,
 	callback = function()
 		module.leftBox.visible = false
@@ -161,12 +174,25 @@ module.timer = AwesomeWM.gears.timer({
 	end
 })
 
+module.refreshTimer = AwesomeWM.gears.timer({
+	timeout = module.timeout,
+	callback = function()
+		module.refresh()
+	end
+})
+
 module.toggle = function()
 
 	module.refresh()
-	module.timer:stop()
+	module.peakTimer:stop()
 	module.leftBox.visible = not module.leftBox.visible
 	module.rightBox.visible = not module.rightBox.visible
+
+	if module.leftBox.visible then
+		module.refreshTimer:again()
+	else
+		module.refreshTimer:stop()
+	end
 
 end
 
@@ -174,7 +200,7 @@ module.peak = function()
 	module.refresh()
 	module.leftBox.visible = true
 	module.rightBox.visible = true
-	module.timer:again()
+	module.peakTimer:again()
 end
 
 return module
