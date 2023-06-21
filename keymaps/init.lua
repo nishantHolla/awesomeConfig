@@ -238,21 +238,21 @@ module.list = {
 		{
 			{module.modkey}, ',',
 			function()
-				AwesomeWM.functions.toggleClientProperty('floating')
+				AwesomeWM.functions.clients.toggleClientProperty('floating')
 			end,
 			'Make client floating'
 		},
 		{
 			{module.modkey}, '.',
 			function()
-				AwesomeWM.functions.toggleClientProperty('sticky')
+				AwesomeWM.functions.clients.toggleClientProperty('sticky')
 			end,
 			'Make client sticky'
 		},
 		{
 			{module.modkey}, '/',
 			function()
-				AwesomeWM.functions.toggleClientProperty('fullscreen')
+				AwesomeWM.functions.clients.toggleClientProperty('fullscreen')
 			end,
 			'Make client fullscreen'
 		}
@@ -262,14 +262,14 @@ module.list = {
 		{
 			{module.modkey}, 'w',
 			function()
-				AwesomeWM.functions.moveToTag('previous')
+				AwesomeWM.functions.tags.moveToTag('previous')
 			end,
 			'View previous tag'
 		},
 		{
 			{module.modkey}, 'e',
 			function()
-				AwesomeWM.functions.moveToTag('next')
+				AwesomeWM.functions.tags.moveToTag('next')
 			end,
 			'View next tag'
 		}
@@ -281,7 +281,7 @@ module.list = {
 		{
 			{module.modkey}, 'q',
 			function()
-				AwesomeWM.functions.cycleLayout()
+				AwesomeWM.functions.tags.cycleLayout()
 			end,
 			'Cycle tag layout'
 		}
@@ -294,7 +294,7 @@ module.addTagMovementKeymaps = function()
 		table.insert(module.list['Tag movement'], {
 			{module.modkey}, t.key,
 			function()
-				AwesomeWM.functions.moveToTag(t.name)
+				AwesomeWM.functions.tags.moveToTag(t.name)
 			end,
 			'Move to tag ' .. t.name,
 		})
@@ -310,7 +310,7 @@ module.addTagShiftKeymaps = function()
 				local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, t.name)
 				if AwesomeWM.client.focus == nil then return end
 				AwesomeWM.client.focus:move_to_tag(tag)
-				AwesomeWM.functions.moveToTag(t.name)
+				AwesomeWM.functions.tags.moveToTag(t.name)
 			end,
 			'Move current client to tag ' .. t.name
 		})

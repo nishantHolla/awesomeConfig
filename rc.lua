@@ -33,10 +33,10 @@ AwesomeWM.widgets = require('widgets')
 
 AwesomeWM.functions.initErrorHandling()
 AwesomeWM.values.initValues()
-AwesomeWM.functions.initScreens()
+AwesomeWM.functions.screens.initScreens()
 AwesomeWM.keymaps.initKeymaps()
 AwesomeWM.theme.initTheme()
-AwesomeWM.functions.initClients()
+AwesomeWM.functions.clients.initClients()
 AwesomeWM.widgets.initWidgets()
 
 AwesomeWM.widgets.list.tagsIndicator.show()

@@ -45,8 +45,11 @@ module.initTheme = function()
 	b.border_fullscreen = b.blueDark
 	
 	b.notification_font = b.font
+	b.notification_bg = b.blueLight
+	b.notification_fg = b.blackLight
+	b.notification_critical_bg = b.redLight
 	b.notification_width = AwesomeWM.values.screenWidth
-	b.notification_height = AwesomeWM.values.screenHeight * 0.28
+	b.notification_height = AwesomeWM.values.screenHeight * 0.1
 	b.notification_border_color = b.border_normal
 	b.notification_border_width = b.border_width
 
