@@ -31,8 +31,8 @@ module.list = {
 			function()
 				AwesomeWM.widgets.list.systemInfo.toggle()
 			end,
-			'Show system info'
-		}
+			'Toggle system info'
+		},
 	},
 
 	['Brightness keys'] = {

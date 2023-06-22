@@ -1,3 +1,8 @@
+<center>
+<a href="https://awesomewm.org/">
+<img src="./assets/project/awesomewm.jpg" alt="awesome wm"></img>
+</a>
+</center>
 # awesomeConfig
 Configuration files for awesome window manager
 

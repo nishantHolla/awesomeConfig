@@ -36,7 +36,8 @@ module.pass = function()
 			if value < AwesomeWM.values.lowBatteryThreshold then
 				AwesomeWM.notify.critical('Low battery', 'Battery less than ' .. tostring(AwesomeWM.values.lowBatteryThreshold .. '. Connect your laptop to a charger.'))
 				AwesomeWM.values.batteryNotificationSent = true
-			else
+			elseif AwesomeWM.values.batteryNotificationSent then
+				AwesomeWM.notify.normal('Low battery', 'Battery more than ' .. tostring(AwesomeWM.values.lowBatteryThreshold .. '.'))
 				AwesomeWM.values.batteryNotificationSent = false
 			end
 
@@ -51,15 +52,6 @@ module.passTimer = AwesomeWM.gears.timer({
 	timeout = AwesomeWM.values.passTimeout,
 	callback = module.pass
 })
-
-module.startup = function()
-	local isStartup = tonumber(os.getenv("AWESOME_STARTUP"))
-	if isStartup == 0 then
-		AwesomeWM.notify.normal("Startup notification", 'Everything is working fine!')
-		AwesomeWM.awful.spawn('export AWESOME_STARTUP=1')
-	end
-end
-
 
 module.isFile = function(_filePath)
 	local f = io.open(_filePath, 'r')
