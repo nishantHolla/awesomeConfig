@@ -1,3 +1,9 @@
+<center>
+<a href="https://awesomewm.org/">
+<img src="./assets/project/awesomeConfig.png" alt="awesome wm"></img>
+</a>
+</center>
+<br>
 
 # awesomeConfig
 
