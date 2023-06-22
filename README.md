@@ -1,6 +1,6 @@
 <center>
 <a href="https://awesomewm.org/">
-<img src="./assets/project/awesomewm.jpg" alt="awesome wm"></img>
+<img src="./assets/project/awesomewm.png" alt="awesome wm"></img>
 </a>
 </center>
 # awesomeConfig
