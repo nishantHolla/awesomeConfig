@@ -1,9 +1,3 @@
-<center>
-<a href="https://awesomewm.org/">
-<img src="./assets/project/awesomewm.png" alt="awesome wm"></img>
-</a>
-</center>
-<br>
 
 # awesomeConfig
 
