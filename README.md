@@ -4,6 +4,7 @@
 </a>
 </center>
 <br>
+
 # awesomeConfig
 Configuration files for awesome window manager
 
