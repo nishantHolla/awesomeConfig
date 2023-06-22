@@ -23,6 +23,16 @@ module.initClients = function()
 				floating = false,
 				maximized = false,
 			}
+		},
+
+		{
+			rule = {class = "Blender"},
+			properties = {
+				fullscreen = false,
+				maximized = false,
+				floating = false,
+			
+			}
 		}
 	}
 
