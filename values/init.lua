@@ -23,7 +23,7 @@ module.tagLayouts = {
 	module.layoutSuit.max.fullscreen,
 }
 
-module.passTimeout = 3
+module.passTimeout = 60
 module.lowBatteryThreshold = 15
 module.batteryNotificationSent = false
 

@@ -31,7 +31,13 @@ module.initClients = function()
 				fullscreen = false,
 				maximized = false,
 				floating = false,
-			
+			}
+		},
+
+		{
+			rule = {role = "GtkFileChooserDialog"},
+			properties = {
+				floating = true,
 			}
 		}
 	}

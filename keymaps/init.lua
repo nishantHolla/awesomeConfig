@@ -27,7 +27,7 @@ module.list = {
 			'Show powermenu',
 		},
 		{
-			{module.modkey}, 'v',
+			{module.modkey}, '`',
 			function()
 				AwesomeWM.widgets.list.systemInfo.toggle()
 			end,
@@ -99,7 +99,7 @@ module.list = {
 			'Play previous audio'
 		},
 	},
-	
+
 	['Applications'] = {
 		{
 			{module.modkey}, 'Return',
@@ -348,7 +348,7 @@ module.initKeymaps = function()
 	modkey = module.modkey
 	module.addTagMovementKeymaps()
 	module.addTagShiftKeymaps()
-	
+
 	local keymaps = {}
 	for groupName, groupList in pairs(module.list) do
 		for _, map in pairs(groupList) do
