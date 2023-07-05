@@ -128,7 +128,7 @@ module.list = {
 		{
 			{module.modkey}, 'space',
 			function()
-				AwesomeWM.functions.spawn('rofi -show drun')
+				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/open.sh')
 			end,
 			'Launcher'
 		},

@@ -41,3 +41,5 @@ AwesomeWM.widgets.initWidgets()
 
 AwesomeWM.widgets.list.tagsIndicator.show()
 AwesomeWM.functions.passTimer:start()
+
+-- awesome.connect_signal("startup", AwesomeWM.functions.restore)

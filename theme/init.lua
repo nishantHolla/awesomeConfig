@@ -43,7 +43,7 @@ module.initTheme = function()
 	b.border_marked = b.blueDark
 	b.border_floating = b.greenDark
 	b.border_fullscreen = b.blueDark
-	
+
 	b.notification_font = b.font
 	b.notification_bg = b.blueLight
 	b.notification_fg = b.blackLight

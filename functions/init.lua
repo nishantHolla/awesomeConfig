@@ -3,10 +3,8 @@
 local module = {}
 
 module.initErrorHandling = function()
-
 	-- startup errors
 	if AwesomeWM.awesome.startup_errors then
-
 		AwesomeWM.notify.critical('Startup error encountered', AwesomeWM.awesome.startup_errors)
 	end
 
@@ -24,25 +22,28 @@ module.initErrorHandling = function()
 end
 
 module.pass = function()
-
 	-- battery low check
 	if AwesomeWM.values.batteryNotificationSent then goto batteryContinue end
-	AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' charging', function(_stdout, _stderr, _errorReason, _errorCode)
-		local value = tonumber(_stdout)
-		if value == 1 then return end
-
-		AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' value', function(_stdout, _stderr, _errorReason, _errorCode)
+	AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' charging',
+		function(_stdout, _stderr, _errorReason, _errorCode)
 			local value = tonumber(_stdout)
-			if value < AwesomeWM.values.lowBatteryThreshold then
-				AwesomeWM.notify.critical('Low battery', 'Battery less than ' .. tostring(AwesomeWM.values.lowBatteryThreshold .. '. Connect your laptop to a charger.'))
-				AwesomeWM.values.batteryNotificationSent = true
-			elseif AwesomeWM.values.batteryNotificationSent then
-				AwesomeWM.notify.normal('Low battery', 'Battery more than ' .. tostring(AwesomeWM.values.lowBatteryThreshold .. '.'))
-				AwesomeWM.values.batteryNotificationSent = false
-			end
+			if value == 1 then return end
 
+			AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' value',
+				function(_stdout, _stderr, _errorReason, _errorCode)
+					local value = tonumber(_stdout)
+					if value < AwesomeWM.values.lowBatteryThreshold then
+						AwesomeWM.notify.critical('Low battery',
+							'Battery less than ' ..
+							tostring(AwesomeWM.values.lowBatteryThreshold .. '. Connect your laptop to a charger.'))
+						AwesomeWM.values.batteryNotificationSent = true
+					elseif AwesomeWM.values.batteryNotificationSent then
+						AwesomeWM.notify.normal('Low battery',
+							'Battery more than ' .. tostring(AwesomeWM.values.lowBatteryThreshold .. '.'))
+						AwesomeWM.values.batteryNotificationSent = false
+					end
+				end)
 		end)
-	end)
 	::batteryContinue::
 
 	module.passTimer:again()
@@ -68,8 +69,19 @@ module.restart = function()
 	AwesomeWM.awesome.restart()
 end
 
-module.spawn = function(_application)
-	AwesomeWM.awful.spawn(_application, {tag = AwesomeWM.awful.screen.focused().selected_tag})
+
+
+module.spawn = function(_application, _options)
+
+	if _options then
+		if _options.tag == nil then
+			_options.tag = AwesomeWM.awful.screen.focused().selected_tag
+		end
+	else
+		_options = {tag = AwesomeWM.awful.screen.focused().selected_tag}
+	end
+
+	AwesomeWM.awful.spawn(_application, _options)
 end
 
 module.screens = require('functions.screens')

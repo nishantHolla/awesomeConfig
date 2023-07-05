@@ -1,7 +1,8 @@
 
+local maxValue = 255
 local module = require('widgets.indicators.base').make(
 	AwesomeWM.awful.placement.left,
-	255,
+	maxValue,
 	AwesomeWM.beautiful.blueLight,
 	AwesomeWM.beautiful.blueDark
 )
@@ -20,9 +21,12 @@ module.show = function()
 			icon = AwesomeWM.assets.getIcon('brightnessLowWhite')
 		end
 
+		local value = brightness / maxValue * 100
+		value = math.floor(value)
+
 		module.slider.value = brightness
 		module.icon.image = icon
-		module.value.text = _stdout
+		module.value.text = tostring(value) .. "%"
 		module.wibox.show()
 	end)
 end

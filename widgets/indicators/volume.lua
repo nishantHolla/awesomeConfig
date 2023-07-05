@@ -1,11 +1,13 @@
 
+local maxValue =  100
 local module = require('widgets.indicators.base').make(
 	AwesomeWM.awful.placement.right,
-	100,
+	maxValue,
 	AwesomeWM.beautiful.redLight,
 	AwesomeWM.beautiful.redDark
 )
 
+module.maxValue = maxValue
 
 module.show = function()
 
@@ -23,9 +25,11 @@ module.show = function()
 			icon = AwesomeWM.assets.getIcon('volumeMuteWhite')
 		end
 
+		local value = volume / maxValue * 100
+		value = math.floor(value)
 		module.slider.value = volume
 		module.icon.image = icon
-		module.value.text = _stdout
+		module.value.text = tostring(value) .. "%"
 		module.wibox.show()
 
 	end)

@@ -20,6 +20,7 @@ module.initClients = function()
 		{
 			rule = {class = "firefox"},
 			properties = {
+				fullscreen = false,
 				floating = false,
 				maximized = false,
 			}
@@ -39,7 +40,14 @@ module.initClients = function()
 			properties = {
 				floating = true,
 			}
-		}
+		},
+
+		{
+			rule = {name = "Picture-in-Picture"},
+			properties = {
+				floating = true,
+			}
+		},
 	}
 
 	AwesomeWM.client.connect_signal('manage', function(_client)
@@ -72,7 +80,7 @@ end
 module.toggleClientProperty = function(_propertyName)
 	local focusedClient = AwesomeWM.client.focus
 	local focusedTag = AwesomeWM.awful.screen.focused().selected_tag
-	
+
 	if focusedClient == nil then return end
 
 	if _propertyName == 'sticky' then
@@ -89,7 +97,7 @@ module.toggleClientProperty = function(_propertyName)
 		else
 			focusedClient.fullscreen = false
 		end
-	
+
 	elseif _propertyName == 'floating' then
 		if focusedClient.floating == false then
 			focusedClient.floating = true
