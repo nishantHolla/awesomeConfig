@@ -32,4 +32,7 @@ module.critical = function(_title, _text)
 
 end
 
+module.initNotifications = function()
+end
+
 return module

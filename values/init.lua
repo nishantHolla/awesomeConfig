@@ -24,13 +24,12 @@ module.tagLayouts = {
 	module.layoutSuit.max.fullscreen,
 }
 
-module.passTimeout = 60
-module.lowBatteryThreshold = 15
-module.batteryNotificationSent = false
-
 module.getScript = function(_name)
 	return (module.awesomeDir .. '/scripts/' .. _name .. '.sh')
 end
+
+module.batteryLowThreshold = 15
+module.batteryLowNotified = false
 
 module.initValues = function()
 

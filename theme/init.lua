@@ -12,7 +12,7 @@ module.setWallpaper = function(_screen, _wallpaperPath)
 	_screen = _screen or AwesomeWM.awful.screen.focused()
 	_wallpaperPath = _wallpaperPath or AwesomeWM.assets.getWallpaper()
 
-	AwesomeWM.gears.wallpaper.maximized(_wallpaperPath, _screen, true)
+	AwesomeWM.gears.wallpaper.maximized(_wallpaperPath, _screen, false)
 end
 
 module.initTheme = function()

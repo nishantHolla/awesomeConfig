@@ -1,206 +1,151 @@
 
 local module = {}
 
-module.opacity = 0.7
-module.width = 360
 module.height = 60
-module.padding = 13
+module.width = 360
 module.margins = 5
-module.timeout = 3
+module.padding = 5
+module.timeout = 1
+module.opacity = 0.8
+module.timeFormat = '%a %d %B %I:%M %p'
 
-module.batteryIcon = AwesomeWM.wibox.widget({
-	image = '',
-	resize = true,
-	widget = AwesomeWM.wibox.widget.imagebox
+module.left = {}
+module.right = {}
+
+module.left.clockIcon = AwesomeWM.wibox.widget({
+	image = AwesomeWM.assets.getIcon('timeClockWhite'),
+	widget = AwesomeWM.wibox.widget.imagebox,
+	resize = true
 })
 
-module.batteryValue = AwesomeWM.wibox.widget({
-	text = '',
+module.left.batteryIcon = AwesomeWM.wibox.widget({
+	widget = AwesomeWM.wibox.widget.imagebox,
+	resize = true
+})
+
+module.left.timeText = AwesomeWM.wibox.widget({
+	align = 'center',
+	valign = 'center',
+	text = "time",
+	widget = AwesomeWM.wibox.widget.textbox,
+})
+
+module.left.batteryText = AwesomeWM.wibox.widget({
 	align = 'left',
 	valign = 'center',
+	text = "99%",
 	widget = AwesomeWM.wibox.widget.textbox
 })
 
-module.clockIcon = AwesomeWM.wibox.widget({
-	image = AwesomeWM.assets.getIcon('timeClockWhite'),
-	resize = true,
-	widget = AwesomeWM.wibox.widget.imagebox,
-})
-
-module.clockValue = AwesomeWM.wibox.widget({
-	text = 'hello',
-	valign = 'center',
-	widget = AwesomeWM.wibox.widget.textbox
-})
-
-module.batteryValueBG = AwesomeWM.wibox.widget({
-	module.batteryValue,
-	fg = AwesomeWM.beautiful.yellowLight,
-	widget = AwesomeWM.wibox.container.background,
-})
-
-module.clockValueBG = AwesomeWM.wibox.widget({
-	module.clockValue,
-	fg = AwesomeWM.beautiful.blueLight,
-	widget = AwesomeWM.wibox.container.background,
-})
-
-module.leftTray = AwesomeWM.wibox.widget({
-	module.batteryIcon,
-	module.batteryValueBG,
-	module.clockIcon,
-	module.clockValueBG,
-	layout = AwesomeWM.wibox.layout.ratio.horizontal
-})
-
-module.leftMain = AwesomeWM.wibox.widget({
-	module.leftTray,
-	margins = module.padding,
-	widget = AwesomeWM.wibox.container.margin
-})
-
-module.leftTray:set_ratio(1, 0.25)
-module.leftTray:set_ratio(4, 0.55)
-
-module.leftBox = AwesomeWM.wibox({
-	widget = module.leftMain,
-	visible = false,
-	opacity = module.opacity,
-	ontop = true,
-	type =  'dock',
-	width = module.width,
-	height = module.height,
-	shape = AwesomeWM.gears.shape.rounded_rect
-})
-
-module.rightMain = AwesomeWM.wibox.widget({
+module.left.ratio = AwesomeWM.wibox.widget({
 	{
-		widget = AwesomeWM.wibox.widget.systray,
+		module.left.batteryIcon,
+		margins = 10,
+		widget = AwesomeWM.wibox.container.margin,
 	},
-	margins = module.padding,
-	widget = AwesomeWM.wibox.container.margin
+	module.left.batteryText,
+	{
+		module.left.clockIcon,
+		margins = 10,
+		widget = AwesomeWM.wibox.container.margin,
+	},
+	{
+		module.left.timeText,
+		widget = AwesomeWM.wibox.container.background,
+		fg = AwesomeWM.beautiful.blueLight,
+	},
+	layout = AwesomeWM.wibox.layout.ratio.horizontal,
+})
+
+module.left.ratio:set_ratio(4, 0.6)
+
+module.left.main = AwesomeWM.wibox.widget({
+	module.left.ratio,
+	widget = AwesomeWM.wibox.container.margin,
+	margins = module.padding
 })
 
 
-module.rightBox = AwesomeWM.wibox({
-	widget = module.rightMain,
-	visible = false,
+module.left.wibox = AwesomeWM.wibox({
+	widget = module.left.main,
+	visible = true,
 	opacity = module.opacity,
-	ontop = true,
+	ontop = false,
 	type = 'dock',
-	width = module.width,
+	bg = "#111111",
 	height = module.height,
-	shape = AwesomeWM.gears.shape.rounded_rect
+	width = module.width,
+	shape = AwesomeWM.gears.shape.rounded_rect,
 })
 
-AwesomeWM.awful.placement.bottom_left(module.leftBox, {margins = module.margins})
-AwesomeWM.awful.placement.bottom_right(module.rightBox, {margins = module.margins})
+module.right.systray = AwesomeWM.wibox.widget({
+	widget = AwesomeWM.wibox.widget.systray,
+	opacity = module.opacity
+})
+
+module.right.main = AwesomeWM.wibox.widget({
+	module.right.systray,
+	widget = AwesomeWM.wibox.container.margin,
+	margins = module.padding
+
+})
+
+module.right.wibox = AwesomeWM.wibox({
+	widget = module.right.main,
+	visible = true,
+	opacity = module.opacity,
+	ontop = false,
+	type = 'dock',
+	bg = "#111111",
+	height = module.height,
+	width = module.width,
+	shape = AwesomeWM.gears.shape.rounded_rect,
+})
 
 
 module.refresh = function()
+	module.left.timeText.text = os.date(module.timeFormat)
 
-	local date = os.date('*t')
-	local hour = ''
-	local min = ''
-	local endString = 'AM'
+	AwesomeWM.awful.spawn.easy_async(AwesomeWM.values.getScript('battery') .. ' value', function(_stdout, _stdError, _errorReason, _errorCode)
+		local chargingIndicator = _stdout:sub(-2)
+		local text  = _stdout:sub(1, -3)
+		local value = tonumber(text)
+		local icon = 'batteryLowWhite'
 
-	if date.hour > 12 then
-		hour = tostring(date.hour - 12)
-		endString = 'PM'
-	else
-		hour = tostring(date.hour)
-	end
+		if chargingIndicator == "C\n" then
+			icon = 'batteryChargingWhite'
+		elseif value > 95 then
+			icon = 'batteryFullWhite'
+		elseif value > 70 then
+			icon = 'batteryHighWhite'
+		elseif value > 30 then
+			icon = 'batteryMendiumWhite'
+		end
 
-	if tonumber(hour) < 10 then
-		hour = '0' .. hour
-	end
-
-	if date.min > 9 then
-		min = tostring(date.min)
-	else
-		min = '0' .. tostring(date.min)
-	end
-
-	local time = (tostring(date.day) .. '/' .. tostring(date.month) .. '/' .. tostring(date.year) .. ' | ' .. hour .. ':' .. min .. ' ' .. endString)
-	module.clockValue.text = time
-
-	AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' charging', function(_stdout, _stderr, _errorReason, _errorCode)
-		local charging = false
-		local icon = ''
-		local value = tonumber(_stdout)
-		if value == 1 then charging = true end
-
-		AwesomeWM.awful.spawn.easy_async_with_shell(AwesomeWM.values.getScript('battery') .. ' value', function(_stdout, _stderr, _errorReason, _errorCode)
-			local value = tonumber(_stdout)
-			
-			if charging then
-				module.batteryValueBG.fg = AwesomeWM.beautiful.greenLight
-				icon = AwesomeWM.assets.getIcon('batteryChargingWhite')
-			elseif value > 95 then
-				module.batteryValueBG.fg = AwesomeWM.beautiful.greenLight
-				icon = AwesomeWM.assets.getIcon('batteryFullWhite')
-			elseif value > 75 then
-				module.batteryValueBG.fg = AwesomeWM.beautiful.greenLight
-				icon = AwesomeWM.assets.getIcon('batteryHighWhite')
-			elseif value > 25 then
-				module.batteryValueBG.fg = AwesomeWM.beautiful.yellowLight
-				icon = AwesomeWM.assets.getIcon('batteryMediumWhite')
-			else
-				module.batteryValueBG.fg = AwesomeWM.beautiful.redLight
-				icon = AwesomeWM.assets.getIcon('batteryLowWhite')
+		if value < AwesomeWM.values.batteryLowThreshold then
+			if AwesomeWM.values.batteryLowNotified == false then
+				AwesomeWM.notify.critical('Battery level less than ' .. tostring(AwesomeWM.values.batteryLowThreshold) .. '%. Connect me to a charger!')
+				AwesomeWM.values.batteryLowNotified = true
 			end
-
-			if value < AwesomeWM.values.lowBatteryThreshold then
-				AwesomeWM.functions.lowBattery()
-			end
-
-			module.batteryIcon.image = icon
-			module.batteryValue.text = tostring(value) .. '%'
-
-		end)
-
-
+		else
+			AwesomeWM.values.batteryLowNotified = false
+		end
+		module.left.batteryText.text = text .. "%"
+		module.left.batteryIcon.image = AwesomeWM.assets.getIcon(icon)
 	end)
-
-
 end
 
-module.peakTimer = AwesomeWM.gears.timer({
-	timeout = module.timeout,
-	callback = function()
-		module.leftBox.visible = false
-		module.rightBox.visible = false
-		return false
-	end
-})
-
-module.refreshTimer = AwesomeWM.gears.timer({
+module.timer = AwesomeWM.gears.timer({
 	timeout = module.timeout,
 	callback = function()
 		module.refresh()
+		module.timer:again()
 	end
 })
 
-module.toggle = function()
+module.timer:start()
+AwesomeWM.awful.placement.bottom_left(module.left.wibox, {margins=module.margins})
+AwesomeWM.awful.placement.bottom_right(module.right.wibox, {margins=module.margins})
 
-	module.refresh()
-	module.peakTimer:stop()
-	module.leftBox.visible = not module.leftBox.visible
-	module.rightBox.visible = not module.rightBox.visible
-
-	if module.leftBox.visible then
-		module.refreshTimer:again()
-	else
-		module.refreshTimer:stop()
-	end
-
-end
-
-module.peak = function()
-	module.refresh()
-	module.leftBox.visible = true
-	module.rightBox.visible = true
-	module.peakTimer:again()
-end
 
 return module

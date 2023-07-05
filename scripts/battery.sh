@@ -1,17 +1,18 @@
+
 #!/bin/bash
 
 OUTPUT=`acpi`
-CHARGING=$(echo $OUTPUT | grep -c "Not charging")
+IS_CHARGING=`echo $OUTPUT | grep -c "Charging"`
+IS_NOT_CHARGING=`echo $OUTPUT | grep -c "Not charging"`
 
-if [[ "$CHARGING" == 1 ]] ; then
-	VALUE=$(echo $OUTPUT | awk '{print $5}' | sed 's/.$//')
+if [[ "$IS_NOT_CHARGING" == "1" ]] ; then
+	VALUE=`echo "$OUTPUT" | awk '{print $5}' | sed 's/..$//'`
 else
-	VALUE=$(echo $OUTPUT | awk '{print $4}' | sed 's/..$//')
+	VALUE=`echo "$OUTPUT" | awk '{print $4}' | sed 's/..$//'`
 fi
 
-
-if [[ $1 == "value" ]] ; then
-	echo "$VALUE"
-elif [[ $1 == "charging" ]] ; then
-	echo "$CHARGING"
+if [[ "$IS_CHARGING" == "1" ]] ; then
+	echo -en "${VALUE}C"
+else
+	echo -en "${VALUE}N"
 fi

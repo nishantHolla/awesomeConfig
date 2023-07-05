@@ -38,8 +38,8 @@ AwesomeWM.keymaps.initKeymaps()
 AwesomeWM.theme.initTheme()
 AwesomeWM.functions.clients.initClients()
 AwesomeWM.widgets.initWidgets()
+AwesomeWM.notify.initNotifications()
 
 AwesomeWM.widgets.list.tagsIndicator.show()
-AwesomeWM.functions.passTimer:start()
 
 -- awesome.connect_signal("startup", AwesomeWM.functions.restore)
