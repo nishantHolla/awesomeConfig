@@ -13,7 +13,7 @@ module.initClients = function()
 				buttons = AwesomeWM.keymaps.getClientButtons(),
 				screen = AwesomeWM.awful.screen.preferred,
 				placement = AwesomeWM.awful.placement.no_overlap + AwesomeWM.awful.placement.no_offscreen,
-			}
+			},
 
 		},
 
@@ -50,12 +50,19 @@ module.initClients = function()
 		},
 	}
 
+	AwesomeWM.client.connect_signal('unmanage', function(_client)
+		AwesomeWM.functions.clients.setClientCount()
+	end)
+
 	AwesomeWM.client.connect_signal('manage', function(_client)
 		if AwesomeWM.awesome.startup
 		 and not _client.size_hints.user_position
 		 and not _client.size_hints.program_position then
 		 	AwesomeWM.awful.placement.no_offscreen(_client)
 		end
+
+		AwesomeWM.functions.clients.setClientCount()
+
 	end)
 
 	AwesomeWM.client.connect_signal('mouse::enter', function(_client)
@@ -75,6 +82,22 @@ module.initClients = function()
 	AwesomeWM.awful.spawn('nm-applet')
 	AwesomeWM.awful.spawn('flameshot')
 
+end
+
+module.getClientCount = function()
+		local localCount = #(AwesomeWM.awful.screen.focused().selected_tag:clients())
+		local globalCount = 0
+		for _, _ in ipairs(client.get()) do
+			globalCount = globalCount + 1
+		end
+
+		return {localCount = localCount, globalCount = globalCount}
+end
+
+module.setClientCount = function()
+	local clientCount = AwesomeWM.functions.clients.getClientCount()
+	local text = tostring(clientCount.localCount) .. " | " .. tostring(clientCount.globalCount)
+	AwesomeWM.widgets.list.clientCount.main.text = text
 end
 
 module.toggleClientProperty = function(_propertyName)

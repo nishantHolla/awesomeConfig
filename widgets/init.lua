@@ -7,9 +7,9 @@ module.initWidgets = function()
 		volumeIndicator = require('widgets.indicators.volume'),
 		brightnessIndicator = require('widgets.indicators.brightness'),
 		tagsIndicator = require('widgets.indicators.tags'),
-		systemInfo = require('widgets.systemInfo')
+		systemInfo = require('widgets.systemInfo'),
+		clientCount = require('widgets.clientCount')
 	}
-
 
 end
 

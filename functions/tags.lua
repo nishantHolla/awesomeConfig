@@ -16,6 +16,7 @@ module.moveToTag = function(_tagName)
 
 	AwesomeWM.theme.setWallpaper()
 	AwesomeWM.widgets.list.tagsIndicator.show()
+	AwesomeWM.functions.clients.setClientCount()
 
 end
 
