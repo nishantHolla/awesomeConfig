@@ -5,7 +5,7 @@ module.moveToTag = function(_tagName)
 
 	local focusedScreen = AwesomeWM.awful.screen.focused()
 	local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, _tagName)
-	
+
 	if _tagName == 'next' then
 		AwesomeWM.awful.tag.viewnext(focusedScreen)
 	elseif _tagName == 'previous' then
@@ -19,8 +19,8 @@ module.moveToTag = function(_tagName)
 
 end
 
-module.cycleLayout = function()
-	AwesomeWM.awful.layout.inc(1)
+module.cycleLayout = function(_order)
+	AwesomeWM.awful.layout.inc(_order)
 	AwesomeWM.widgets.list.tagsIndicator.show()
 end
 

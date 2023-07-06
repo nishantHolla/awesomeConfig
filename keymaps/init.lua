@@ -279,11 +279,19 @@ module.list = {
 
 	['Tag management'] = {
 		{
-			{module.modkey}, 'q',
+			{module.modkey}, 'Tab',
 			function()
-				AwesomeWM.functions.tags.cycleLayout()
+				AwesomeWM.functions.tags.cycleLayout(1)
 			end,
 			'Cycle tag layout'
+		},
+
+		{
+			{module.modkey, 'Shift'}, 'Tab',
+			function()
+				AwesomeWM.functions.tags.cycleLayout(-1)
+			end,
+			'Cycle tag layout reverse'
 		}
 	},
 

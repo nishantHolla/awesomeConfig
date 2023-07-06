@@ -18,10 +18,10 @@ module.tags = {
 	{ name = '5', key = 'g' },
 }
 module.tagLayouts = {
+	module.layoutSuit.max.fullscreen,
 	module.layoutSuit.spiral,
 	module.layoutSuit.fair.horizontal,
 	module.layoutSuit.floating,
-	module.layoutSuit.max.fullscreen,
 }
 
 module.getScript = function(_name)
