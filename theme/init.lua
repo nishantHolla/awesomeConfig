@@ -15,6 +15,28 @@ module.setWallpaper = function(_screen, _wallpaperPath)
 	AwesomeWM.gears.wallpaper.maximized(_wallpaperPath, _screen, false)
 end
 
+local function ends_with(str, ending)
+   return ending == "" or str:sub(-#ending) == ending
+end
+
+module.replaceWallpaper = function(_screen, _wallpaperPath)
+	_screen = _screen or AwesomeWM.awful.screen.focused()
+
+	if _wallpaperPath == nil then
+		AwesomeWM.notify.normal('a', 'b')
+		return
+	end
+	if AwesomeWM.functions.isFile(_wallpaperPath) == false then return end
+	if ends_with(_wallpaperPath, ".jpg") == false then return end
+
+	local currentWallpaperPath = AwesomeWM.assets.getWallpaper()
+
+	AwesomeWM.awful.spawn.with_shell('rm ' .. currentWallpaperPath)
+	AwesomeWM.awful.spawn.with_shell('cp ' .. _wallpaperPath .. ' ' .. currentWallpaperPath)
+	module.setWallpaper(nil, _wallpaperPath)
+
+end
+
 module.initTheme = function()
 
 	b.font = 'SometypeMono NFM 12'
