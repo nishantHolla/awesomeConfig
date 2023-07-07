@@ -9,7 +9,7 @@ module.main = AwesomeWM.wibox.widget({
 	text = '0',
 	align = 'center',
 	valign = 'center',
-	font = 'Quicksand 10',
+	font = 'SometypeMono NFM 10',
 	widget = AwesomeWM.wibox.widget.textbox
 })
 

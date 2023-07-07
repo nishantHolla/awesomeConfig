@@ -96,7 +96,7 @@ end
 
 module.setClientCount = function()
 	local clientCount = AwesomeWM.functions.clients.getClientCount()
-	local text = tostring(clientCount.localCount) .. " | " .. tostring(clientCount.globalCount)
+	local text = tostring(clientCount.localCount) .. "|" .. tostring(clientCount.globalCount)
 	AwesomeWM.widgets.list.clientCount.main.text = text
 end
 
