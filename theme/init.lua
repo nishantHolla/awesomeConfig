@@ -39,7 +39,9 @@ end
 
 module.initTheme = function()
 
-	b.font = 'SometypeMono NFM 12'
+	b.defaultFont = 'SometypeMono NFM'
+	b.dashBoardFont = 'Quicksand'
+	b.font = b.defaultFont .. ' 12'
 
 	b.redLight = "#ff8785"
 	b.redDark = "#f50746"

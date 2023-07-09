@@ -29,9 +29,9 @@ module.list = {
 		{
 			{module.modkey}, '`',
 			function()
-				AwesomeWM.widgets.list.systemInfo.toggle()
+				AwesomeWM.widgets.list.dashboard.toggle()
 			end,
-			'Toggle system info'
+			'Toggle dashboard'
 		},
 	},
 

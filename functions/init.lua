@@ -51,11 +51,18 @@ module.spawn = function(_application, _options)
 	AwesomeWM.awful.spawn(_application, _options)
 end
 
+module.initUser = function()
+	local statusOk, user = pcall(require, 'functions.user')
+	if statusOk then user.run() end
+end
+
 module.screens = require('functions.screens')
 module.clients = require('functions.clients')
 module.tags = require('functions.tags')
 module.volume = require('functions.volume')
 module.brightness = require('functions.brightness')
 module.player = require('functions.player')
+
+
 
 return module

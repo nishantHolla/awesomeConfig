@@ -23,9 +23,9 @@ AwesomeWM.hotkeysPopupKeys = require('awful.hotkeys_popup.keys')
 
 AwesomeWM.values = require('values')
 AwesomeWM.functions = require('functions')
+AwesomeWM.notify = require('notify')
 AwesomeWM.assets = require('assets')
 AwesomeWM.keymaps = require('keymaps')
-AwesomeWM.notify = require('notify')
 AwesomeWM.theme = require('theme')
 AwesomeWM.widgets = require('widgets')
 
@@ -39,6 +39,11 @@ AwesomeWM.theme.initTheme()
 AwesomeWM.functions.clients.initClients()
 AwesomeWM.widgets.initWidgets()
 AwesomeWM.notify.initNotifications()
+
+-- User functions (ignored by git)
+-- to use this, create a file called user.lua in functions directory and return a table that
+-- has a function called run. The run functions will be called every time awesome startsup
+AwesomeWM.functions.initUser()
 
 AwesomeWM.widgets.list.tagsIndicator.show()
 
