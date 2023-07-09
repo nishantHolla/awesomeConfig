@@ -110,7 +110,7 @@ module.refresh = function()
 		local chargingIndicator = _stdout:sub(-2)
 		local text  = _stdout:sub(1, -3)
 		local value = tonumber(text)
-		local icon = 'batteryLowWhite'
+		local icon = ''
 
 		if chargingIndicator == "C\n" then
 			icon = 'batteryChargingWhite'
@@ -119,7 +119,9 @@ module.refresh = function()
 		elseif value > 70 then
 			icon = 'batteryHighWhite'
 		elseif value > 30 then
-			icon = 'batteryMendiumWhite'
+			icon = 'batteryMediumWhite'
+		else
+			icon = 'batteryLowWhite'
 		end
 
 		if value < AwesomeWM.values.batteryLowThreshold then
