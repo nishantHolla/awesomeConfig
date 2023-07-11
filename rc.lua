@@ -29,6 +29,9 @@ AwesomeWM.keymaps = require('keymaps')
 AwesomeWM.theme = require('theme')
 AwesomeWM.widgets = require('widgets')
 
+-- User module (ignored by git)
+_, AwesomeWM.user = pcall(require, 'user')
+
 -- inits
 
 AwesomeWM.functions.initErrorHandling()
@@ -43,7 +46,7 @@ AwesomeWM.notify.initNotifications()
 -- User functions (ignored by git)
 -- to use this, create a file called user.lua in functions directory and return a table that
 -- has a function called run. The run functions will be called every time awesome startsup
-AwesomeWM.functions.initUser()
+if AwesomeWM.user then AwesomeWM.user.init() end
 
 AwesomeWM.widgets.list.tagsIndicator.show()
 

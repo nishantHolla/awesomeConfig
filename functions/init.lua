@@ -51,9 +51,9 @@ module.spawn = function(_application, _options)
 	AwesomeWM.awful.spawn(_application, _options)
 end
 
-module.initUser = function()
-	local statusOk, user = pcall(require, 'functions.user')
-	if statusOk then user.run() end
+module.shutdown = function()
+	if AwesomeWM.user then AwesomeWM.user.exit() end
+	AwesomeWM.awful.spawn.with_shell('shutdown now')
 end
 
 module.screens = require('functions.screens')
