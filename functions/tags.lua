@@ -25,4 +25,22 @@ module.cycleLayout = function(_order)
 	AwesomeWM.widgets.list.tagsIndicator.show()
 end
 
+module.getColor = function(_tagName)
+	local selectedTag = AwesomeWM.awful.screen.focused().selected_tag.name
+
+	if _tagName == selectedTag then
+		return {AwesomeWM.beautiful.tagIndicatorActiveBorderColor, AwesomeWM.beautiful.tagIndicatorActiveBackground}
+	end
+
+	local currentTag = AwesomeWM.awful.tag.find_by_name(AwesomeWM.awful.screen.focused(), _tagName)
+	local count = #(currentTag:clients())
+
+	if count == 0 then
+		return {AwesomeWM.beautiful.tagIndicatorDeadBorderColor, AwesomeWM.beautiful.tagIndicatorDeadBackground}
+	else
+		return {AwesomeWM.beautiful.tagIndicatorAliveBorderColor, AwesomeWM.beautiful.tagIndicatorAliveBackground}
+	end
+
+end
+
 return module

@@ -83,18 +83,24 @@ module.show = function()
 	module.layoutIndicator.image = AwesomeWM.assets.getLayout()
 	local selectedTagName = AwesomeWM.awful.screen.focused().selected_tag.name
 	for _, t in pairs(module.tags) do
-		local currentTag = AwesomeWM.awful.tag.find_by_name(AwesomeWM.awful.screen.focused(), t.tagName)
-		local numberOfClients = #(currentTag:clients())
-		if t.tagName == selectedTagName then
-			t.shape_border_color = AwesomeWM.beautiful.tagIndicatorActive
-			t.fg = AwesomeWM.beautiful.tagIndicatorActive
-		elseif numberOfClients > 0 then
-			t.shape_border_color = AwesomeWM.beautiful.tagIndicatorAlive
-			t.fg = AwesomeWM.beautiful.tagIndicatorAlive
-		else
-			t.shape_border_color = AwesomeWM.beautiful.tagIndicatorDead
-			t.fg = AwesomeWM.beautiful.tagIndicatorDead
-		end
+		local colors = AwesomeWM.functions.tags.getColor(t.tagName)
+		t.shape_border_color = colors[1]
+		t.fg = colors[1]
+
+		-- Folowing code is depricated. Will soon be removed.
+
+		-- local currentTag = AwesomeWM.awful.tag.find_by_name(AwesomeWM.awful.screen.focused(), t.tagName)
+		-- local numberOfClients = #(currentTag:clients())
+		-- if t.tagName == selectedTagName then
+		-- 	t.shape_border_color = AwesomeWM.beautiful.tagIndicatorActive
+		-- 	t.fg = AwesomeWM.beautiful.tagIndicatorActive
+		-- elseif numberOfClients > 0 then
+		-- 	t.shape_border_color = AwesomeWM.beautiful.tagIndicatorAlive
+		-- 	t.fg = AwesomeWM.beautiful.tagIndicatorAlive
+		-- else
+		-- 	t.shape_border_color = AwesomeWM.beautiful.tagIndicatorDead
+		-- 	t.fg = AwesomeWM.beautiful.tagIndicatorDead
+		-- end
 	end
 
 	module.box.visible = true

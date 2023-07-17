@@ -7,6 +7,10 @@ module.margins = 5
 module.timeout = 1
 module.opacity = 0.8
 
+module.shape = function(c, w, h)
+	AwesomeWM.gears.shape.rounded_rect(c, w, h, 100)
+end
+
 module.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
 	local indicator = {}
 
@@ -21,10 +25,10 @@ module.make = function(_placement, _max_value, _slider_outer_color, _slider_inne
 		background_color = _slider_outer_color,
 		color = _slider_inner_color,
 		widget = AwesomeWM.wibox.widget.progressbar,
-		shape = AwesomeWM.gears.shape.rounded_rect,
-		bar_shape = AwesomeWM.gears.shape.rounded_rect,
+		shape = module.shape,
+		bar_shape = module.shape,
 		margins = 8,
-		paddings = 2,
+		paddings = 5,
 	})
 
 	indicator.value = AwesomeWM.wibox.widget({

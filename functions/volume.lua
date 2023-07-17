@@ -37,4 +37,17 @@ module.unmute = function()
 	run(module.script .. ' unmute')
 end
 
+module.findVolumeAnd = function(_function)
+	if type(_function) ~= "function" then return end
+
+	AwesomeWM.awful.spawn.easy_async(AwesomeWM.functions.volume.get(), function(_stdout, _stderr, _errorReason, _exitCode)
+		local volume = tonumber(_stdout)
+		local icon = AwesomeWM.assets.getVolumeIcon(volume)
+
+		_function(icon, volume)
+	end)
+
+end
+
+
 return module

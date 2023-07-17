@@ -13,7 +13,7 @@ module.getIcon = function(_iconName)
 	end
 
 	local location2 = os.getenv('HOME') .. '/.local/share/icons/GI/GI_' .. _iconName .. '.svg'
-	
+
 	if AwesomeWM.functions.isFile(location2) then
 		return location2
 	end
@@ -34,12 +34,42 @@ module.getWallpaper = function(_tagName)
 
 	if _tagName then
 		local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, _tagName)
-		if tag then return (module.wallpaperDir .. '/' .. _tagName .. '.jpg') end
+		if tag then return (module.wallpaperDir .. '/' .. _tagName) end
 	elseif focusedScreen.selected_tag then
-		return (module.wallpaperDir .. '/' .. focusedScreen.selected_tag.name .. '.jpg')
+		return (module.wallpaperDir .. '/' .. focusedScreen.selected_tag.name)
 	end
 
-	return (module.wallpaperDir .. '/default.jpg')
+	return (module.wallpaperDir .. '/default')
+end
+
+module.getVolumeIcon = function(_volume)
+	local icon = nil
+
+	if _volume > 75 then
+		icon = AwesomeWM.assets.getIcon('volumeHighWhite')
+	elseif _volume > 25 then
+		icon = AwesomeWM.assets.getIcon('volumeMediumWhite')
+	elseif _volume > 0 then
+		icon = AwesomeWM.assets.getIcon('volumeLowWhite')
+	else
+		icon = AwesomeWM.assets.getIcon('volumeMuteWhite')
+	end
+
+	return icon
+end
+
+module.getBrightnessIcon = function(_brightness)
+	local icon = nil
+
+	if _brightness > 180 then
+		icon = AwesomeWM.assets.getIcon('brightnessHighWhite')
+	elseif _brightness > 80 then
+		icon = AwesomeWM.assets.getIcon('brightnessMediumWhite')
+	else
+		icon = AwesomeWM.assets.getIcon('brightnessLowWhite')
+	end
+
+	return icon
 end
 
 return module

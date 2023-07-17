@@ -62,7 +62,10 @@ module.tags = require('functions.tags')
 module.volume = require('functions.volume')
 module.brightness = require('functions.brightness')
 module.player = require('functions.player')
+module.table = require('functions.table')
+module.storage = require('functions.storage')
+module.battery = require('functions.battery')
 
-
+module.battery.timer:start()
 
 return module

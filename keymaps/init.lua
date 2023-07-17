@@ -26,13 +26,6 @@ module.list = {
 			end,
 			'Show powermenu',
 		},
-		{
-			{module.modkey}, '`',
-			function()
-				AwesomeWM.widgets.list.dashboard.toggle()
-			end,
-			'Toggle dashboard'
-		},
 	},
 
 	['Brightness keys'] = {
