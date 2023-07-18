@@ -21,6 +21,8 @@ widgets_m.initWidgets = function()
 	widgets_m.pages.values = require('widgets.pages.values')
 	widgets_m.pages.helper = require('widgets.pages.helper')
 	widgets_m.pages.dashboard = require('widgets.pages.dashboard')
+
+	widgets_m.pages.dashboard.init()
 end
 
 

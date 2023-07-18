@@ -1,5 +1,6 @@
 
 local dashboardRight_c = {}
+local dashboardComponents = AwesomeWM.widgets.pages.dashboard.components
 local values_sm = AwesomeWM.widgets.pages.values
 local helper_sm = AwesomeWM.widgets.pages.helper
 
@@ -31,7 +32,7 @@ dashboardRight_c.bottom = {}
 
 dashboardRight_c.bottom = helper_sm.makeComponent({
 	heading = 'System Tray',
-	widget = AwesomeWM.widgets.testWidget('system tray widget'),
+	widget = dashboardComponents.systemTray.main,
 	overrides = {
 		contentRatio = 0.5
 	}
