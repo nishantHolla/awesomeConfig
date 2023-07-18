@@ -15,14 +15,14 @@ tags_sm.moveToTag = function(_tagName)
 	end
 
 	AwesomeWM.theme.setWallpaper()
-	AwesomeWM.widgets.list.tagsIndicator.show()
+	AwesomeWM.widgets.indicators.tags.show()
 	AwesomeWM.functions.clients.setClientCount()
 
 end
 
 tags_sm.cycleLayout = function(_order)
 	AwesomeWM.awful.layout.inc(_order)
-	AwesomeWM.widgets.list.tagsIndicator.show()
+	AwesomeWM.widgets.indicators.tags.show()
 end
 
 tags_sm.getColor = function(_tagName)

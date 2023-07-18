@@ -97,7 +97,7 @@ end
 clients_sm.setClientCount = function()
 	local clientCount = AwesomeWM.functions.clients.getClientCount()
 	local text = tostring(clientCount.localCount) .. "|" .. tostring(clientCount.globalCount)
-	AwesomeWM.widgets.list.clientCount.main.text = text
+	AwesomeWM.widgets.indicators.clientCount.main.text = text
 end
 
 clients_sm.toggleClientProperty = function(_propertyName)

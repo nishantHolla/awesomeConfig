@@ -25,6 +25,13 @@ keymaps_m.list = {
 			end,
 			'Show powermenu',
 		},
+		{
+			{keymaps_m.modkey}, '`',
+			function()
+				AwesomeWM.widgets.pages.dashboard.toggle()
+			end,
+			'Show dashboard'
+		}
 	},
 
 	['Brightness keys'] = {

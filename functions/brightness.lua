@@ -5,7 +5,7 @@ brightness_sm.script = AwesomeWM.values.getScript('brightness')
 
 local run = function(_command)
 	AwesomeWM.awful.spawn.easy_async(_command, function(_stdout, _stderr, _errorReason, _exitCode)
-		AwesomeWM.widgets.list.brightnessIndicator.show()
+		AwesomeWM.widgets.indicators.brightness.show()
 	end)
 end
 

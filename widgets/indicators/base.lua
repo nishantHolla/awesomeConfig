@@ -1,17 +1,17 @@
 
-local indicatorBase_sm = {}
+local indicatorBase_c = {}
 
-indicatorBase_sm.height = 360
-indicatorBase_sm.width = 60
-indicatorBase_sm.margins = 5
-indicatorBase_sm.timeout = 1
-indicatorBase_sm.opacity = 0.8
+indicatorBase_c.height = 360
+indicatorBase_c.width = 60
+indicatorBase_c.margins = 5
+indicatorBase_c.timeout = 1
+indicatorBase_c.opacity = 0.8
 
-indicatorBase_sm.shape = function(c, w, h)
+indicatorBase_c.shape = function(c, w, h)
 	AwesomeWM.gears.shape.rounded_rect(c, w, h, 100)
 end
 
-indicatorBase_sm.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
+indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
 	local indicator = {}
 
 	indicator.icon = AwesomeWM.wibox.widget({
@@ -25,8 +25,8 @@ indicatorBase_sm.make = function(_placement, _max_value, _slider_outer_color, _s
 		background_color = _slider_outer_color,
 		color = _slider_inner_color,
 		widget = AwesomeWM.wibox.widget.progressbar,
-		shape = indicatorBase_sm.shape,
-		bar_shape = indicatorBase_sm.shape,
+		shape = indicatorBase_c.shape,
+		bar_shape = indicatorBase_c.shape,
 		margins = 8,
 		paddings = 5,
 	})
@@ -60,24 +60,24 @@ indicatorBase_sm.make = function(_placement, _max_value, _slider_outer_color, _s
 	indicator.wibox = AwesomeWM.wibox({
 		widget = indicator.main,
 		visible = false,
-		opacity = indicatorBase_sm.opacity,
+		opacity = indicatorBase_c.opacity,
 		ontop = true,
 		type = 'dock',
 		bg = '#111111',
-		height = indicatorBase_sm.height,
-		width = indicatorBase_sm.width,
+		height = indicatorBase_c.height,
+		width = indicatorBase_c.width,
 		shape = AwesomeWM.gears.shape.rounded_rect,
 	})
 
 	indicator.timer = AwesomeWM.gears.timer({
-		timeout = indicatorBase_sm.timeout,
+		timeout = indicatorBase_c.timeout,
 		callback = function()
 			indicator.wibox.visible = false
 		end,
 	})
 
 	indicator.wibox.show = function()
-		_placement(indicator.wibox, {margins = indicatorBase_sm.margins})
+		_placement(indicator.wibox, {margins = indicatorBase_c.margins})
 		indicator.wibox.visible = true
 		indicator.timer:again()
 	end
@@ -85,4 +85,4 @@ indicatorBase_sm.make = function(_placement, _max_value, _slider_outer_color, _s
 	return indicator
 end
 
-return indicatorBase_sm
+return indicatorBase_c

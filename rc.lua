@@ -48,6 +48,6 @@ AwesomeWM.notify.initNotifications()
 -- has a function called run. The run functions will be called every time awesome startsup
 if AwesomeWM.user then AwesomeWM.user.init() end
 
-AwesomeWM.widgets.list.tagsIndicator.show()
+AwesomeWM.widgets.indicators.tags.show()
 
 -- awesome.connect_signal("startup", AwesomeWM.functions.restore)
