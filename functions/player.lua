@@ -1,23 +1,23 @@
 
-local module = {}
+local player_sm = {}
 
-module.script = AwesomeWM.values.getScript('player')
+player_sm.script = AwesomeWM.values.getScript('player')
 
 local run = function(_command)
 	AwesomeWM.awful.spawn.easy_async(_command, function(_stdout, _stderr, _errorReason, _exitCode)
 	end)
 end
 
-module.previous = function()
-	run(module.script .. ' previous')
+player_sm.previous = function()
+	run(player_sm.script .. ' previous')
 end
 
-module.next = function()
-	run(module.script .. ' next')
+player_sm.next = function()
+	run(player_sm.script .. ' next')
 end
 
-module.toggle = function()
-	run(module.script .. ' toggle')
+player_sm.toggle = function()
+	run(player_sm.script .. ' toggle')
 end
 
-return module
+return player_sm

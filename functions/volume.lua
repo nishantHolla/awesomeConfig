@@ -1,7 +1,7 @@
 
-local module = {}
+local volume_sm = {}
 
-module.script = AwesomeWM.values.getScript('volume')
+volume_sm.script = AwesomeWM.values.getScript('volume')
 
 
 local run = function(_command)
@@ -13,31 +13,31 @@ end
 
 -- volume function
 
-module.get = function()
-	return (module.script .. ' get')
+volume_sm.get = function()
+	return (volume_sm.script .. ' get')
 end
 
-module.increase = function()
-	run(module.script .. ' set 5%+')
+volume_sm.increase = function()
+	run(volume_sm.script .. ' set 5%+')
 end
 
-module.decrease = function()
-	run(module.script .. ' set 5%-')
+volume_sm.decrease = function()
+	run(volume_sm.script .. ' set 5%-')
 end
 
-module.toggle = function()
-	run(module.script .. ' toggle')
+volume_sm.toggle = function()
+	run(volume_sm.script .. ' toggle')
 end
 
-module.mute = function()
-	run(module.script .. ' mute')
+volume_sm.mute = function()
+	run(volume_sm.script .. ' mute')
 end
 
-module.unmute = function()
-	run(module.script .. ' unmute')
+volume_sm.unmute = function()
+	run(volume_sm.script .. ' unmute')
 end
 
-module.findVolumeAnd = function(_function)
+volume_sm.findVolumeAnd = function(_function)
 	if type(_function) ~= "function" then return end
 
 	AwesomeWM.awful.spawn.easy_async(AwesomeWM.functions.volume.get(), function(_stdout, _stderr, _errorReason, _exitCode)
@@ -50,4 +50,4 @@ module.findVolumeAnd = function(_function)
 end
 
 
-return module
+return volume_sm

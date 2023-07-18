@@ -1,7 +1,7 @@
 
-local module = {}
+local brightness_sm = {}
 
-module.script = AwesomeWM.values.getScript('brightness')
+brightness_sm.script = AwesomeWM.values.getScript('brightness')
 
 local run = function(_command)
 	AwesomeWM.awful.spawn.easy_async(_command, function(_stdout, _stderr, _errorReason, _exitCode)
@@ -9,26 +9,26 @@ local run = function(_command)
 	end)
 end
 
-module.get = function()
-	return (module.script .. ' get')
+brightness_sm.get = function()
+	return (brightness_sm.script .. ' get')
 end
 
-module.increase = function()
-	run(module.script .. ' set 5+')
+brightness_sm.increase = function()
+	run(brightness_sm.script .. ' set 5+')
 end
 
-module.decrease = function()
-	run(module.script .. ' set 5-')
+brightness_sm.decrease = function()
+	run(brightness_sm.script .. ' set 5-')
 end
 
-module.set = function(_value)
-	run(module.script .. ' set ' .. tostring(_value) )
+brightness_sm.set = function(_value)
+	run(brightness_sm.script .. ' set ' .. tostring(_value) )
 end
 
-module.findBrightnessAnd = function(_function)
+brightness_sm.findBrightnessAnd = function(_function)
 	if type(_function) ~= 'function' then return end
 
-	AwesomeWM.awful.spawn.easy_async(module.get(), function(_stdout, _stderr, _errorReason, _exitCode)
+	AwesomeWM.awful.spawn.easy_async(brightness_sm.get(), function(_stdout, _stderr, _errorReason, _exitCode)
 		local brightness = tonumber(_stdout)
 		local icon = AwesomeWM.assets.getBrightnessIcon(brightness)
 
@@ -38,4 +38,4 @@ module.findBrightnessAnd = function(_function)
 end
 
 
-return module
+return brightness_sm

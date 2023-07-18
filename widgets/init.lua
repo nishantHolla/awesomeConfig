@@ -1,8 +1,7 @@
--- Widgets module
 
-local module = {}
+local widgets_m = {}
 
-module.testWidget = function(text)
+widgets_m.testWidget = function(text)
 	return AwesomeWM.wibox.widget({
 		{
 			text = text,
@@ -15,8 +14,8 @@ module.testWidget = function(text)
 	})
 end
 
-module.initWidgets = function()
-	module.list = {
+widgets_m.initWidgets = function()
+	widgets_m.list = {
 		volumeIndicator = require('widgets.indicators.volume'),
 		brightnessIndicator = require('widgets.indicators.brightness'),
 		tagsIndicator = require('widgets.indicators.tags'),
@@ -27,4 +26,4 @@ module.initWidgets = function()
 end
 
 
-return module
+return widgets_m

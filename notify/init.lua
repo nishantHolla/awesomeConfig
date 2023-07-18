@@ -1,8 +1,7 @@
--- Notify module
 
-local module = {}
+local notify_m = {}
 
-module.normal = function(_title, _text)
+notify_m.normal = function(_title, _text)
 
 	AwesomeWM.naughty.notify({
 		preset = AwesomeWM.naughty.config.presets.normal,
@@ -12,7 +11,7 @@ module.normal = function(_title, _text)
 
 end
 
-module.low = function(_title, _text)
+notify_m.low = function(_title, _text)
 
 	AwesomeWM.naughty.notify({
 		preset = AwesomeWM.naughty.config.presets.low,
@@ -22,7 +21,7 @@ module.low = function(_title, _text)
 
 end
 
-module.critical = function(_title, _text)
+notify_m.critical = function(_title, _text)
 
 	AwesomeWM.naughty.notify({
 		preset = AwesomeWM.naughty.config.presets.critical,
@@ -32,7 +31,7 @@ module.critical = function(_title, _text)
 
 end
 
-module.initNotifications = function()
+notify_m.initNotifications = function()
 end
 
-return module
+return notify_m

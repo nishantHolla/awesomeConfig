@@ -1,7 +1,7 @@
 
-local module = {}
+local tags_sm = {}
 
-module.moveToTag = function(_tagName)
+tags_sm.moveToTag = function(_tagName)
 
 	local focusedScreen = AwesomeWM.awful.screen.focused()
 	local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, _tagName)
@@ -20,12 +20,12 @@ module.moveToTag = function(_tagName)
 
 end
 
-module.cycleLayout = function(_order)
+tags_sm.cycleLayout = function(_order)
 	AwesomeWM.awful.layout.inc(_order)
 	AwesomeWM.widgets.list.tagsIndicator.show()
 end
 
-module.getColor = function(_tagName)
+tags_sm.getColor = function(_tagName)
 	local selectedTag = AwesomeWM.awful.screen.focused().selected_tag.name
 
 	if _tagName == selectedTag then
@@ -43,4 +43,4 @@ module.getColor = function(_tagName)
 
 end
 
-return module
+return tags_sm

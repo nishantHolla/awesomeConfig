@@ -1,7 +1,7 @@
 
-local module = {}
+local table_sm = {}
 
-module.shallowCopy = function(_table)
+table_sm.shallowCopy = function(_table)
 	if type(_table) ~= "table" then return end
 
 	local _t = {}
@@ -12,4 +12,4 @@ module.shallowCopy = function(_table)
 	return _t
 end
 
-return module
+return table_sm

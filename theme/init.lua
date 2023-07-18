@@ -1,15 +1,14 @@
--- Theme module
 
-local module = {}
+local theme_m = {}
 local imageExtensions = {'.jpg', '.png', '.jpeg'}
 
-module.theme_assets = require("beautiful.theme_assets")
-module.xresources = require("beautiful.xresources")
-module.dpi = module.xresources.apply_dpi
+theme_m.theme_assets = require("beautiful.theme_assets")
+theme_m.xresources = require("beautiful.xresources")
+theme_m.dpi = theme_m.xresources.apply_dpi
 
 local b = AwesomeWM.beautiful
 
-module.setWallpaper = function(_screen, _wallpaperPath)
+theme_m.setWallpaper = function(_screen, _wallpaperPath)
 	_screen = _screen or AwesomeWM.awful.screen.focused()
 	_wallpaperPath = _wallpaperPath or AwesomeWM.assets.getWallpaper()
 
@@ -28,7 +27,7 @@ local function isImage(_path)
 	return false
 end
 
-module.replaceWallpaper = function(_screen, _wallpaperPath)
+theme_m.replaceWallpaper = function(_screen, _wallpaperPath)
 	_screen = _screen or AwesomeWM.awful.screen.focused()
 	_wallpaperPath = _wallpaperPath or AwesomeWM.assets.getWallpaper()
 
@@ -38,7 +37,7 @@ module.replaceWallpaper = function(_screen, _wallpaperPath)
 	AwesomeWM.gears.wallpaper.maximized(_wallpaperPath, _screen, false)
 end
 
-module.initTheme = function()
+theme_m.initTheme = function()
 
 	b.defaultFont = 'SometypeMono NFM'
 	b.pagesFont = 'Quicksand'
@@ -65,8 +64,8 @@ module.initTheme = function()
 	b.gray = '#333333'
 	b.white = '#F2F2F2'
 
-	b.useless_gap = module.dpi(3)
-	b.border_width = module.dpi(7)
+	b.useless_gap = theme_m.dpi(3)
+	b.border_width = theme_m.dpi(7)
 
 	b.border_normal = b.black
 	b.border_focus = b.redBright
@@ -94,4 +93,4 @@ module.initTheme = function()
 	b.tagIndicatorAliveBackground = b.blueDark
 end
 
-return module
+return theme_m

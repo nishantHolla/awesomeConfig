@@ -1,8 +1,8 @@
 
-local module = {}
+local battery_sm = {}
 
 
-module.findBatteryAnd = function(_function)
+battery_sm.findBatteryAnd = function(_function)
 	if type(_function) ~= "function" then return end
 
 	AwesomeWM.awful.spawn.easy_async(AwesomeWM.values.getScript('battery') .. ' value', function(_stdout, _stdError, _errorReason, _errorCode)
@@ -30,8 +30,8 @@ module.findBatteryAnd = function(_function)
 
 end
 
-module.checkBattery = function()
-	module.findBatteryAnd(function(icon, value)
+battery_sm.checkBattery = function()
+	battery_sm.findBatteryAnd(function(icon, value)
 		if value < AwesomeWM.values.batteryLowThreshold then
 			if AwesomeWM.values.batteryLowNotified == false then
 				if icon ~= AwesomeWM.assets.getIcon('batteryChargingWhite') then
@@ -46,12 +46,12 @@ module.checkBattery = function()
 	end)
 
 
-	module.timer:again()
+	battery_sm.timer:again()
 end
 
-module.timer = AwesomeWM.gears.timer({
+battery_sm.timer = AwesomeWM.gears.timer({
 	timeout = 3,
-	callback = module.checkBattery
+	callback = battery_sm.checkBattery
 })
 
-return module
+return battery_sm

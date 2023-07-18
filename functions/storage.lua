@@ -1,14 +1,14 @@
 
-local module = {}
+local storage_sm = {}
 
-module.get = function()
+storage_sm.get = function()
 	return AwesomeWM.values.getScript('storage')
 end
 
-module.findStorageAnd = function(_function)
+storage_sm.findStorageAnd = function(_function)
 	if type(_function) ~= "function" then return end
 
-	AwesomeWM.awful.spawn.easy_async(module.get(), function(_stdout, _stderr, _errorReason, _exitCode)
+	AwesomeWM.awful.spawn.easy_async(storage_sm.get(), function(_stdout, _stderr, _errorReason, _exitCode)
 		local storage = tonumber(_stdout)
 		local icon = AwesomeWM.assets.getIcon('hardDriveWhite')
 
@@ -17,4 +17,4 @@ module.findStorageAnd = function(_function)
 end
 
 
-return module
+return storage_sm

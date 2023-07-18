@@ -1,7 +1,7 @@
 
-local module = {}
+local clients_sm = {}
 
-module.initClients = function()
+clients_sm.initClients = function()
 	AwesomeWM.awful.rules.rules = {
 		{
 			rule = {},
@@ -70,7 +70,7 @@ module.initClients = function()
 	end)
 
 	AwesomeWM.client.connect_signal('focus', function(_client)
-		module.applyBorderColor(_client)
+		clients_sm.applyBorderColor(_client)
 	end)
 
 	AwesomeWM.client.connect_signal('unfocus', function(_client)
@@ -84,7 +84,7 @@ module.initClients = function()
 
 end
 
-module.getClientCount = function()
+clients_sm.getClientCount = function()
 		local localCount = #(AwesomeWM.awful.screen.focused().selected_tag:clients())
 		local globalCount = 0
 		for _, _ in ipairs(client.get()) do
@@ -94,13 +94,13 @@ module.getClientCount = function()
 		return {localCount = localCount, globalCount = globalCount}
 end
 
-module.setClientCount = function()
+clients_sm.setClientCount = function()
 	local clientCount = AwesomeWM.functions.clients.getClientCount()
 	local text = tostring(clientCount.localCount) .. "|" .. tostring(clientCount.globalCount)
 	AwesomeWM.widgets.list.clientCount.main.text = text
 end
 
-module.toggleClientProperty = function(_propertyName)
+clients_sm.toggleClientProperty = function(_propertyName)
 	local focusedClient = AwesomeWM.client.focus
 	local focusedTag = AwesomeWM.awful.screen.focused().selected_tag
 
@@ -129,11 +129,11 @@ module.toggleClientProperty = function(_propertyName)
 		end
 	end
 
-	module.applyBorderColor(focusedClient)
+	clients_sm.applyBorderColor(focusedClient)
 
 end
 
-module.applyBorderColor = function(_client)
+clients_sm.applyBorderColor = function(_client)
 	if _client.floating then _client.border_color = AwesomeWM.beautiful.border_floating
 	elseif _client.sticky then _client.border_color = AwesomeWM.beautiful.border_sticky
 	elseif _client.fullscreen then _client.border_color = AwesomeWM.beautiful.border_fullscreen
@@ -141,4 +141,4 @@ module.applyBorderColor = function(_client)
 	end
 end
 
-return module
+return clients_sm

@@ -1,11 +1,11 @@
 
-local module = {}
+local clientCount_sm = {}
 
-module.width = 35
-module.height = 15
-module.opacity = 0.5
+clientCount_sm.width = 35
+clientCount_sm.height = 15
+clientCount_sm.opacity = 0.5
 
-module.main = AwesomeWM.wibox.widget({
+clientCount_sm.main = AwesomeWM.wibox.widget({
 	text = '0',
 	align = 'center',
 	valign = 'center',
@@ -13,17 +13,17 @@ module.main = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.widget.textbox
 })
 
-module.wibox = AwesomeWM.wibox({
-	widget = module.main,
+clientCount_sm.wibox = AwesomeWM.wibox({
+	widget = clientCount_sm.main,
 	visible = true,
-	opacity = module.opacity,
+	opacity = clientCount_sm.opacity,
 	ontop = true,
 	type = 'desktop',
 	bg = '#000000',
-	height = module.height,
-	width = module.width,
+	height = clientCount_sm.height,
+	width = clientCount_sm.width,
 })
 
 
-AwesomeWM.awful.placement.top_left(module.wibox, {margins = 0})
-return module
+AwesomeWM.awful.placement.top_left(clientCount_sm.wibox, {margins = 0})
+return clientCount_sm

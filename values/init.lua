@@ -1,47 +1,47 @@
--- Values module
 
-local module = {}
+local values_m = {}
 
-module.awesomeDir = os.getenv('HOME') .. '/.config/awesome'
-module.terminal = os.getenv('TERMINAL') or 'contour'
-module.editor = os.getenv('EDITOR') or 'nvim'
-module.browser = os.getenv('BROWSER') or 'firefox'
-module.fileManager = os.getenv('FILE_MANAGER') or 'pcmanfm'
-module.restorationFile = os.getenv('HOME') .. '/awesomeRestoration'
-module.editorCmd = module.terminal .. ' -e ' .. module.editor
-module.layoutSuit = AwesomeWM.awful.layout.suit
-module.tags = {
+values_m.awesomeDir = os.getenv('HOME') .. '/.config/awesome'
+values_m.dataDir = os.getenv('XDG_DATA_HOME') .. '/.awesome'
+values_m.terminal = os.getenv('TERMINAL') or 'contour'
+values_m.editor = os.getenv('EDITOR') or 'nvim'
+values_m.browser = os.getenv('BROWSER') or 'firefox'
+values_m.fileManager = os.getenv('FILE_MANAGER') or 'pcmanfm'
+values_m.restorationFile = os.getenv('HOME') .. '/awesomeRestoration'
+values_m.editorCmd = values_m.terminal .. ' -e ' .. values_m.editor
+values_m.layoutSuit = AwesomeWM.awful.layout.suit
+values_m.tags = {
 	{ name = '1', key = 'a' },
 	{ name = '2', key = 's' },
 	{ name = '3', key = 'd' },
 	{ name = '4', key = 'f' },
 	{ name = '5', key = 'g' },
 }
-module.tagLayouts = {
-	module.layoutSuit.max.fullscreen,
-	module.layoutSuit.spiral,
-	module.layoutSuit.fair.horizontal,
-	module.layoutSuit.floating,
+values_m.tagLayouts = {
+	values_m.layoutSuit.max.fullscreen,
+	values_m.layoutSuit.spiral,
+	values_m.layoutSuit.fair.horizontal,
+	values_m.layoutSuit.floating,
 }
 
-module.getScript = function(_name)
-	return (module.awesomeDir .. '/scripts/' .. _name .. '.sh')
+values_m.getScript = function(_name)
+	return (values_m.awesomeDir .. '/scripts/' .. _name .. '.sh')
 end
 
-module.batteryLowThreshold = 15
-module.batteryLowNotified = false
+values_m.batteryLowThreshold = 15
+values_m.batteryLowNotified = false
 
-module.initValues = function()
+values_m.initValues = function()
 
-	terminal = module.terminal
-	editor = module.editor
-	editor_cmd = module.editorCmd
-	AwesomeWM.awful.layout.layouts = module.tagLayouts
+	terminal = values_m.terminal
+	editor = values_m.editor
+	editor_cmd = values_m.editorCmd
+	AwesomeWM.awful.layout.layouts = values_m.tagLayouts
 
 	local g = AwesomeWM.awful.screen.focused().geometry
-	module.screenWidth = g.width
-	module.screenHeight = g.height
+	values_m.screenWidth = g.width
+	values_m.screenHeight = g.height
 
 end
 
-return module
+return values_m

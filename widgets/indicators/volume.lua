@@ -1,25 +1,25 @@
 
 local maxValue =  100
-local module = require('widgets.indicators.base').make(
+local indicatorVolume_sm = require('widgets.indicators.base').make(
 	AwesomeWM.awful.placement.right,
 	maxValue,
 	AwesomeWM.beautiful.redLight,
 	AwesomeWM.beautiful.redDark
 )
 
-module.maxValue = maxValue
+indicatorVolume_sm.maxValue = maxValue
 
-module.show = function()
+indicatorVolume_sm.show = function()
 
 	AwesomeWM.functions.volume.findVolumeAnd(function(_icon, _volume)
 		local value = _volume / maxValue * 100
 		value = math.floor(value)
-		module.slider.value = _volume
-		module.icon.image = _icon
-		module.value.text = tostring(value) .. "%"
-		module.wibox.show()
+		indicatorVolume_sm.slider.value = _volume
+		indicatorVolume_sm.icon.image = _icon
+		indicatorVolume_sm.value.text = tostring(value) .. "%"
+		indicatorVolume_sm.wibox.show()
 	end)
 
 end
 
-return module
+return indicatorVolume_sm

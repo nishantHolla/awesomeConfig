@@ -1,7 +1,7 @@
 
-local module = {}
+local screens_sm = {}
 
-module.initScreens = function()
+screens_sm.initScreens = function()
 	AwesomeWM.screen.connect_signal('property::geometry', AwesomeWM.theme.setWallpaper)
 
 	AwesomeWM.awful.screen.connect_for_each_screen(function(_screen)
@@ -16,4 +16,4 @@ module.initScreens = function()
 	end)
 end
 
-return module
+return screens_sm

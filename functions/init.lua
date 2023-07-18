@@ -1,8 +1,7 @@
--- Functions module
 
-local module = {}
+local functions_m = {}
 
-module.initErrorHandling = function()
+functions_m.initErrorHandling = function()
 	-- startup errors
 	if AwesomeWM.awesome.startup_errors then
 		AwesomeWM.notify.critical('Startup error encountered', AwesomeWM.awesome.startup_errors)
@@ -21,7 +20,7 @@ module.initErrorHandling = function()
 	end
 end
 
-module.isFile = function(_filePath)
+functions_m.isFile = function(_filePath)
 	local f = io.open(_filePath, 'r')
 
 	if f ~= nil then
@@ -32,13 +31,13 @@ module.isFile = function(_filePath)
 	end
 end
 
-module.restart = function()
+functions_m.restart = function()
 	AwesomeWM.awesome.restart()
 end
 
 
 
-module.spawn = function(_application, _options)
+functions_m.spawn = function(_application, _options)
 
 	if _options then
 		if _options.tag == nil then
@@ -51,21 +50,21 @@ module.spawn = function(_application, _options)
 	AwesomeWM.awful.spawn(_application, _options)
 end
 
-module.shutdown = function()
+functions_m.shutdown = function()
 	if AwesomeWM.user then AwesomeWM.user.exit() end
 	AwesomeWM.awful.spawn.with_shell('shutdown now')
 end
 
-module.screens = require('functions.screens')
-module.clients = require('functions.clients')
-module.tags = require('functions.tags')
-module.volume = require('functions.volume')
-module.brightness = require('functions.brightness')
-module.player = require('functions.player')
-module.table = require('functions.table')
-module.storage = require('functions.storage')
-module.battery = require('functions.battery')
+functions_m.screens = require('functions.screens')
+functions_m.clients = require('functions.clients')
+functions_m.tags = require('functions.tags')
+functions_m.volume = require('functions.volume')
+functions_m.brightness = require('functions.brightness')
+functions_m.player = require('functions.player')
+functions_m.table = require('functions.table')
+functions_m.storage = require('functions.storage')
+functions_m.battery = require('functions.battery')
 
-module.battery.timer:start()
+functions_m.battery.timer:start()
 
-return module
+return functions_m

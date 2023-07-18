@@ -1,26 +1,25 @@
--- Keymap module
 
-local module = {}
+local keymaps_m = {}
 
-module.modkey = 'Mod4'
-module.list = {
+keymaps_m.modkey = 'Mod4'
+keymaps_m.list = {
 	['Awesome'] = {
 		{
-			{module.modkey}, '1',
+			{keymaps_m.modkey}, '1',
 			function()
 				AwesomeWM.functions.restart()
 			end,
 			'Restart awesome'
 		},
 		{
-			{module.modkey}, '2',
+			{keymaps_m.modkey}, '2',
 			function()
 				AwesomeWM.functions.spawn('rofi -show window')
 			end,
 			'Show open clients'
 		},
 		{
-			{module.modkey}, 'Escape',
+			{keymaps_m.modkey}, 'Escape',
 			function()
 				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/powermenu.sh')
 			end,
@@ -95,7 +94,7 @@ module.list = {
 
 	['Applications'] = {
 		{
-			{module.modkey}, 'Return',
+			{keymaps_m.modkey}, 'Return',
 			function()
 				AwesomeWM.functions.spawn(AwesomeWM.values.terminal)
 			end,
@@ -103,7 +102,7 @@ module.list = {
 		},
 
 		{
-			{module.modkey}, "'",
+			{keymaps_m.modkey}, "'",
 			function()
 				AwesomeWM.functions.spawn(AwesomeWM.values.browser)
 			end,
@@ -111,7 +110,7 @@ module.list = {
 		},
 
 		{
-			{module.modkey}, ";",
+			{keymaps_m.modkey}, ";",
 			function()
 				AwesomeWM.functions.spawn(AwesomeWM.values.fileManager)
 			end,
@@ -119,14 +118,14 @@ module.list = {
 		},
 
 		{
-			{module.modkey}, 'space',
+			{keymaps_m.modkey}, 'space',
 			function()
 				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/open.sh')
 			end,
 			'Launcher'
 		},
 		{
-			{module.modkey}, 'Print',
+			{keymaps_m.modkey}, 'Print',
 			function()
 				AwesomeWM.functions.spawn('flameshot gui')
 			end,
@@ -136,49 +135,49 @@ module.list = {
 
 	['Client movement'] = {
 		{
-			{module.modkey}, 'h',
+			{keymaps_m.modkey}, 'h',
 			function()
 				AwesomeWM.awful.client.focus.bydirection('left')
 			end,
 			'Move focus to left',
 		},
 		{
-			{module.modkey}, 'j',
+			{keymaps_m.modkey}, 'j',
 			function()
 				AwesomeWM.awful.client.focus.bydirection('down')
 			end,
 			'Move focus to bottom',
 		},
 		{
-			{module.modkey}, 'k',
+			{keymaps_m.modkey}, 'k',
 			function()
 				AwesomeWM.awful.client.focus.bydirection('up')
 			end,
 			'Move focus to top',
 		},
 		{
-			{module.modkey}, 'l',
+			{keymaps_m.modkey}, 'l',
 			function()
 				AwesomeWM.awful.client.focus.bydirection('right')
 			end,
 			'Move focus to right',
 		},
 		{
-			{module.modkey}, 'i',
+			{keymaps_m.modkey}, 'i',
 			function()
 				AwesomeWM.awful.client.focus.byidx(-1)
 			end,
 			'Move focus to previous client',
 		},
 		{
-			{module.modkey}, 'o',
+			{keymaps_m.modkey}, 'o',
 			function()
 				AwesomeWM.awful.client.focus.byidx(1)
 			end,
 			'Move focus to next client',
 		},
 		{
-			{module.modkey}, 'Tab',
+			{keymaps_m.modkey}, 'Tab',
 			function()
 				AwesomeWM.awful.client.focus.history.previous()
 				if AwesomeWM.client.focus then AwesomeWM.client.focus:raise() end
@@ -189,28 +188,28 @@ module.list = {
 
 	['Client swap'] = {
 		{
-			{module.modkey, 'Shift'}, 'h',
+			{keymaps_m.modkey, 'Shift'}, 'h',
 			function()
 				AwesomeWM.awful.client.swap.bydirection('left')
 			end,
 			'Swap client with left',
 		},
 		{
-			{module.modkey, 'Shift'}, 'j',
+			{keymaps_m.modkey, 'Shift'}, 'j',
 			function()
 				AwesomeWM.awful.client.swap.bydirection('down')
 			end,
 			'Swap client with bottom',
 		},
 		{
-			{module.modkey, 'Shift'}, 'k',
+			{keymaps_m.modkey, 'Shift'}, 'k',
 			function()
 				AwesomeWM.awful.client.swap.bydirection('up')
 			end,
 			'Swap client with top',
 		},
 		{
-			{module.modkey, 'Shift'}, 'l',
+			{keymaps_m.modkey, 'Shift'}, 'l',
 			function()
 				AwesomeWM.awful.client.swap.bydirection('right')
 			end,
@@ -220,7 +219,7 @@ module.list = {
 
 	['Client management'] = {
 		{
-			{module.modkey}, 'c',
+			{keymaps_m.modkey}, 'c',
 			function()
 				if AwesomeWM.client.focus then
 					AwesomeWM.client.focus:kill()
@@ -229,21 +228,21 @@ module.list = {
 			'Close client'
 		},
 		{
-			{module.modkey}, ',',
+			{keymaps_m.modkey}, ',',
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty('floating')
 			end,
 			'Make client floating'
 		},
 		{
-			{module.modkey}, '.',
+			{keymaps_m.modkey}, '.',
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty('sticky')
 			end,
 			'Make client sticky'
 		},
 		{
-			{module.modkey}, '/',
+			{keymaps_m.modkey}, '/',
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty('fullscreen')
 			end,
@@ -253,14 +252,14 @@ module.list = {
 
 	['Tag movement'] = {
 		{
-			{module.modkey}, 'w',
+			{keymaps_m.modkey}, 'w',
 			function()
 				AwesomeWM.functions.tags.moveToTag('previous')
 			end,
 			'View previous tag'
 		},
 		{
-			{module.modkey}, 'e',
+			{keymaps_m.modkey}, 'e',
 			function()
 				AwesomeWM.functions.tags.moveToTag('next')
 			end,
@@ -272,7 +271,7 @@ module.list = {
 
 	['Tag management'] = {
 		{
-			{module.modkey}, 'Tab',
+			{keymaps_m.modkey}, 'Tab',
 			function()
 				AwesomeWM.functions.tags.cycleLayout(1)
 			end,
@@ -280,7 +279,7 @@ module.list = {
 		},
 
 		{
-			{module.modkey, 'Shift'}, 'Tab',
+			{keymaps_m.modkey, 'Shift'}, 'Tab',
 			function()
 				AwesomeWM.functions.tags.cycleLayout(-1)
 			end,
@@ -290,10 +289,10 @@ module.list = {
 
 }
 
-module.addTagMovementKeymaps = function()
+keymaps_m.addTagMovementKeymaps = function()
 	for _, t in pairs(AwesomeWM.values.tags) do
-		table.insert(module.list['Tag movement'], {
-			{module.modkey}, t.key,
+		table.insert(keymaps_m.list['Tag movement'], {
+			{keymaps_m.modkey}, t.key,
 			function()
 				AwesomeWM.functions.tags.moveToTag(t.name)
 			end,
@@ -302,10 +301,10 @@ module.addTagMovementKeymaps = function()
 	end
 end
 
-module.addTagShiftKeymaps = function()
+keymaps_m.addTagShiftKeymaps = function()
 	for _, t in pairs(AwesomeWM.values.tags) do
-		table.insert(module.list['Tag shift'], {
-			{module.modkey, 'Shift'}, t.key,
+		table.insert(keymaps_m.list['Tag shift'], {
+			{keymaps_m.modkey, 'Shift'}, t.key,
 			function()
 				local focusedScreen = AwesomeWM.awful.screen.focused()
 				local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, t.name)
@@ -318,20 +317,20 @@ module.addTagShiftKeymaps = function()
 	end
 end
 
-module.getClientButtons = function()
+keymaps_m.getClientButtons = function()
 	local clientButtons = AwesomeWM.gears.table.join(
 		AwesomeWM.awful.button({}, 1, function(_client)
 			_client:emit_signal('request::activate', 'mouse_click', {raise = true})
 		end),
-		AwesomeWM.awful.button({module.modkey}, 1, function(_client)
+		AwesomeWM.awful.button({keymaps_m.modkey}, 1, function(_client)
 			_client:emit_signal('request::activate', 'mouse_click', {raise = true})
 			AwesomeWM.awful.mouse.client.move(_client)
 		end),
-		AwesomeWM.awful.button({module.modkey}, 3, function(_client)
+		AwesomeWM.awful.button({keymaps_m.modkey}, 3, function(_client)
 			_client:emit_signal('request::activate', 'mouse_click', {raise = true})
 			AwesomeWM.awful.mouse.client.resize(_client)
 		end),
-		AwesomeWM.awful.button({module.modkey}, 2, function(_client)
+		AwesomeWM.awful.button({keymaps_m.modkey}, 2, function(_client)
 			if _client then
 				_client:kill()
 			end
@@ -341,22 +340,22 @@ module.getClientButtons = function()
 	return clientButtons
 end
 
-module.makeKeymap = function(_map, _groupName)
+keymaps_m.makeKeymap = function(_map, _groupName)
 	return AwesomeWM.awful.key(_map[1], _map[2], _map[3], {description=_map[4], group=_groupName})
 end
 
-module.initKeymaps = function()
-	modkey = module.modkey
-	module.addTagMovementKeymaps()
-	module.addTagShiftKeymaps()
+keymaps_m.initKeymaps = function()
+	modkey = keymaps_m.modkey
+	keymaps_m.addTagMovementKeymaps()
+	keymaps_m.addTagShiftKeymaps()
 
 	local keymaps = {}
-	for groupName, groupList in pairs(module.list) do
+	for groupName, groupList in pairs(keymaps_m.list) do
 		for _, map in pairs(groupList) do
-			keymaps = AwesomeWM.gears.table.join(keymaps, module.makeKeymap(map, groupName))
+			keymaps = AwesomeWM.gears.table.join(keymaps, keymaps_m.makeKeymap(map, groupName))
 		end
 	end
 	AwesomeWM.root.keys(keymaps)
 end
 
-return module
+return keymaps_m

@@ -1,17 +1,17 @@
 
-local module = {}
+local indicatorBase_sm = {}
 
-module.height = 360
-module.width = 60
-module.margins = 5
-module.timeout = 1
-module.opacity = 0.8
+indicatorBase_sm.height = 360
+indicatorBase_sm.width = 60
+indicatorBase_sm.margins = 5
+indicatorBase_sm.timeout = 1
+indicatorBase_sm.opacity = 0.8
 
-module.shape = function(c, w, h)
+indicatorBase_sm.shape = function(c, w, h)
 	AwesomeWM.gears.shape.rounded_rect(c, w, h, 100)
 end
 
-module.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
+indicatorBase_sm.make = function(_placement, _max_value, _slider_outer_color, _slider_inner_color)
 	local indicator = {}
 
 	indicator.icon = AwesomeWM.wibox.widget({
@@ -25,8 +25,8 @@ module.make = function(_placement, _max_value, _slider_outer_color, _slider_inne
 		background_color = _slider_outer_color,
 		color = _slider_inner_color,
 		widget = AwesomeWM.wibox.widget.progressbar,
-		shape = module.shape,
-		bar_shape = module.shape,
+		shape = indicatorBase_sm.shape,
+		bar_shape = indicatorBase_sm.shape,
 		margins = 8,
 		paddings = 5,
 	})
@@ -60,24 +60,24 @@ module.make = function(_placement, _max_value, _slider_outer_color, _slider_inne
 	indicator.wibox = AwesomeWM.wibox({
 		widget = indicator.main,
 		visible = false,
-		opacity = module.opacity,
+		opacity = indicatorBase_sm.opacity,
 		ontop = true,
 		type = 'dock',
 		bg = '#111111',
-		height = module.height,
-		width = module.width,
+		height = indicatorBase_sm.height,
+		width = indicatorBase_sm.width,
 		shape = AwesomeWM.gears.shape.rounded_rect,
 	})
 
 	indicator.timer = AwesomeWM.gears.timer({
-		timeout = module.timeout,
+		timeout = indicatorBase_sm.timeout,
 		callback = function()
 			indicator.wibox.visible = false
 		end,
 	})
 
 	indicator.wibox.show = function()
-		_placement(indicator.wibox, {margins = module.margins})
+		_placement(indicator.wibox, {margins = indicatorBase_sm.margins})
 		indicator.wibox.visible = true
 		indicator.timer:again()
 	end
@@ -85,4 +85,4 @@ module.make = function(_placement, _max_value, _slider_outer_color, _slider_inne
 	return indicator
 end
 
-return module
+return indicatorBase_sm
