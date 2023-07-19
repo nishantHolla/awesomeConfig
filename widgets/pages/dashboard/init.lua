@@ -6,6 +6,7 @@ local helper_sm = AwesomeWM.widgets.pages.helper
 
 dashboard_sm.components = {}
 dashboard_sm.components.systemTray = require('widgets.pages.dashboard.components.systemTray')
+dashboard_sm.components.time = require('widgets.pages.dashboard.components.time')
 
 dashboard_sm.init = function()
 	dashboard_sm.left = require('widgets.pages.dashboard.left')
@@ -40,8 +41,23 @@ dashboard_sm.init = function()
 	AwesomeWM.awful.placement.centered(dashboard_sm.wibox)
 
 end
+
+dashboard_sm.start = function()
+	dashboard_sm.components.time.timer:start()
+end
+
+dashboard_sm.stop = function()
+	dashboard_sm.components.time.timer:stop()
+end
+
 dashboard_sm.toggle = function()
 	dashboard_sm.wibox.visible = not dashboard_sm.wibox.visible
+
+	if dashboard_sm.wibox.visible then
+		dashboard_sm.start()
+	else
+		dashboard_sm.stop()
+	end
 end
 
 return dashboard_sm

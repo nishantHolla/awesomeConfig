@@ -12,7 +12,7 @@ dashboardRight_c.top = helper_sm.makeComponent({
 	heading = 'Power Options',
 	widget = AwesomeWM.widgets.testWidget('power options widget'),
 	overrides = {
-		contentRatio = 0.7
+		contentRatio = 0.6
 	}
 })
 
@@ -21,9 +21,11 @@ dashboardRight_c.top = helper_sm.makeComponent({
 dashboardRight_c.center = {}
 
 dashboardRight_c.center = helper_sm.makeComponent({
-	heading = 'Notification',
-	widget = AwesomeWM.widgets.testWidget('notification widget'),
-	overrides = {}
+	heading = 'Notes',
+	widget = AwesomeWM.widgets.testWidget('notes widget'),
+	overrides = {
+		contentRatio = 0.95
+	}
 })
 
 -- bottom
@@ -34,7 +36,7 @@ dashboardRight_c.bottom = helper_sm.makeComponent({
 	heading = 'System Tray',
 	widget = dashboardComponents.systemTray.main,
 	overrides = {
-		contentRatio = 0.5
+		contentRatio = 0.6
 	}
 })
 

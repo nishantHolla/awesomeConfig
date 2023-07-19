@@ -1,5 +1,6 @@
 
 local dashboardMiddle_c = {}
+local dashboardComponents = AwesomeWM.widgets.pages.dashboard.components
 local values_sm = AwesomeWM.widgets.pages.values
 local helper_sm = AwesomeWM.widgets.pages.helper
 
@@ -16,7 +17,7 @@ dashboardMiddle_c.top = helper_sm.makeComponent({
 	heading = 'Tags',
 	widget = AwesomeWM.widgets.testWidget('tags widget'),
 	overrides = {
-		contentRatio = 0.7
+		contentRatio = 0.6
 	}
 })
 
@@ -27,20 +28,26 @@ dashboardMiddle_c.center = {}
 dashboardMiddle_c.center.above = helper_sm.makeComponent({
 	heading = 'Profile',
 	widget = AwesomeWM.widgets.testWidget('profile widget'),
-	overrides = {}
+	overrides = {
+		contentRatio = 0.9
+	}
 })
 
 dashboardMiddle_c.center.below = {}
 dashboardMiddle_c.center.below.left = helper_sm.makeComponent({
 	heading = 'Weather',
 	widget = AwesomeWM.widgets.testWidget('weather widget'),
-	overrides = {}
+	overrides = {
+		contentRatio = 0.9
+	}
 })
 
 dashboardMiddle_c.center.below.right = helper_sm.makeComponent({
-	heading = 'Time',
-	widget = AwesomeWM.widgets.testWidget('time widget'),
-	overrides = {}
+	heading = 'Time And Date',
+	widget = dashboardComponents.time.main,
+	overrides = {
+		contentRatio = 0.9
+	}
 })
 
 dashboardMiddle_c.center.below.main = AwesomeWM.wibox.widget({
@@ -64,7 +71,7 @@ dashboardMiddle_c.bottom = helper_sm.makeComponent({
 	heading = 'Quick launch',
 	widget = AwesomeWM.widgets.testWidget('quick launch widget'),
 	overrides = {
-		contentRatio = 0.7
+		contentRatio = 0.6
 	}
 })
 
