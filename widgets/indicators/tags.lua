@@ -83,9 +83,9 @@ indicatorTags_sm.show = function()
 	indicatorTags_sm.layoutIndicator.image = AwesomeWM.assets.getLayout()
 	local selectedTagName = AwesomeWM.awful.screen.focused().selected_tag.name
 	for _, t in pairs(indicatorTags_sm.tags) do
-		local colors = AwesomeWM.functions.tags.getColor(t.tagName)
-		t.shape_border_color = colors[1]
-		t.fg = colors[1]
+		local colors = AwesomeWM.functions.tags.getState(t.tagName).colors
+		t.shape_border_color = colors.border
+		t.fg = colors.background
 
 		-- Folowing code is depricated. Will soon be removed.
 

@@ -7,6 +7,7 @@ local helper_sm = AwesomeWM.widgets.pages.helper
 dashboard_sm.components = {}
 dashboard_sm.components.systemTray = require('widgets.pages.dashboard.components.systemTray')
 dashboard_sm.components.time = require('widgets.pages.dashboard.components.time')
+dashboard_sm.components.tags = require('widgets.pages.dashboard.components.tags')
 
 dashboard_sm.init = function()
 	dashboard_sm.left = require('widgets.pages.dashboard.left')
@@ -44,6 +45,7 @@ end
 
 dashboard_sm.start = function()
 	dashboard_sm.components.time.timer:start()
+	dashboard_sm.components.tags.refresh()
 end
 
 dashboard_sm.stop = function()

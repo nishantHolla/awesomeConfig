@@ -8,14 +8,9 @@ local helper_sm = AwesomeWM.widgets.pages.helper
 
 dashboardMiddle_c.top = {}
 
-dashboardMiddle_c.top.main = AwesomeWM.wibox.widget({
-	AwesomeWM.widgets.testWidget('mt'),
-	widget = AwesomeWM.wibox.layout.ratio.vertical,
-})
-
 dashboardMiddle_c.top = helper_sm.makeComponent({
 	heading = 'Tags',
-	widget = AwesomeWM.widgets.testWidget('tags widget'),
+	widget = dashboardComponents.tags.main,
 	overrides = {
 		contentRatio = 0.6
 	}

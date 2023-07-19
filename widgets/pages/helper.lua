@@ -78,14 +78,24 @@ helper_sm.makeButtion = function(_options)
 
 	local button = {}
 
-	button.main = AwesomeWM.wibox.widget({
-		_options.widget,
+	button.background = AwesomeWM.wibox.widget({
 		bg = _options.values.inactiveButtonBg,
 		fg = _options.values.inactiveButtonFg,
 		widget = AwesomeWM.wibox.container.background,
-		shape = _options.values.buttonShape,
+		shape = function(c, w, h)
+			AwesomeWM.gears.shape.circle(c, w, h)
+		end,
 		shape_border_width = _options.values.buttonBorderWidth,
 		shape_border_color = _options.values.inactiveButtonBorderColor,
+	})
+
+	button.main = AwesomeWM.wibox.widget({
+		{
+			_options.widget,
+			margins = 15,
+			widget = AwesomeWM.wibox.container.margin
+		},
+		widget = button.background,
 	})
 
 	button.main:connect_signal('mouse::enter', function()

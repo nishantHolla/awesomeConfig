@@ -61,8 +61,6 @@ timeComponent.main = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.layout.fixed.vertical
 })
 
--- timeComponent.main:ajust_ratio(2, 0.3, 0.1, 0.6)
-
 timeComponent.refresh = function()
 	timeComponent.time.time.text = os.date("%I : %M %p")
 	timeComponent.time.dayAndDate.text = os.date("%A %d %B %Y")
