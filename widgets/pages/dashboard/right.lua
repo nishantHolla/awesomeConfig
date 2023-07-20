@@ -10,7 +10,7 @@ dashboardRight_c.top = {}
 
 dashboardRight_c.top = helper_sm.makeComponent({
 	heading = 'Power Options',
-	widget = AwesomeWM.widgets.testWidget('power options widget'),
+	widget = dashboardComponents.powerOptions.main,
 	overrides = {
 		contentRatio = 0.6
 	}

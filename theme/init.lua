@@ -84,13 +84,13 @@ theme_m.initTheme = function()
 	b.notification_border_width = b.border_width
 
 	b.tagIndicatorDeadBorderColor = b.gray
-	b.tagIndicatorDeadBackground = b.black
+	b.tagIndicatorDeadBackground = b.white
 
 	b.tagIndicatorActiveBorderColor = b.redBright
-	b.tagIndicatorActiveBackground = b.redDark
+	b.tagIndicatorActiveBackground = b.redBright
 
 	b.tagIndicatorAliveBorderColor = b.blueBright
-	b.tagIndicatorAliveBackground = b.blueDark
+	b.tagIndicatorAliveBackground = b.blueBright
 end
 
 return theme_m

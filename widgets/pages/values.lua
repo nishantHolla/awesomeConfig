@@ -11,7 +11,7 @@ values_sm.inactiveContainerBg = AwesomeWM.beautiful.gray
 values_sm.inactiveContainerFg = AwesomeWM.beautiful.white
 
 values_sm.activeContainerBg = AwesomeWM.beautiful.gray
-values_sm.activeContainerFg = AwesomeWM.beautiful.greenBright
+values_sm.activeContainerFg = AwesomeWM.beautiful.white
 
 values_sm.headingFont = AwesomeWM.beautiful.pagesFont
 values_sm.headingFontSize = 20

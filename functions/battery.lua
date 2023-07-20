@@ -32,6 +32,8 @@ end
 
 battery_sm.checkBattery = function()
 	battery_sm.findBatteryAnd(function(icon, value)
+		AwesomeWM.widgets.pages.dashboard.components.stats.batteryStat.silentRefresh(icon, value)
+
 		if value < AwesomeWM.values.batteryLowThreshold then
 			if AwesomeWM.values.batteryLowNotified == false then
 				if icon ~= AwesomeWM.assets.getIcon('batteryChargingWhite') then

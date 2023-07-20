@@ -92,7 +92,7 @@ helper_sm.makeButtion = function(_options)
 	button.main = AwesomeWM.wibox.widget({
 		{
 			_options.widget,
-			margins = 15,
+			margins = _options.values.padding or 15,
 			widget = AwesomeWM.wibox.container.margin
 		},
 		widget = button.background,

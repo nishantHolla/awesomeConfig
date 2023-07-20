@@ -1,5 +1,6 @@
 
 local dashboardLeft_c = {}
+local dashboardComponents = AwesomeWM.widgets.pages.dashboard.components
 local values_sm = AwesomeWM.widgets.pages.values
 local helper_sm = AwesomeWM.widgets.pages.helper
 
@@ -20,7 +21,7 @@ dashboardLeft_c.top = helper_sm.makeComponent({
 
 dashboardLeft_c.center = helper_sm.makeComponent({
 	heading = 'Stats',
-	widget = AwesomeWM.widgets.testWidget('stats widget'),
+	widget = dashboardComponents.stats.main,
 	overrides = {}
 })
 

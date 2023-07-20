@@ -6,7 +6,11 @@ volume_sm.script = AwesomeWM.values.getScript('volume')
 
 local run = function(_command)
 	AwesomeWM.awful.spawn.easy_async(_command, function(_stdout, _stderr, _errorReason, _exitCode)
-		AwesomeWM.widgets.indicators.volume.show()
+		if AwesomeWM.widgets.pages.dashboard.wibox.visible then
+			AwesomeWM.widgets.pages.dashboard.components.stats.volumeStat.refresh()
+		else
+			AwesomeWM.widgets.indicators.volume.show()
+		end
 	end)
 
 end

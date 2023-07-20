@@ -5,7 +5,11 @@ brightness_sm.script = AwesomeWM.values.getScript('brightness')
 
 local run = function(_command)
 	AwesomeWM.awful.spawn.easy_async(_command, function(_stdout, _stderr, _errorReason, _exitCode)
-		AwesomeWM.widgets.indicators.brightness.show()
+		if AwesomeWM.widgets.pages.dashboard.wibox.visible then
+			AwesomeWM.widgets.pages.dashboard.components.stats.brightnessStat.refresh()
+		else
+			AwesomeWM.widgets.indicators.brightness.show()
+		end
 	end)
 end
 
