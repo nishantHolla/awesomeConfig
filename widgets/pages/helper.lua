@@ -53,19 +53,17 @@ helper_sm.makeComponent = function(_options)
 	component.main:connect_signal('mouse::enter', function()
 		component.mainBackground.bg = _options.values.activeContainerBg
 		component.headingBackground.fg = _options.values.activeContainerFg
-		component.heading.markup = '<b>' .. _options.heading .. '</b>'
 	end)
 
 	component.main:connect_signal('mouse::leave', function()
 		component.mainBackground.bg = _options.values.inactiveContainerBg
 		component.headingBackground.fg = _options.values.inactiveContainerFg
-		component.heading.markup =  _options.heading
 	end)
 
 	return component
 end
 
-helper_sm.makeButtion = function(_options)
+helper_sm.makeButton = function(_options)
 	_options = _options or {}
 	_options.onClick = _options.onClick or function()end
 	_options.widget = _options.widget or AwesomeWM.wibox.widget()
@@ -102,6 +100,7 @@ helper_sm.makeButtion = function(_options)
 		button.main.bg = _options.values.activeButtonBg
 		button.main.fg = _options.values.activeButtonFg
 		button.main.shape_border_color = _options.values.activeButtonBorderColor
+		AwesomeWM.functions.player.playTick()
 	end)
 
 	button.main:connect_signal('mouse::leave', function()
@@ -113,6 +112,60 @@ helper_sm.makeButtion = function(_options)
 	button.main:connect_signal('button::press', _options.onClick)
 
 	return button
+end
+
+helper_sm.makeLink = function(_name, _func, _options)
+	_options = _options or {}
+	_options = {
+		inactiveColor = _options.inactiveColor or AwesomeWM.beautiful.white,
+		activeColor = _options.activeColor or AwesomeWM.beautiful.blue,
+		font = _options.font or AwesomeWM.beautiful.defaultFont,
+		fontSize = _options.fontSize or 20,
+		icon = _options.icon or '',
+		iconSize = _options.iconSize or 40,
+	}
+
+	local link = {}
+	link.icon = AwesomeWM.wibox.widget({
+			align = 'center',
+			valign = 'center',
+			font = _options.font .. ' ' .. tostring(_options.iconSize),
+			markup = _options.icon .. ' ',
+			widget = AwesomeWM.wibox.widget.textbox
+	})
+
+	link.text = AwesomeWM.wibox.widget({
+			align = 'center',
+			valign = 'center',
+			font = _options.font .. ' ' .. tostring(_options.fontSize),
+			markup = _name,
+			widget = AwesomeWM.wibox.widget.textbox
+	})
+
+	link.main = AwesomeWM.wibox.widget({
+		{
+			link.icon,
+			link.text,
+			widget = AwesomeWM.wibox.layout.fixed.horizontal
+		},
+		fg = _options.inactiveColor,
+		widget = AwesomeWM.wibox.container.background
+	})
+
+	link.main:connect_signal('button::press', _func)
+
+	link.main:connect_signal('mouse::enter', function()
+		link.main.fg = _options.activeColor
+		link.text.markup = '<u>' .. _name .. '</u>'
+		AwesomeWM.functions.player.playTick()
+	end)
+
+	link.main:connect_signal('mouse::leave', function()
+		link.main.fg = _options.inactiveColor
+		link.text.markup = _name
+	end)
+
+	return link
 end
 
 return helper_sm
