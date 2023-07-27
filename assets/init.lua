@@ -22,6 +22,14 @@ assets_m.getIcon = function(_iconName)
 
 end
 
+assets_m.getAsset = function(_assetPath)
+	return (assets_m.assetsDir .. '/' .. _assetPath)
+end
+
+assets_m.getSound = function(_soundName)
+	return (assets_m.assetsDir.. '/sounds/' .. _soundName .. '.mp3')
+end
+
 assets_m.getLayout = function(_layoutName)
 	_layoutName = _layoutName or tostring(AwesomeWM.awful.screen.focused().selected_tag.layout.name)
 	if _layoutName ~= 'spiral' and _layoutName ~= 'fullscreen' and _layoutName ~= 'floating' and _layoutName ~= 'fairh' then return '' end
