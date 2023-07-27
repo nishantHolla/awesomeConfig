@@ -20,4 +20,8 @@ player_sm.toggle = function()
 	run(player_sm.script .. ' toggle')
 end
 
+player_sm.playTick = function()
+	AwesomeWM.awful.spawn('paplay ' .. AwesomeWM.assets.getSound('tickSound'))
+end
+
 return player_sm

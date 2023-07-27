@@ -77,6 +77,12 @@ clients_sm.initClients = function()
 		_client.border_color = AwesomeWM.beautiful.border_normal
 	end)
 
+	AwesomeWM.client.connect_signal("property::urgent", function(c)
+		if c.class == "firefox" then
+			AwesomeWM.awful.client.urgent.jumpto(false)
+		end
+	end)
+
 	-- startup applications
 	AwesomeWM.awful.spawn('picom')
 	AwesomeWM.awful.spawn('nm-applet')

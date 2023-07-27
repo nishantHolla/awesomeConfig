@@ -44,53 +44,44 @@ theme_m.initTheme = function()
 	b.font = b.defaultFont .. ' 12'
 	b.nerdFont = b.defaultFont
 
-	b.redBright = '#F25050'
-	b.redLight = '#F48282'
-	b.redDark = '#F23838'
+	b.white = "#F0F1DF"
+	b.gray = "#2A2D30"
+	b.black = "#0D0D0D"
 
-	b.blueBright = '#A85EF2'
-	b.blueLight = '#CEA9F4'
-	b.blueDark = '#1F2C73'
-
-	b.greenBright = '#05F29B'
-	b.greenLight = '#4EF4B7'
-	b.greenDark = '#03A66A'
-
-	b.yellowBright = '#FFD045'
-	b.yellowLight = '#F4DA8B'
-	b.yellowDark = '#F2C641'
-
-	b.black = '#0F0F0F'
-	b.gray = '#333333'
-	b.white = '#F2F2F2'
+	b.red = "#F0504F"
+	b.blue = "#846FF7"
+	b.green = "#70E0BB"
+	b.yellow = "#F7F36F"
+	b.orange = "#F5793B"
 
 	b.useless_gap = theme_m.dpi(3)
 	b.border_width = theme_m.dpi(7)
 
 	b.border_normal = b.black
-	b.border_focus = b.redBright
-	b.border_sticky = b.yellowBright
-	b.border_marked = b.blueBright
-	b.border_floating = b.greenBright
-	b.border_fullscreen = b.blueBright
+	b.border_focus = b.red
+	b.border_sticky = b.yellow
+	b.border_marked = b.orange
+	b.border_floating = b.green
+	b.border_fullscreen = b.blue
 
 	b.notification_font = b.font
-	b.notification_bg = b.blueDark
-	b.notification_fg = b.blueLight
-	b.notification_critical_bg = b.redDark
+	b.notification_bg = b.blue
+	b.notification_fg = b.white
+	b.notification_critical_bg = b.red
+	b.notification_critical_fg = b.black
 	b.notification_width = AwesomeWM.values.screenWidth
-	b.notification_height = AwesomeWM.values.screenHeight * 0.1
+	b.notification_height = AwesomeWM.values.screenHeight * 0.15
 	b.notification_border_color = b.border_normal
 	b.notification_border_width = b.border_width
 
 	b.tagIndicatorDeadBorderColor = b.gray
-	b.tagIndicatorDeadBackground = b.white
+	b.tagIndicatorDeadBackground = b.gray
 
-	b.tagIndicatorActiveBorderColor = b.redBright
-	b.tagIndicatorActiveBackground = b.redBright
+	b.tagIndicatorActiveBorderColor = b.red
+	b.tagIndicatorActiveBackground = b.red
 
-	b.tagIndicatorAliveBorderColor = b.blueBright
-	b.tagIndicatorAliveBackground = b.blueBright
+	b.tagIndicatorAliveBorderColor = b.blue
+	b.tagIndicatorAliveBackground = b.blue
 end
 
 return theme_m

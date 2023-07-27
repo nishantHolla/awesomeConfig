@@ -3,10 +3,15 @@ local values_m = {}
 
 values_m.awesomeDir = os.getenv('HOME') .. '/.config/awesome'
 values_m.dataDir = os.getenv('XDG_DATA_HOME') .. '/awesome'
+
 values_m.terminal = os.getenv('TERMINAL') or 'contour'
 values_m.editor = os.getenv('EDITOR') or 'nvim'
 values_m.browser = os.getenv('BROWSER') or 'firefox'
 values_m.fileManager = os.getenv('FILE_MANAGER') or 'pcmanfm'
+values_m.emailID = os.getenv('EMAIL_ID') or nil
+values_m.githubName = os.getenv('GITHUB_NAME') or nil
+values_m.redditName = os.getenv('REDDIT_NAME') or nil
+
 values_m.restorationFile = os.getenv('HOME') .. '/awesomeRestoration'
 values_m.editorCmd = values_m.terminal .. ' -e ' .. values_m.editor
 values_m.layoutSuit = AwesomeWM.awful.layout.suit
@@ -23,6 +28,10 @@ values_m.tagLayouts = {
 	values_m.layoutSuit.fair.horizontal,
 	values_m.layoutSuit.floating,
 }
+
+values_m.mailLink = 'https://mail.google.com/'
+values_m.githubLink = 'https://github.com/'
+values_m.redditLink = 'https://reddit.com/'
 
 values_m.getScript = function(_name)
 	return (values_m.awesomeDir .. '/scripts/' .. _name .. '.sh')
