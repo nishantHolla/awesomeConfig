@@ -81,27 +81,27 @@ end
 
 statsComponent.volumeStat = makeStat({
 	refresh = AwesomeWM.functions.volume.findVolumeAnd,
-	bgColor = AwesomeWM.beautiful.redLight,
-	fgColor = AwesomeWM.beautiful.redDark
+	bgColor = AwesomeWM.beautiful.white,
+	fgColor = AwesomeWM.beautiful.red
 })
 
 statsComponent.brightnessStat = makeStat({
 	maxValue = 255,
 	refresh = AwesomeWM.functions.brightness.findBrightnessAnd,
-	bgColor = AwesomeWM.beautiful.blueLight,
-	fgColor = AwesomeWM.beautiful.blueDark
+	bgColor = AwesomeWM.beautiful.white,
+	fgColor = AwesomeWM.beautiful.blue
 })
 
 statsComponent.storageStat = makeStat({
 	refresh = AwesomeWM.functions.storage.findStorageAnd,
-	bgColor = AwesomeWM.beautiful.yellowLight,
-	fgColor = AwesomeWM.beautiful.yellowDark
+	bgColor = AwesomeWM.beautiful.white,
+	fgColor = AwesomeWM.beautiful.yellow
 })
 
 statsComponent.batteryStat = makeStat({
 	refresh = AwesomeWM.functions.battery.findBatteryAnd,
-	bgColor = AwesomeWM.beautiful.greenLight,
-	fgColor = AwesomeWM.beautiful.greenDark
+	bgColor = AwesomeWM.beautiful.white,
+	fgColor = AwesomeWM.beautiful.green
 })
 
 statsComponent.main = AwesomeWM.wibox.widget({
