@@ -31,14 +31,14 @@ timeComponent.time.calendar = AwesomeWM.wibox.widget({
 		elseif _flag == "weekday" then
 			rect = AwesomeWM.wibox.widget({
 				_widget,
-				fg = AwesomeWM.beautiful.blueLight,
+				fg = AwesomeWM.beautiful.blue,
 				widget = AwesomeWM.wibox.container.background
 			})
 
 		elseif _flag == "focus" then
 			rect = AwesomeWM.wibox.widget({
 				_widget,
-				fg = AwesomeWM.beautiful.redBright,
+				fg = AwesomeWM.beautiful.red,
 				widget = AwesomeWM.wibox.container.background
 			})
 
