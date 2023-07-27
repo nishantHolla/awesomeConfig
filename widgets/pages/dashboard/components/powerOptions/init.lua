@@ -22,11 +22,11 @@ local overrides = {
 
 powerOptionsComponent.shutdown = {}
 powerOptionsComponent.shutdown.overrides = AwesomeWM.functions.table.shallowCopy(overrides)
-powerOptionsComponent.shutdown.overrides.activeButtonBorderColor = AwesomeWM.beautiful.redBright
-powerOptionsComponent.shutdown.button = helper_sm.makeButtion({
+powerOptionsComponent.shutdown.overrides.activeButtonBorderColor = AwesomeWM.beautiful.red
+powerOptionsComponent.shutdown.button = helper_sm.makeButton({
 	widget = makeOption('powerShutdownWhite'),
 	onClick = function()
-		AwesomeWM.awful.spawn.with_shell('sis power shutdown')
+		AwesomeWM.functions.shutdown()
 	end,
 	overrides = powerOptionsComponent.shutdown.overrides
 })
@@ -35,11 +35,11 @@ powerOptionsComponent.shutdown.button = helper_sm.makeButtion({
 
 powerOptionsComponent.restart = {}
 powerOptionsComponent.restart.overrides = AwesomeWM.functions.table.shallowCopy(overrides)
-powerOptionsComponent.restart.overrides.activeButtonBorderColor = AwesomeWM.beautiful.greenBright
-powerOptionsComponent.restart.button = helper_sm.makeButtion({
+powerOptionsComponent.restart.overrides.activeButtonBorderColor = AwesomeWM.beautiful.green
+powerOptionsComponent.restart.button = helper_sm.makeButton({
 	widget = makeOption('powerRestartWhite'),
 	onClick = function()
-		AwesomeWM.awful.spawn.with_shell('sis power restart')
+		AwesomeWM.awful.spawn.with_shell('reboot')
 	end,
 	overrides = powerOptionsComponent.restart.overrides
 })
@@ -48,11 +48,11 @@ powerOptionsComponent.restart.button = helper_sm.makeButtion({
 
 powerOptionsComponent.lock = {}
 powerOptionsComponent.lock.overrides = AwesomeWM.functions.table.shallowCopy(overrides)
-powerOptionsComponent.lock.overrides.activeButtonBorderColor = AwesomeWM.beautiful.yellowBright
-powerOptionsComponent.lock.button = helper_sm.makeButtion({
+powerOptionsComponent.lock.overrides.activeButtonBorderColor = AwesomeWM.beautiful.yellow
+powerOptionsComponent.lock.button = helper_sm.makeButton({
 	widget = makeOption('powerLockWhite'),
 	onClick = function()
-		AwesomeWM.awful.spawn.with_shell('sis power lock')
+		AwesomeWM.awful.spawn.with_shell('betterlockscreen -l')
 	end,
 	overrides = powerOptionsComponent.lock.overrides
 })
@@ -61,11 +61,11 @@ powerOptionsComponent.lock.button = helper_sm.makeButtion({
 
 powerOptionsComponent.sleep = {}
 powerOptionsComponent.sleep.overrides = AwesomeWM.functions.table.shallowCopy(overrides)
-powerOptionsComponent.sleep.overrides.activeButtonBorderColor = AwesomeWM.beautiful.blueBright
-powerOptionsComponent.sleep.button = helper_sm.makeButtion({
+powerOptionsComponent.sleep.overrides.activeButtonBorderColor = AwesomeWM.beautiful.blue
+powerOptionsComponent.sleep.button = helper_sm.makeButton({
 	widget = makeOption('powerSleepWhite'),
 	onClick = function()
-		AwesomeWM.awful.spawn.with_shell('sis power sleep')
+		AwesomeWM.awful.spawn.with_shell('systemctl suspend')
 	end,
 	overrides = powerOptionsComponent.sleep.overrides
 })
@@ -74,11 +74,11 @@ powerOptionsComponent.sleep.button = helper_sm.makeButtion({
 
 powerOptionsComponent.logout = {}
 powerOptionsComponent.logout.overrides = AwesomeWM.functions.table.shallowCopy(overrides)
-powerOptionsComponent.logout.overrides.activeButtonBorderColor = AwesomeWM.beautiful.black
-powerOptionsComponent.logout.button = helper_sm.makeButtion({
+powerOptionsComponent.logout.overrides.activeButtonBorderColor = AwesomeWM.beautiful.orange
+powerOptionsComponent.logout.button = helper_sm.makeButton({
 	widget = makeOption('powerLogoutWhite'),
 	onClick = function()
-		AwesomeWM.awful.spawn.with_shell('sis power logout')
+		AwesomeWM.awful.spawn.with_shell('kill -9 -1')
 	end,
 	overrides = powerOptionsComponent.logout.overrides
 })
