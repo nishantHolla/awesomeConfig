@@ -3,8 +3,8 @@ local maxValue =  100
 local indicatorVolume_sm = require('widgets.indicators.base').make(
 	AwesomeWM.awful.placement.right,
 	maxValue,
-	AwesomeWM.beautiful.redLight,
-	AwesomeWM.beautiful.redDark
+	AwesomeWM.beautiful.white,
+	AwesomeWM.beautiful.red
 )
 
 indicatorVolume_sm.maxValue = maxValue

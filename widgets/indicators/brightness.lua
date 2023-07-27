@@ -4,8 +4,8 @@ local maxValue = 255
 local indicatorBrightness_sm = require('widgets.indicators.base').make(
 	AwesomeWM.awful.placement.left,
 	maxValue,
-	AwesomeWM.beautiful.blueLight,
-	AwesomeWM.beautiful.blueDark
+	AwesomeWM.beautiful.white,
+	AwesomeWM.beautiful.blue
 )
 
 indicatorBrightness_sm.show = function()
