@@ -21,8 +21,8 @@ dashboardMiddle_c.top = helper_sm.makeComponent({
 dashboardMiddle_c.center = {}
 
 dashboardMiddle_c.center.above = helper_sm.makeComponent({
-	heading = 'Profile',
-	widget = AwesomeWM.widgets.testWidget('profile widget'),
+	heading = 'User Profile',
+	widget = dashboardComponents.userProfile.main,
 	overrides = {
 		contentRatio = 0.9
 	}
@@ -31,7 +31,7 @@ dashboardMiddle_c.center.above = helper_sm.makeComponent({
 dashboardMiddle_c.center.below = {}
 dashboardMiddle_c.center.below.left = helper_sm.makeComponent({
 	heading = 'Weather',
-	widget = AwesomeWM.widgets.testWidget('weather widget'),
+	widget = dashboardComponents.weather.main,
 	overrides = {
 		contentRatio = 0.9
 	}

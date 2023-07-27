@@ -10,6 +10,8 @@ dashboard_sm.components.time = require('widgets.pages.dashboard.components.time'
 dashboard_sm.components.tags = require('widgets.pages.dashboard.components.tags')
 dashboard_sm.components.powerOptions = require('widgets.pages.dashboard.components.powerOptions')
 dashboard_sm.components.stats = require('widgets.pages.dashboard.components.stats')
+dashboard_sm.components.userProfile = require('widgets.pages.dashboard.components.userProfile')
+dashboard_sm.components.weather = require('widgets.pages.dashboard.components.weather')
 
 dashboard_sm.init = function()
 	dashboard_sm.left = require('widgets.pages.dashboard.left')
