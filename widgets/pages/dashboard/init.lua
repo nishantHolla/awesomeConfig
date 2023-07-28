@@ -12,6 +12,7 @@ dashboard_sm.components.powerOptions = require('widgets.pages.dashboard.componen
 dashboard_sm.components.stats = require('widgets.pages.dashboard.components.stats')
 dashboard_sm.components.userProfile = require('widgets.pages.dashboard.components.userProfile')
 dashboard_sm.components.weather = require('widgets.pages.dashboard.components.weather')
+dashboard_sm.components.media = require('widgets.pages.dashboard.components.media')
 
 dashboard_sm.init = function()
 	dashboard_sm.left = require('widgets.pages.dashboard.left')
@@ -51,12 +52,16 @@ dashboard_sm.start = function()
 	dashboard_sm.components.time.refresh()
 	dashboard_sm.components.tags.refresh()
 	dashboard_sm.components.stats.refresh()
+	dashboard_sm.components.weather.refresh()
+	dashboard_sm.components.media.refresh()
 
 	dashboard_sm.components.time.timer:start()
+	dashboard_sm.components.media.timer:start()
 end
 
 dashboard_sm.stop = function()
 	dashboard_sm.components.time.timer:stop()
+	dashboard_sm.components.media.timer:stop()
 end
 
 dashboard_sm.toggle = function()

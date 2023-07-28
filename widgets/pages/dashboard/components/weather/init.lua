@@ -1,15 +1,16 @@
 
 local weatherComponent = {}
 
-weatherComponent.makeDataLabel = function(_text, _color, _size)
+weatherComponent.makeDataLabel = function(_text, _color, _size, _align)
 	_color = _color or AwesomeWM.beautiful.white
 	_size = _size or 20
+	_align = _align or 'center'
 	return AwesomeWM.wibox.widget({
 		markup = _text,
+		align = _align,
 		valign = 'center',
 		leftMarkup = '<span foreground="' .. _color .. '">',
 		rightMarkup = '</span>',
-		align = 'center',
 		font = AwesomeWM.beautiful.pagesFont .. ' ' .. tostring(_size),
 		widget = AwesomeWM.wibox.widget.textbox
 	})
@@ -18,16 +19,16 @@ end
 weatherComponent.icon = weatherComponent.makeDataLabel('icon', AwesomeWM.beautiful.white, 100)
 weatherComponent.location = weatherComponent.makeDataLabel('location', AwesomeWM.beautiful.green, 30)
 weatherComponent.condition = weatherComponent.makeDataLabel('condition', AwesomeWM.beautiful.orange, 20)
-weatherComponent.humidity = weatherComponent.makeDataLabel('humidity', AwesomeWM.beautiful.yellow, 20)
-weatherComponent.temperature = weatherComponent.makeDataLabel('temperature', AwesomeWM.beautiful.red, 20)
-weatherComponent.windSpeed = weatherComponent.makeDataLabel('temperature', AwesomeWM.beautiful.blue, 20)
+weatherComponent.humidity = weatherComponent.makeDataLabel('humidity', AwesomeWM.beautiful.yellow, 20, 'left')
+weatherComponent.temperature = weatherComponent.makeDataLabel('temperature', AwesomeWM.beautiful.red, 20, 'left')
+weatherComponent.windSpeed = weatherComponent.makeDataLabel('temperature', AwesomeWM.beautiful.blue, 20, 'left')
 
 weatherComponent.data = AwesomeWM.wibox.widget({
-	weatherComponent.makeDataLabel('Humidity'),
+	weatherComponent.makeDataLabel('Humidity', nil, nil, 'right'),
 	weatherComponent.humidity,
-	weatherComponent.makeDataLabel('Temperature'),
+	weatherComponent.makeDataLabel('Temperature', nil, nil, 'right'),
 	weatherComponent.temperature,
-	weatherComponent.makeDataLabel('Wind Speed'),
+	weatherComponent.makeDataLabel('Wind Speed', nil, nil, 'right'),
 	weatherComponent.windSpeed,
 	spacing = 10,
 	forced_num_cols = 2,
@@ -80,5 +81,4 @@ weatherComponent.main = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.container.margin
 })
 
-weatherComponent.refresh()
 return weatherComponent

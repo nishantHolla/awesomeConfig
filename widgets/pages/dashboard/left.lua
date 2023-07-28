@@ -31,7 +31,7 @@ dashboardLeft_c.bottom = {}
 
 dashboardLeft_c.bottom = helper_sm.makeComponent({
 	heading = 'Media',
-	widget = AwesomeWM.widgets.testWidget('medai widget'),
+	widget = dashboardComponents.media.main,
 	overrides = {}
 })
 

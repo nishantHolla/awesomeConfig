@@ -16,15 +16,15 @@ values_sm.activeContainerFg = AwesomeWM.beautiful.white
 values_sm.headingFont = AwesomeWM.beautiful.pagesFont
 values_sm.headingFontSize = 20
 
-values_sm.inactiveButtonBg = AwesomeWM.beautiful.black
+values_sm.inactiveButtonBg = values_sm.inactiveContainerBg
 values_sm.inactiveButtonFg = AwesomeWM.beautiful.white
 
-values_sm.activeButtonBg = AwesomeWM.beautiful.green
+values_sm.activeButtonBg = AwesomeWM.beautiful.red
 values_sm.activeButtonFg = AwesomeWM.beautiful.white
 
 values_sm.buttonBorderWidth = 5
-values_sm.inactiveButtonBorderColor = AwesomeWM.beautiful.black
-values_sm.activeButtonBorderColor = AwesomeWM.beautiful.white
+values_sm.inactiveButtonBorderColor = AwesomeWM.beautiful.white
+values_sm.activeButtonBorderColor = AwesomeWM.beautiful.red
 
 values_sm.buttonShape = AwesomeWM.gears.shape.circle
 

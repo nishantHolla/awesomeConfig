@@ -87,6 +87,7 @@ clients_sm.initClients = function()
 	AwesomeWM.awful.spawn('picom')
 	AwesomeWM.awful.spawn('nm-applet')
 	AwesomeWM.awful.spawn('flameshot')
+	AwesomeWM.awful.spawn('playerctld daemon')
 
 end
 

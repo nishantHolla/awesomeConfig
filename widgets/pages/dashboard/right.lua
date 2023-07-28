@@ -12,7 +12,7 @@ dashboardRight_c.top = helper_sm.makeComponent({
 	heading = 'Power Options',
 	widget = dashboardComponents.powerOptions.main,
 	overrides = {
-		contentRatio = 0.6
+		contentRatio = 0.65
 	}
 })
 

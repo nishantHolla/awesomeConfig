@@ -1,6 +1,11 @@
 
 local functions_m = {}
 
+function string.starts(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
+
 functions_m.initErrorHandling = function()
 	-- startup errors
 	if AwesomeWM.awesome.startup_errors then

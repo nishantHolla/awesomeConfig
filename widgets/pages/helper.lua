@@ -87,9 +87,11 @@ helper_sm.makeButton = function(_options)
 		shape_border_color = _options.values.inactiveButtonBorderColor,
 	})
 
+	button.widget = _options.widget
+
 	button.main = AwesomeWM.wibox.widget({
 		{
-			_options.widget,
+			button.widget,
 			margins = _options.values.padding or 15,
 			widget = AwesomeWM.wibox.container.margin
 		},
