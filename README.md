@@ -67,4 +67,6 @@ the testing script to run.
 - brightnessctl for brightness control
 - alsa and pulseaudio for volume control
 - acpi for battery indication
+- [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen) for lock function
 - [My collection of icons](https://github.com/nishantHolla/icons)
+- [My rofi config](https://github.com/nishantHolla/system/tree/main/config/rofi)
