@@ -13,6 +13,7 @@ dashboard_sm.components.stats = require('widgets.pages.dashboard.components.stat
 dashboard_sm.components.userProfile = require('widgets.pages.dashboard.components.userProfile')
 dashboard_sm.components.weather = require('widgets.pages.dashboard.components.weather')
 dashboard_sm.components.media = require('widgets.pages.dashboard.components.media')
+dashboard_sm.components.notes = require('widgets.pages.dashboard.components.notes')
 
 dashboard_sm.init = function()
 	dashboard_sm.left = require('widgets.pages.dashboard.left')
@@ -54,6 +55,7 @@ dashboard_sm.start = function()
 	dashboard_sm.components.stats.refresh()
 	dashboard_sm.components.weather.refresh()
 	dashboard_sm.components.media.refresh()
+	dashboard_sm.components.notes.refresh()
 
 	dashboard_sm.components.time.timer:start()
 	dashboard_sm.components.media.timer:start()

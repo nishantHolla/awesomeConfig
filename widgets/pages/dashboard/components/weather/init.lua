@@ -16,7 +16,7 @@ weatherComponent.makeDataLabel = function(_text, _color, _size, _align)
 	})
 end
 
-weatherComponent.icon = weatherComponent.makeDataLabel('icon', AwesomeWM.beautiful.white, 100)
+weatherComponent.icon = weatherComponent.makeDataLabel('icon', AwesomeWM.beautiful.white, 80)
 weatherComponent.location = weatherComponent.makeDataLabel('location', AwesomeWM.beautiful.green, 30)
 weatherComponent.condition = weatherComponent.makeDataLabel('condition', AwesomeWM.beautiful.orange, 20)
 weatherComponent.humidity = weatherComponent.makeDataLabel('humidity', AwesomeWM.beautiful.yellow, 20, 'left')
@@ -37,7 +37,6 @@ weatherComponent.data = AwesomeWM.wibox.widget({
 })
 
 weatherComponent.dataList = {
-	weatherComponent.icon,
 	weatherComponent.location,
 	weatherComponent.condition,
 	weatherComponent.humidity,
@@ -45,24 +44,48 @@ weatherComponent.dataList = {
 	weatherComponent.windSpeed
 }
 
+weatherComponent.weatherToIcon = {
+	['rain'] = '',
+	['rainDay'] = '',
+	['rainNight'] = '',
+	['partlyCloudyDay'] = '',
+	['partlyCloudyNight'] = '',
+}
+
 weatherComponent.refresh = function()
 
-	AwesomeWM.awful.spawn.easy_async('curl "wttr.in/?format=%c\\n%l\\n%C\\n%h\\n%t\\n%w"', function(_stdout, _stderr, _errorReason, _errorCode)
+	AwesomeWM.awful.spawn.easy_async('curl "wttr.in/?format=%l\\n%C\\n%h\\n%t\\n%w"', function(_stdout, _stderr, _errorReason, _errorCode)
 		local lines = {}
 		for s in _stdout:gmatch("[^\r\n]+") do
 			table.insert(lines, s)
 		end
 
-		if #lines ~= 6 then
+		if #lines ~= 5 then
 			return
 		end
 
-		lines[1] = lines[1]:sub(1, -2)
 		local counter = 1
 		for _, data in pairs(weatherComponent.dataList) do
 			data.markup = data.leftMarkup .. lines[counter] .. data.rightMarkup
 			counter = counter + 1
 		end
+
+		local icon = 'icon'
+		local hour = os.date("*t").hour
+		if lines[2] == 'Rain' then
+			icon = 'rain'
+		elseif lines[2] == 'Partly cloudy' then
+			icon = 'partlyCloudy'
+		end
+
+		if hour > 18 then
+			icon = icon .. 'Night'
+		else
+			icon = icon .. 'Day'
+		end
+
+		icon = weatherComponent.weatherToIcon[icon]
+		weatherComponent.icon.markup = weatherComponent.icon.leftMarkup .. icon .. weatherComponent.icon.rightMarkup
 	end)
 
 end
@@ -80,5 +103,9 @@ weatherComponent.main = AwesomeWM.wibox.widget({
 	margins = 10,
 	widget = AwesomeWM.wibox.container.margin
 })
+
+weatherComponent.main:connect_signal('button::press', function()
+	AwesomeWM.awful.spawn('firefox https://www.google.com/search?q=weather')
+end)
 
 return weatherComponent

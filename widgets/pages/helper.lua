@@ -80,7 +80,7 @@ helper_sm.makeButton = function(_options)
 		bg = _options.values.inactiveButtonBg,
 		fg = _options.values.inactiveButtonFg,
 		widget = AwesomeWM.wibox.container.background,
-		shape = function(c, w, h)
+		shape = _options.values.buttonShape or function(c, w, h)
 			AwesomeWM.gears.shape.circle(c, w, h)
 		end,
 		shape_border_width = _options.values.buttonBorderWidth,

@@ -11,6 +11,14 @@ mediaComponent.albumImage = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.widget.imagebox
 })
 
+mediaComponent.albumArtist = AwesomeWM.wibox.widget({
+	text = 'artist',
+	valign = 'center',
+	align = 'left',
+	font = AwesomeWM.beautiful.pagesFont .. ' 20',
+	widget = AwesomeWM.wibox.widget.textbox
+})
+
 mediaComponent.albumTitle = AwesomeWM.wibox.widget({
 	text = 'title',
 	valign = 'center',
@@ -18,6 +26,7 @@ mediaComponent.albumTitle = AwesomeWM.wibox.widget({
 	font = AwesomeWM.beautiful.pagesFont .. ' 15',
 	widget = AwesomeWM.wibox.widget.textbox,
 })
+
 
 mediaComponent.previous = AwesomeWM.wibox.widget({
 	text = '󰒮',
@@ -44,13 +53,22 @@ mediaComponent.next = AwesomeWM.wibox.widget({
 })
 
 mediaComponent.top = AwesomeWM.wibox.widget({
-	mediaComponent.albumImage,
-	mediaComponent.albumTitle,
+	{
+		mediaComponent.albumImage,
+		valign = 'center',
+		align = 'center',
+		widget = AwesomeWM.wibox.container.place
+	},
+	{
+		mediaComponent.albumArtist,
+		mediaComponent.albumTitle,
+		widget = AwesomeWM.wibox.layout.flex.vertical,
+	},
 	spacing = 10,
 	widget = AwesomeWM.wibox.layout.ratio.horizontal
 })
 
-mediaComponent.top:set_ratio(2, 0.6)
+mediaComponent.top:set_ratio(2, 0.7)
 
 mediaComponent.buttonOverrides = {
 	padding = 10,
@@ -63,6 +81,7 @@ mediaComponent.bottom = AwesomeWM.wibox.widget({
 			AwesomeWM.functions.player.previous()
 			mediaComponent.albumImage.update()
 			mediaComponent.albumTitle.update()
+			mediaComponent.albumArtist.update()
 		end,
 		overrides = mediaComponent.buttonOverrides,
 	}).main,
@@ -80,6 +99,7 @@ mediaComponent.bottom = AwesomeWM.wibox.widget({
 			AwesomeWM.functions.player.next()
 			mediaComponent.albumImage.update()
 			mediaComponent.albumTitle.update()
+			mediaComponent.albumArtist.update()
 		end,
 		overrides = mediaComponent.buttonOverrides,
 	}).main,
@@ -98,13 +118,19 @@ mediaComponent.layout = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.layout.ratio.vertical
 })
 
-mediaComponent.layout:set_ratio(1, 0.7)
 
 mediaComponent.main = AwesomeWM.wibox.widget({
 	mediaComponent.layout,
-	margins = 40,
+	margins = 20,
 	widget = AwesomeWM.wibox.container.margin
 })
+
+mediaComponent.albumArtist.update = function()
+	local script = AwesomeWM.values.getScript('player')
+	AwesomeWM.awful.spawn.easy_async(script .. ' getArtist', function(_stdout, _stderr, _exitReason, _exitCode)
+		mediaComponent.albumArtist.text = _stdout
+	end)
+end
 
 mediaComponent.playPause.update = function()
 	AwesomeWM.awful.spawn.easy_async('playerctl status', function(_stdout, _stderr, _exitReason, _exitCode)
@@ -131,6 +157,9 @@ mediaComponent.albumImage.update = function()
 		elseif string.starts(_stdout, "file") then
 			local path = string.sub(_stdout, 8)
 			AwesomeWM.awful.spawn('cp -f ' .. path .. ' ' .. thumbnailLocation)
+
+		elseif _stderr == "No players found\n" or _stdout == "\n" then
+			AwesomeWM.awful.spawn('rm ' .. thumbnailLocation)
 		end
 
 		mediaComponent.albumImage.image = AwesomeWM.gears.surface.load_uncached(thumbnailLocation)
@@ -149,6 +178,7 @@ end
 mediaComponent.refresh = function()
 
 	mediaComponent.albumImage.update()
+	mediaComponent.albumArtist.update()
 	mediaComponent.playPause.update()
 	mediaComponent.albumTitle.update()
 

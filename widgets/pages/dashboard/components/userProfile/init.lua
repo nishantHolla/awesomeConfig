@@ -20,6 +20,7 @@ userProfileComponent.left = AwesomeWM.wibox.widget({
 	{
 		userProfileComponent.image,
 		aling = 'center',
+		valign = 'center',
 		widget = AwesomeWM.wibox.container.place
 	},
 	userProfileComponent.text,
@@ -97,16 +98,19 @@ for _, options in pairs(userProfileComponent.links) do
 	end
 end
 
-userProfileComponent.left:ajust_ratio(2, 0.4, 0.2, 0.4)
+userProfileComponent.left:set_ratio(2, 0.3)
 
 userProfileComponent.main = AwesomeWM.wibox.widget({
 	userProfileComponent.left,
 	{
 		userProfileComponent.right,
 		valign = 'center',
+		align = 'left',
 		widget = AwesomeWM.wibox.container.place
 	},
-	widget = AwesomeWM.wibox.layout.flex.horizontal
+	widget = AwesomeWM.wibox.layout.ratio.horizontal
 })
+
+userProfileComponent.main:set_ratio(2, 0.6)
 
 return userProfileComponent

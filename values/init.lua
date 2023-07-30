@@ -4,7 +4,7 @@ local values_m = {}
 values_m.awesomeDir = os.getenv('HOME') .. '/.config/awesome'
 values_m.dataDir = os.getenv('XDG_DATA_HOME') .. '/awesome'
 
-values_m.terminal = os.getenv('TERMINAL') or 'contour'
+values_m.terminal = os.getenv('TERMINAL') or 'alacritty'
 values_m.editor = os.getenv('EDITOR') or 'nvim'
 values_m.browser = os.getenv('BROWSER') or 'firefox'
 values_m.fileManager = os.getenv('FILE_MANAGER') or 'pcmanfm'

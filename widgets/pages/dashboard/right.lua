@@ -22,7 +22,7 @@ dashboardRight_c.center = {}
 
 dashboardRight_c.center = helper_sm.makeComponent({
 	heading = 'Notes',
-	widget = AwesomeWM.widgets.testWidget('notes widget'),
+	widget = dashboardComponents.notes.main,
 	overrides = {
 		contentRatio = 0.95
 	}
