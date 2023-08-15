@@ -254,7 +254,7 @@ keymaps_m.list = {
 				AwesomeWM.functions.clients.toggleClientProperty('fullscreen')
 			end,
 			'Make client fullscreen'
-		}
+		},
 	},
 
 	['Tag movement'] = {

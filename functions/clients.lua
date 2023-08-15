@@ -48,6 +48,7 @@ clients_sm.initClients = function()
 				floating = true,
 			}
 		},
+
 	}
 
 	AwesomeWM.client.connect_signal('unmanage', function(_client)
@@ -66,7 +67,7 @@ clients_sm.initClients = function()
 	end)
 
 	AwesomeWM.client.connect_signal('mouse::enter', function(_client)
-		_client:emit_signal('request::activate', 'mouse_enter', {raise = true})
+		_client:emit_signal('request::activate', 'mouse_enter', {raise = false})
 	end)
 
 	AwesomeWM.client.connect_signal('focus', function(_client)
