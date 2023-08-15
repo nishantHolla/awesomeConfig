@@ -56,7 +56,7 @@ userProfileComponent.links = {
 
 	{
 		name = 'redditLink',
-		text = 'u/' .. AwesomeWM.values.redditName,
+		text = "reddit.com",
 		test = AwesomeWM.values.redditName,
 		icon = "󰑍",
 		activeColor = AwesomeWM.beautiful.orange,

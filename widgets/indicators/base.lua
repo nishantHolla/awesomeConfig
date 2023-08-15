@@ -76,8 +76,8 @@ indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _sl
 		end,
 	})
 
+	_placement(indicator.wibox, {margins = indicatorBase_c.margins})
 	indicator.wibox.show = function()
-		_placement(indicator.wibox, {margins = indicatorBase_c.margins})
 		indicator.wibox.visible = true
 		indicator.timer:again()
 	end

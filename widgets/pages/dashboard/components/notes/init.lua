@@ -92,10 +92,10 @@ notesComponent.scroller = AwesomeWM.wibox.widget({
 
 notesComponent.editButton = helper_sm.makeButton({
 	widget = AwesomeWM.wibox.widget({
-		text = '󰏫',
+		markup = '<b>󰏫</b>',
 		valign = 'center',
 		align = 'center',
-		font = AwesomeWM.beautiful.nerdFont .. ' 40',
+		font = AwesomeWM.beautiful.nerdFont .. ' 30',
 		widget = AwesomeWM.wibox.widget.textbox
 	}),
 
@@ -109,14 +109,15 @@ notesComponent.editButton = helper_sm.makeButton({
 		buttonShape = AwesomeWM.gears.shape.rounded_rect,
 		inactiveButtonBg = AwesomeWM.beautiful.white,
 		inactiveButtonBorderColor = AwesomeWM.beautiful.white,
+		buttonBorderWidth = 0,
 		inactiveButtonFg = AwesomeWM.beautiful.black
 	}
 
 })
 
 notesComponent.layout = AwesomeWM.wibox.widget({
-	notesComponent.scroller,
 	notesComponent.editButton.main,
+	notesComponent.scroller,
 	spacing = 10,
 	widget = AwesomeWM.wibox.layout.fixed.vertical
 })

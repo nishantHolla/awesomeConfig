@@ -63,8 +63,8 @@ dashboardMiddle_c.center.main = AwesomeWM.wibox.widget({
 dashboardMiddle_c.bottom = {}
 
 dashboardMiddle_c.bottom = helper_sm.makeComponent({
-	heading = 'Quick launch',
-	widget = AwesomeWM.widgets.testWidget('quick launch widget'),
+	heading = '???',
+	widget = AwesomeWM.widgets.testWidget('??? widget'),
 	overrides = {
 		contentRatio = 0.6
 	}
