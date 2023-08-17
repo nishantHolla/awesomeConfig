@@ -2,7 +2,7 @@
 local mediaComponent = {}
 local helper_sm = AwesomeWM.widgets.pages.helper
 local values_sm = AwesomeWM.widgets.pages.values
-local thumbnailLocation = AwesomeWM.values.dataDir .. '/media.png'
+local thumbnailLocation = AwesomeWM.values.mediaFile
 local lastUrl = ''
 
 mediaComponent.albumImage = AwesomeWM.wibox.widget({

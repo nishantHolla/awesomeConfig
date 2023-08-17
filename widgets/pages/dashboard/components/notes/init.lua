@@ -2,7 +2,7 @@
 local notesComponent = {}
 local helper_sm = AwesomeWM.widgets.pages.helper
 local values_sm = AwesomeWM.widgets.pages.values
-notesComponent.noteFile = AwesomeWM.values.dataDir .. '/notes.txt'
+notesComponent.noteFile = AwesomeWM.values.notesFile
 
 notesComponent.makeNote = function(_heading, _body, _options)
 	_heading = _heading or 'Heading'
@@ -134,6 +134,12 @@ notesComponent.refresh = function()
 	local heading = ''
 	local counter = 1
 	notesComponent.list = {}
+
+	if AwesomeWM.gears.filesystem.file_readable(notesComponent.noteFile) == false then
+		AwesomeWM.notify.critical('Note file not readable')
+		return
+	end
+
 	for line in io.lines(notesComponent.noteFile) do
 		if line == "" then isHeading = true goto continue end
 		if isHeading then

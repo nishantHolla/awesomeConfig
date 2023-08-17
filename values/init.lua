@@ -4,6 +4,11 @@ local values_m = {}
 values_m.awesomeDir = os.getenv('HOME') .. '/.config/awesome'
 values_m.dataDir = os.getenv('XDG_DATA_HOME') .. '/awesome'
 
+values_m.restartFile = values_m.dataDir .. '/restart'
+values_m.startupFile = values_m.dataDir .. '/startup'
+values_m.notesFile = values_m.dataDir .. '/notes'
+values_m.mediaFile = values_m.dataDir .. '/media.png'
+
 values_m.terminal = os.getenv('TERMINAL') or 'alacritty'
 values_m.editor = os.getenv('EDITOR') or 'nvim'
 values_m.browser = os.getenv('BROWSER') or 'firefox'
@@ -27,6 +32,7 @@ values_m.tagLayouts = {
 	values_m.layoutSuit.spiral,
 	values_m.layoutSuit.fair.horizontal,
 	values_m.layoutSuit.floating,
+	values_m.layoutSuit.tile.top
 }
 
 values_m.mailLink = 'https://mail.google.com/'
