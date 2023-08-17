@@ -37,6 +37,13 @@ functions_m.isFile = function(_filePath)
 end
 
 functions_m.restart = function()
+	local restartTemp = io.open(AwesomeWM.values.restartFile, 'w')
+
+	if (restartTemp) then
+		local selectedTag = AwesomeWM.awful.screen.focused().selected_tag
+		restartTemp:write(selectedTag.name)
+		restartTemp:close()
+	end
 	AwesomeWM.awesome.restart()
 end
 
@@ -58,6 +65,18 @@ end
 functions_m.shutdown = function()
 	if AwesomeWM.user then AwesomeWM.user.exit() end
 	AwesomeWM.awful.spawn.with_shell('shutdown now')
+end
+
+functions_m.initRestore = function()
+	if AwesomeWM.gears.filesystem.file_readable(AwesomeWM.values.restartFile) then
+		local restartFile = io.open(AwesomeWM.values.restartFile, 'r')
+		if (restartFile == nil) then return end
+
+		local tagName = restartFile:read()
+		AwesomeWM.functions.tags.moveToTag(tagName)
+
+		restartFile:close()
+	end
 end
 
 functions_m.screens = require('functions.screens')

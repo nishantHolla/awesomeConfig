@@ -42,6 +42,7 @@ AwesomeWM.theme.initTheme()
 AwesomeWM.functions.clients.initClients()
 AwesomeWM.widgets.initWidgets()
 AwesomeWM.notify.initNotifications()
+AwesomeWM.functions.initRestore()
 
 -- User functions (ignored by git)
 -- to use this, create a file called user.lua in functions directory and return a table that
@@ -49,5 +50,3 @@ AwesomeWM.notify.initNotifications()
 if AwesomeWM.user then AwesomeWM.user.init() end
 
 AwesomeWM.widgets.indicators.tags.show()
-
--- awesome.connect_signal("startup", AwesomeWM.functions.restore)
