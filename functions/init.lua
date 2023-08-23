@@ -64,6 +64,7 @@ end
 
 functions_m.shutdown = function()
 	if AwesomeWM.user then AwesomeWM.user.exit() end
+	os.remove(AwesomeWM.values.restartFile)
 	AwesomeWM.awful.spawn.with_shell('shutdown now')
 end
 
