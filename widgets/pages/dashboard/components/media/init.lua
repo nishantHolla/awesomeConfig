@@ -5,6 +5,15 @@ local values_sm = AwesomeWM.widgets.pages.values
 local thumbnailLocation = AwesomeWM.values.mediaFile
 local lastUrl = ''
 
+local showMediaImage = false
+
+local titleFontSize = '20'
+local artistFontSize = '15'
+
+if showMediaImage == false then
+	os.remove(thumbnailLocation)
+end
+
 mediaComponent.albumImage = AwesomeWM.wibox.widget({
 	image = thumbnailLocation,
 	resize = true,
@@ -15,7 +24,7 @@ mediaComponent.albumArtist = AwesomeWM.wibox.widget({
 	text = 'artist',
 	valign = 'center',
 	align = 'left',
-	font = AwesomeWM.beautiful.pagesFont .. ' 20',
+	font = AwesomeWM.beautiful.pagesFont .. ' ' .. artistFontSize,
 	widget = AwesomeWM.wibox.widget.textbox
 })
 
@@ -23,7 +32,7 @@ mediaComponent.albumTitle = AwesomeWM.wibox.widget({
 	text = 'title',
 	valign = 'center',
 	align = 'left',
-	font = AwesomeWM.beautiful.pagesFont .. ' 15',
+	font = AwesomeWM.beautiful.pagesFont .. ' ' .. titleFontSize,
 	widget = AwesomeWM.wibox.widget.textbox,
 })
 
@@ -52,23 +61,51 @@ mediaComponent.next = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.widget.textbox
 })
 
-mediaComponent.top = AwesomeWM.wibox.widget({
-	{
-		mediaComponent.albumImage,
-		valign = 'center',
+local imageComponent = function()
+	if showMediaImage then
+	else
+		return nil
+	end
+end
+
+local topComponent = nil
+
+if showMediaImage then
+	topComponent = {
+		{
+			mediaComponent.albumImage,
+			valign = 'center',
+			align = 'center',
+			widget = AwesomeWM.wibox.container.place
+		},
+		{
+			mediaComponent.albumTitle,
+			mediaComponent.albumArtist,
+			widget = AwesomeWM.wibox.layout.flex.vertical,
+		},
+		spacing = 10,
+		widget = AwesomeWM.wibox.layout.ratio.horizontal
+
+	}
+else
+	topComponent = {
+		{
+			mediaComponent.albumTitle,
+			mediaComponent.albumArtist,
+			widget = AwesomeWM.wibox.layout.flex.vertical,
+		},
+
 		align = 'center',
 		widget = AwesomeWM.wibox.container.place
-	},
-	{
-		mediaComponent.albumArtist,
-		mediaComponent.albumTitle,
-		widget = AwesomeWM.wibox.layout.flex.vertical,
-	},
-	spacing = 10,
-	widget = AwesomeWM.wibox.layout.ratio.horizontal
-})
 
-mediaComponent.top:set_ratio(2, 0.7)
+	}
+end
+
+mediaComponent.top = AwesomeWM.wibox.widget(topComponent)
+
+if showMediaImage then
+	mediaComponent.top:set_ratio(2, 0.7)
+end
 
 mediaComponent.buttonOverrides = {
 	padding = 10,
@@ -177,7 +214,9 @@ end
 
 mediaComponent.refresh = function()
 
-	mediaComponent.albumImage.update()
+	if showMediaImage then
+		mediaComponent.albumImage.update()
+	end
 	mediaComponent.albumArtist.update()
 	mediaComponent.playPause.update()
 	mediaComponent.albumTitle.update()
