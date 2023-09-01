@@ -2,15 +2,15 @@
 local values_sm = {}
 
 values_sm.wiboxOpacity = 0.85
-values_sm.wiboxBg = AwesomeWM.beautiful.black
+values_sm.wiboxBg = AwesomeWM.beautiful.gray
 
 values_sm.primarySpacing = 0
 values_sm.secondarySpacing = 0
 
-values_sm.inactiveContainerBg = AwesomeWM.beautiful.gray
+values_sm.inactiveContainerBg = AwesomeWM.beautiful.black
 values_sm.inactiveContainerFg = AwesomeWM.beautiful.white
 
-values_sm.activeContainerBg = AwesomeWM.beautiful.gray
+values_sm.activeContainerBg = AwesomeWM.beautiful.black
 values_sm.activeContainerFg = AwesomeWM.beautiful.white
 
 values_sm.headingFont = AwesomeWM.beautiful.pagesFont

@@ -21,7 +21,7 @@ player_sm.toggle = function()
 end
 
 player_sm.playTick = function()
-	AwesomeWM.awful.spawn('paplay ' .. AwesomeWM.assets.getSound('tickSound'))
+	AwesomeWM.awful.spawn('paplay ' .. AwesomeWM.assets.getSound('tickSound') .. ' --volume=30000')
 end
 
 return player_sm
