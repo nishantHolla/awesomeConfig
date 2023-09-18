@@ -37,9 +37,8 @@ battery_sm.checkBattery = function()
 		if value < AwesomeWM.values.batteryLowThreshold then
 			if AwesomeWM.values.batteryLowNotified == false then
 				if icon ~= AwesomeWM.assets.getIcon('batteryChargingWhite') then
-					AwesomeWM.values.lowBatteryNotification = AwesomeWM.notify.critical('Battery level less than ' .. tostring(AwesomeWM.values.batteryLowThreshold) .. '%. Connect me to a charger!')
+					AwesomeWM.widgets.lowBattery.show()
 					AwesomeWM.values.batteryLowNotified = true
-					AwesomeWM.functions.brightness.set(10)
 				end
 			end
 		elseif AwesomeWM.values.batteryLowNotified then
