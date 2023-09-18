@@ -124,5 +124,10 @@ statsComponent.refresh = function()
 	statsComponent.batteryStat.refresh()
 end
 
+statsComponent.timer = AwesomeWM.gears.timer({
+	timeout = 3,
+	callback = statsComponent.refresh
+})
+
 
 return statsComponent

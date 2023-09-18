@@ -29,14 +29,27 @@ userProfileComponent.left = AwesomeWM.wibox.widget({
 
 userProfileComponent.links = {
 	{
-		name = 'mailLink',
-		text = AwesomeWM.values.emailID,
-		test = AwesomeWM.values.emailID,
+		name = 'gmailLink',
+		text = AwesomeWM.values.gmailID,
+		test = AwesomeWM.values.gmailID,
 		icon = '󰊫',
 		activeColor = AwesomeWM.beautiful.red,
 		inactiveColor = AwesomeWM.beautiful.red,
 		onClick = function()
-			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.mailLink)
+			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.gmailLink)
+			AwesomeWM.widgets.pages.dashboard.toggle()
+		end
+	},
+
+	{
+		name = 'outlookLink',
+		text = AwesomeWM.values.outlookID,
+		test = AwesomeWM.values.outlookID,
+		icon = '󰴢',
+		activeColor = AwesomeWM.beautiful.blue,
+		inactiveColor = AwesomeWM.beautiful.blue,
+		onClick = function()
+			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.outlookLink)
 			AwesomeWM.widgets.pages.dashboard.toggle()
 		end
 	},
@@ -54,18 +67,18 @@ userProfileComponent.links = {
 		end
 	},
 
-	{
-		name = 'redditLink',
-		text = "reddit.com",
-		test = AwesomeWM.values.redditName,
-		icon = "󰑍",
-		activeColor = AwesomeWM.beautiful.orange,
-		inactiveColor = AwesomeWM.beautiful.orange,
-		onClick = function()
-			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.redditLink)
-			AwesomeWM.widgets.pages.dashboard.toggle()
-		end
-	},
+	-- {
+	-- 	name = 'redditLink',
+	-- 	text = "reddit.com",
+	-- 	test = AwesomeWM.values.redditName,
+	-- 	icon = "󰑍",
+	-- 	activeColor = AwesomeWM.beautiful.orange,
+	-- 	inactiveColor = AwesomeWM.beautiful.orange,
+	-- 	onClick = function()
+	-- 		AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.redditLink)
+	-- 		AwesomeWM.widgets.pages.dashboard.toggle()
+	-- 	end
+	-- },
 
 	{
 		name = 'whatsappLink',

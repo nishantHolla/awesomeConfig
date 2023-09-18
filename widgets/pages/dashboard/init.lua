@@ -59,11 +59,13 @@ dashboard_sm.start = function()
 
 	dashboard_sm.components.time.timer:start()
 	dashboard_sm.components.media.timer:start()
+	dashboard_sm.components.stats.timer:start()
 end
 
 dashboard_sm.stop = function()
 	dashboard_sm.components.time.timer:stop()
 	dashboard_sm.components.media.timer:stop()
+	dashboard_sm.components.stats.timer:stop()
 end
 
 dashboard_sm.toggle = function()

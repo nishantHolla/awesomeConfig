@@ -13,7 +13,8 @@ values_m.terminal = os.getenv('TERMINAL') or 'alacritty'
 values_m.editor = os.getenv('EDITOR') or 'nvim'
 values_m.browser = os.getenv('BROWSER') or 'firefox'
 values_m.fileManager = os.getenv('FILE_MANAGER') or 'pcmanfm'
-values_m.emailID = os.getenv('EMAIL_ID') or nil
+values_m.gmailID = os.getenv('GMAIL_ID') or nil
+values_m.outlookID = os.getenv('OUTLOOK_ID') or nil
 values_m.githubName = os.getenv('GITHUB_NAME') or nil
 values_m.redditName = os.getenv('REDDIT_NAME') or nil
 
@@ -35,9 +36,10 @@ values_m.tagLayouts = {
 	values_m.layoutSuit.tile.top
 }
 
-values_m.mailLink = 'https://mail.google.com/'
+values_m.gmailLink = 'https://mail.google.com/'
+values_m.outlookLink = 'https://outlook.live.com/'
 values_m.githubLink = 'https://github.com/'
-values_m.redditLink = 'https://reddit.com/'
+-- values_m.redditLink = 'https://reddit.com/'
 
 values_m.getScript = function(_name)
 	return (values_m.awesomeDir .. '/scripts/' .. _name .. '.sh')
@@ -45,6 +47,7 @@ end
 
 values_m.batteryLowThreshold = 15
 values_m.batteryLowNotified = false
+values_m.limitHeadphonesVolume = true
 
 values_m.initValues = function()
 
