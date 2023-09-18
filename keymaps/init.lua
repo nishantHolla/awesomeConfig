@@ -19,6 +19,13 @@ keymaps_m.list = {
 			'Show open clients'
 		},
 		{
+			{keymaps_m.modkey}, '3',
+			function()
+				AwesomeWM.functions.spawn('betterlockscreen -l')
+			end,
+			'Lock the computer'
+		},
+		{
 			{keymaps_m.modkey}, 'Escape',
 			function()
 				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/powermenu.sh')
