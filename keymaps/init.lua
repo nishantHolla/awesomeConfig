@@ -26,9 +26,16 @@ keymaps_m.list = {
 			'Lock the computer'
 		},
 		{
+			{keymaps_m.modkey, 'Shift'}, '3',
+			function()
+				AwesomeWM.functions.spawn_with_shell('sleep 1; xset dpms force off; betterlockscreen -l')
+			end,
+			'Turn off screen'
+		},
+		{
 			{keymaps_m.modkey}, 'Escape',
 			function()
-				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/powermenu.sh')
+				AwesomeWM.functions.spawn_with_shell('$XDG_CONFIG_HOME/rofi/scripts/powermenu.sh')
 			end,
 			'Show powermenu',
 		},
@@ -134,7 +141,7 @@ keymaps_m.list = {
 		{
 			{keymaps_m.modkey}, 'space',
 			function()
-				AwesomeWM.awful.spawn.with_shell('$XDG_CONFIG_HOME/rofi/scripts/open.sh')
+				AwesomeWM.functions.spawn_with_shell('$XDG_CONFIG_HOME/rofi/scripts/open.sh')
 			end,
 			'Launcher'
 		},
@@ -235,28 +242,41 @@ keymaps_m.list = {
 		{
 			{keymaps_m.modkey}, 'c',
 			function()
-				if AwesomeWM.client.focus then
+				local toKill = true
+				if AwesomeWM.client.focus.notToKill then
+					toKill = false
+				end
+
+				if AwesomeWM.client.focus and toKill then
 					AwesomeWM.client.focus:kill()
 				end
 			end,
 			'Close client'
 		},
 		{
-			{keymaps_m.modkey}, ',',
+			{keymaps_m.modkey}, '7',
+			function()
+				AwesomeWM.functions.clients.toggleClientProperty('notToKill')
+			end,
+			'Prevent client from closing'
+
+		},
+		{
+			{keymaps_m.modkey}, '8',
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty('floating')
 			end,
 			'Make client floating'
 		},
 		{
-			{keymaps_m.modkey}, '.',
+			{keymaps_m.modkey}, '9',
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty('sticky')
 			end,
 			'Make client sticky'
 		},
 		{
-			{keymaps_m.modkey}, '/',
+			{keymaps_m.modkey}, '0',
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty('fullscreen')
 			end,

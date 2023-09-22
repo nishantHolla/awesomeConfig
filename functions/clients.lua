@@ -135,6 +135,12 @@ clients_sm.toggleClientProperty = function(_propertyName)
 		else
 			focusedClient.floating = false
 		end
+	elseif _propertyName == 'notToKill' then
+		if focusedClient.notToKill then
+			focusedClient.notToKill = false
+		else
+			focusedClient.notToKill = true
+		end
 	end
 
 	clients_sm.applyBorderColor(focusedClient)
@@ -142,7 +148,8 @@ clients_sm.toggleClientProperty = function(_propertyName)
 end
 
 clients_sm.applyBorderColor = function(_client)
-	if _client.floating then _client.border_color = AwesomeWM.beautiful.border_floating
+	if _client.notToKill then _client.border_color = AwesomeWM.beautiful.white
+	elseif _client.floating then _client.border_color = AwesomeWM.beautiful.border_floating
 	elseif _client.sticky then _client.border_color = AwesomeWM.beautiful.border_sticky
 	elseif _client.fullscreen then _client.border_color = AwesomeWM.beautiful.border_fullscreen
 	else _client.border_color = AwesomeWM.beautiful.border_focus
