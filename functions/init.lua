@@ -62,6 +62,10 @@ functions_m.spawn = function(_application, _options)
 	AwesomeWM.awful.spawn(_application, _options)
 end
 
+functions_m.spawn_with_shell = function(_command)
+	AwesomeWM.awful.spawn.with_shell(_command)
+end
+
 functions_m.shutdown = function()
 	if AwesomeWM.user then AwesomeWM.user.exit() end
 	os.remove(AwesomeWM.values.restartFile)
