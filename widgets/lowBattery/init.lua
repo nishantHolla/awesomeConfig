@@ -26,7 +26,7 @@ lowBattery_sm.init = function()
 
 		{
 			lowBattery_sm.text,
-			fg = AwesomeWM.beautiful.red,
+			fg = AwesomeWM.beautiful.white,
 			widget = AwesomeWM.wibox.container.background
 		},
 		spacing = 20,
