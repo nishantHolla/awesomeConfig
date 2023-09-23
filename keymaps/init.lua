@@ -242,12 +242,7 @@ keymaps_m.list = {
 		{
 			{keymaps_m.modkey}, 'c',
 			function()
-				local toKill = true
-				if AwesomeWM.client.focus.notToKill then
-					toKill = false
-				end
-
-				if AwesomeWM.client.focus and toKill then
+				if AwesomeWM.client.focus and AwesomeWM.client.focus.notToKill == false then
 					AwesomeWM.client.focus:kill()
 				end
 			end,
