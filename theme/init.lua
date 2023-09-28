@@ -1,6 +1,5 @@
-
 local theme_m = {}
-local imageExtensions = {'.jpg', '.png', '.jpeg'}
+local imageExtensions = { ".jpg", ".png", ".jpeg" }
 
 theme_m.theme_assets = require("beautiful.theme_assets")
 theme_m.xresources = require("beautiful.xresources")
@@ -16,12 +15,14 @@ theme_m.setWallpaper = function(_screen, _wallpaperPath)
 end
 
 local function endsWith(str, ending)
-   return ending == "" or str:sub(-#ending) == ending
+	return ending == "" or str:sub(-#ending) == ending
 end
 
 local function isImage(_path)
 	for _, ext in pairs(imageExtensions) do
-		if endsWith(_path, ext) then return true end
+		if endsWith(_path, ext) then
+			return true
+		end
 	end
 
 	return false
@@ -31,17 +32,18 @@ theme_m.replaceWallpaper = function(_screen, _wallpaperPath)
 	_screen = _screen or AwesomeWM.awful.screen.focused()
 	_wallpaperPath = _wallpaperPath or AwesomeWM.assets.getWallpaper()
 
-	if isImage(_wallpaperPath) == false then return end
+	if isImage(_wallpaperPath) == false then
+		return
+	end
 
-	AwesomeWM.awful.spawn.with_shell('cp -f ' .. _wallpaperPath .. ' ' .. AwesomeWM.assets.getWallpaper())
+	AwesomeWM.awful.spawn.with_shell("cp -f " .. _wallpaperPath .. " " .. AwesomeWM.assets.getWallpaper())
 	AwesomeWM.gears.wallpaper.maximized(_wallpaperPath, _screen, false)
 end
 
 theme_m.initTheme = function()
-
-	b.defaultFont = 'SometypeMono NFM'
-	b.pagesFont = 'Quicksand'
-	b.font = b.defaultFont .. ' 12'
+	b.defaultFont = "SometypeMono NFM"
+	b.pagesFont = "Quicksand"
+	b.font = b.defaultFont .. " 12"
 	b.nerdFont = b.defaultFont
 
 	b.white = "#F0F1DF"

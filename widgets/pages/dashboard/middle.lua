@@ -1,4 +1,3 @@
-
 local dashboardMiddle_c = {}
 local dashboardComponents = AwesomeWM.widgets.pages.dashboard.components
 local values_sm = AwesomeWM.widgets.pages.values
@@ -9,11 +8,11 @@ local helper_sm = AwesomeWM.widgets.pages.helper
 dashboardMiddle_c.top = {}
 
 dashboardMiddle_c.top = helper_sm.makeComponent({
-	heading = 'Tags',
+	heading = "Tags",
 	widget = dashboardComponents.tags.main,
 	overrides = {
-		contentRatio = 0.6
-	}
+		contentRatio = 0.6,
+	},
 })
 
 -- center
@@ -21,41 +20,41 @@ dashboardMiddle_c.top = helper_sm.makeComponent({
 dashboardMiddle_c.center = {}
 
 dashboardMiddle_c.center.above = helper_sm.makeComponent({
-	heading = 'User Profile',
+	heading = "User Profile",
 	widget = dashboardComponents.userProfile.main,
 	overrides = {
-		contentRatio = 0.9
-	}
+		contentRatio = 0.9,
+	},
 })
 
 dashboardMiddle_c.center.below = {}
 dashboardMiddle_c.center.below.left = helper_sm.makeComponent({
-	heading = 'Weather',
+	heading = "Weather",
 	widget = dashboardComponents.weather.main,
 	overrides = {
-		contentRatio = 0.9
-	}
+		contentRatio = 0.9,
+	},
 })
 
 dashboardMiddle_c.center.below.right = helper_sm.makeComponent({
-	heading = 'Time And Date',
+	heading = "Time And Date",
 	widget = dashboardComponents.time.main,
 	overrides = {
-		contentRatio = 0.9
-	}
+		contentRatio = 0.9,
+	},
 })
 
 dashboardMiddle_c.center.below.main = AwesomeWM.wibox.widget({
 	dashboardMiddle_c.center.below.left.main,
 	dashboardMiddle_c.center.below.right.main,
 	spacing = -1,
-	widget = AwesomeWM.wibox.layout.ratio.horizontal
+	widget = AwesomeWM.wibox.layout.ratio.horizontal,
 })
 
 dashboardMiddle_c.center.main = AwesomeWM.wibox.widget({
 	dashboardMiddle_c.center.above.main,
 	dashboardMiddle_c.center.below.main,
-	widget = AwesomeWM.wibox.layout.ratio.vertical
+	widget = AwesomeWM.wibox.layout.ratio.vertical,
 })
 
 -- bottom
@@ -63,11 +62,11 @@ dashboardMiddle_c.center.main = AwesomeWM.wibox.widget({
 dashboardMiddle_c.bottom = {}
 
 dashboardMiddle_c.bottom = helper_sm.makeComponent({
-	heading = '???',
-	widget = AwesomeWM.widgets.testWidget('??? widget'),
+	heading = "???",
+	widget = AwesomeWM.widgets.testWidget("??? widget"),
 	overrides = {
-		contentRatio = 0.6
-	}
+		contentRatio = 0.6,
+	},
 })
 
 -- main
@@ -77,7 +76,7 @@ dashboardMiddle_c.main = AwesomeWM.wibox.widget({
 	dashboardMiddle_c.center.main,
 	dashboardMiddle_c.bottom.main,
 	spacing = values_sm.secondarySpacing,
-	widget = AwesomeWM.wibox.layout.ratio.vertical
+	widget = AwesomeWM.wibox.layout.ratio.vertical,
 })
 
 dashboardMiddle_c.main:ajust_ratio(2, 0.1, 0.8, 0.1)

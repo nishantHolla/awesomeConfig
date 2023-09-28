@@ -1,14 +1,12 @@
-
 local tags_sm = {}
 
 tags_sm.moveToTag = function(_tagName)
-
 	local focusedScreen = AwesomeWM.awful.screen.focused()
 	local tag = AwesomeWM.awful.tag.find_by_name(focusedScreen, _tagName)
 
-	if _tagName == 'next' then
+	if _tagName == "next" then
 		AwesomeWM.awful.tag.viewnext(focusedScreen)
-	elseif _tagName == 'previous' then
+	elseif _tagName == "previous" then
 		AwesomeWM.awful.tag.viewprev(focusedScreen)
 	elseif _tagName then
 		tag:view_only()
@@ -22,8 +20,6 @@ tags_sm.moveToTag = function(_tagName)
 	else
 		AwesomeWM.widgets.indicators.tags.show()
 	end
-
-
 end
 
 tags_sm.cycleLayout = function(_order)
@@ -34,7 +30,6 @@ tags_sm.cycleLayout = function(_order)
 	else
 		AwesomeWM.widgets.indicators.tags.show()
 	end
-
 end
 
 tags_sm.getState = function(_tagName)
@@ -45,7 +40,7 @@ tags_sm.getState = function(_tagName)
 		values.state = "active"
 		values.colors = {
 			border = AwesomeWM.beautiful.tagIndicatorActiveBorderColor,
-			background = AwesomeWM.beautiful.tagIndicatorActiveBackground
+			background = AwesomeWM.beautiful.tagIndicatorActiveBackground,
 		}
 
 		return values
@@ -58,13 +53,13 @@ tags_sm.getState = function(_tagName)
 		values.state = "dead"
 		values.colors = {
 			border = AwesomeWM.beautiful.tagIndicatorDeadBorderColor,
-			background = AwesomeWM.beautiful.tagIndicatorDeadBackground
+			background = AwesomeWM.beautiful.tagIndicatorDeadBackground,
 		}
 	else
 		values.state = "alive"
 		values.colors = {
 			border = AwesomeWM.beautiful.tagIndicatorAliveBorderColor,
-			background = AwesomeWM.beautiful.tagIndicatorAliveBackground
+			background = AwesomeWM.beautiful.tagIndicatorAliveBackground,
 		}
 	end
 

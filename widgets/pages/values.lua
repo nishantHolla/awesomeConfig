@@ -1,4 +1,3 @@
-
 local values_sm = {}
 
 values_sm.wiboxOpacity = 0.85

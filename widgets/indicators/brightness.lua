@@ -1,7 +1,6 @@
-
 local maxValue = 255
 
-local indicatorBrightness_sm = require('widgets.indicators.base').make(
+local indicatorBrightness_sm = require("widgets.indicators.base").make(
 	AwesomeWM.awful.placement.left,
 	maxValue,
 	AwesomeWM.beautiful.white,
@@ -9,7 +8,6 @@ local indicatorBrightness_sm = require('widgets.indicators.base').make(
 )
 
 indicatorBrightness_sm.show = function()
-
 	AwesomeWM.functions.brightness.findBrightnessAnd(function(_icon, _brightness)
 		local value = _brightness / maxValue * 100
 		value = math.floor(value)

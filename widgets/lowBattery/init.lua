@@ -1,56 +1,56 @@
-
 local lowBattery_sm = {}
 
 lowBattery_sm.init = function()
-
 	lowBattery_sm.icon = AwesomeWM.wibox.widget({
-		image = AwesomeWM.assets.getIcon('batteryLowWhite'),
+		image = AwesomeWM.assets.getIcon("batteryLowWhite"),
 		resize = true,
 		forced_height = 100,
 		forced_width = 100,
-		widget = AwesomeWM.wibox.widget.imagebox
+		widget = AwesomeWM.wibox.widget.imagebox,
 	})
 
 	lowBattery_sm.text = AwesomeWM.wibox.widget({
-		text = 'Battery level less than ' .. tostring(AwesomeWM.values.batteryLowThreshold) .. '%. Connect me to a charger!',
-		font = AwesomeWM.beautiful.pagesFont .. ' 30',
-		widget = AwesomeWM.wibox.widget.textbox
+		text = "Battery level less than "
+			.. tostring(AwesomeWM.values.batteryLowThreshold)
+			.. "%. Connect me to a charger!",
+		font = AwesomeWM.beautiful.pagesFont .. " 30",
+		widget = AwesomeWM.wibox.widget.textbox,
 	})
 
 	lowBattery_sm.main = AwesomeWM.wibox.widget({
 		{
 			lowBattery_sm.icon,
-			align = 'center',
-			widget = AwesomeWM.wibox.container.place
+			align = "center",
+			widget = AwesomeWM.wibox.container.place,
 		},
 
 		{
 			lowBattery_sm.text,
 			fg = AwesomeWM.beautiful.white,
-			widget = AwesomeWM.wibox.container.background
+			widget = AwesomeWM.wibox.container.background,
 		},
 		spacing = 20,
-		layout = AwesomeWM.wibox.layout.flex.vertical
+		layout = AwesomeWM.wibox.layout.flex.vertical,
 	})
 
 	lowBattery_sm.wibox = AwesomeWM.wibox({
 		widget = AwesomeWM.wibox.widget({
 			lowBattery_sm.main,
-			align = 'center',
-			valign = 'center',
-			widget = AwesomeWM.wibox.container.place
+			align = "center",
+			valign = "center",
+			widget = AwesomeWM.wibox.container.place,
 		}),
 		visible = false,
 		opacity = 0.85,
 		ontop = true,
-		type = 'dock',
+		type = "dock",
 		bg = AwesomeWM.beautiful.gray,
 		height = AwesomeWM.values.screenHeight,
 		width = AwesomeWM.values.screenWidth,
-		input_passthrough = false
+		input_passthrough = false,
 	})
 
-	lowBattery_sm.wibox:connect_signal('button::press', function()
+	lowBattery_sm.wibox:connect_signal("button::press", function()
 		lowBattery_sm.hide()
 	end)
 
@@ -66,7 +66,9 @@ lowBattery_sm.show = function()
 end
 
 lowBattery_sm.hide = function()
-	if not lowBattery_sm.brightnessValue then return end
+	if not lowBattery_sm.brightnessValue then
+		return
+	end
 	AwesomeWM.functions.brightness.set(lowBattery_sm.brightnessValue)
 	lowBattery_sm.wibox.visible = false
 end

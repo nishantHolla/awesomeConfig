@@ -1,4 +1,3 @@
-
 local indicatorBase_c = {}
 
 indicatorBase_c.height = 360
@@ -15,7 +14,7 @@ indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _sl
 	local indicator = {}
 
 	indicator.icon = AwesomeWM.wibox.widget({
-		image = 'icon',
+		image = "icon",
 		resize = true,
 		widget = AwesomeWM.wibox.widget.imagebox,
 	})
@@ -32,9 +31,9 @@ indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _sl
 	})
 
 	indicator.value = AwesomeWM.wibox.widget({
-		text = 'value',
-		align = 'center',
-		valign = 'center',
+		text = "value",
+		align = "center",
+		valign = "center",
 		widget = AwesomeWM.wibox.widget.textbox,
 	})
 
@@ -42,19 +41,19 @@ indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _sl
 		{
 			indicator.icon,
 			margins = 10,
-			widget = AwesomeWM.wibox.container.margin
+			widget = AwesomeWM.wibox.container.margin,
 		},
 		{
 			indicator.slider,
-			direction = 'east',
+			direction = "east",
 			layout = AwesomeWM.wibox.container.rotate,
 		},
 		{
 			indicator.value,
 			margins = 10,
-			widget = AwesomeWM.wibox.container.margin
+			widget = AwesomeWM.wibox.container.margin,
 		},
-		layout = AwesomeWM.wibox.layout.align.vertical
+		layout = AwesomeWM.wibox.layout.align.vertical,
 	})
 
 	indicator.wibox = AwesomeWM.wibox({
@@ -62,8 +61,8 @@ indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _sl
 		visible = false,
 		opacity = indicatorBase_c.opacity,
 		ontop = true,
-		type = 'dock',
-		bg = '#111111',
+		type = "dock",
+		bg = "#111111",
 		height = indicatorBase_c.height,
 		width = indicatorBase_c.width,
 		shape = AwesomeWM.gears.shape.rounded_rect,
@@ -76,7 +75,7 @@ indicatorBase_c.make = function(_placement, _max_value, _slider_outer_color, _sl
 		end,
 	})
 
-	_placement(indicator.wibox, {margins = indicatorBase_c.margins})
+	_placement(indicator.wibox, { margins = indicatorBase_c.margins })
 	indicator.wibox.show = function()
 		indicator.wibox.visible = true
 		indicator.timer:again()

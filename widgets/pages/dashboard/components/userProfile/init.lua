@@ -1,70 +1,69 @@
-
 local userProfileComponent = {}
 local helper_sm = AwesomeWM.widgets.pages.helper
 
 userProfileComponent.image = AwesomeWM.wibox.widget({
 	image = AwesomeWM.assets.getAsset("icons/userIcon.png"),
 	resize = true,
-	widget = AwesomeWM.wibox.widget.imagebox
+	widget = AwesomeWM.wibox.widget.imagebox,
 })
 
 userProfileComponent.text = AwesomeWM.wibox.widget({
-	align = 'center',
-	valign = 'center',
-	font = AwesomeWM.beautiful.pagesFont .. ' 40',
+	align = "center",
+	valign = "center",
+	font = AwesomeWM.beautiful.pagesFont .. " 40",
 	text = os.getenv("USER"),
-	widget = AwesomeWM.wibox.widget.textbox
+	widget = AwesomeWM.wibox.widget.textbox,
 })
 
 userProfileComponent.left = AwesomeWM.wibox.widget({
 	{
 		userProfileComponent.image,
-		aling = 'center',
-		valign = 'center',
-		widget = AwesomeWM.wibox.container.place
+		aling = "center",
+		valign = "center",
+		widget = AwesomeWM.wibox.container.place,
 	},
 	userProfileComponent.text,
-	widget = AwesomeWM.wibox.layout.ratio.vertical
+	widget = AwesomeWM.wibox.layout.ratio.vertical,
 })
 
 userProfileComponent.links = {
 	{
-		name = 'gmailLink',
+		name = "gmailLink",
 		text = AwesomeWM.values.gmailID,
 		test = AwesomeWM.values.gmailID,
-		icon = '󰊫',
+		icon = "󰊫",
 		activeColor = AwesomeWM.beautiful.red,
 		inactiveColor = AwesomeWM.beautiful.red,
 		onClick = function()
-			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.gmailLink)
+			AwesomeWM.awful.spawn.with_shell("firefox " .. AwesomeWM.values.gmailLink)
 			AwesomeWM.widgets.pages.dashboard.toggle()
-		end
+		end,
 	},
 
 	{
-		name = 'outlookLink',
+		name = "outlookLink",
 		text = AwesomeWM.values.outlookID,
 		test = AwesomeWM.values.outlookID,
-		icon = '󰴢',
+		icon = "󰴢",
 		activeColor = AwesomeWM.beautiful.blue,
 		inactiveColor = AwesomeWM.beautiful.blue,
 		onClick = function()
-			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.outlookLink)
+			AwesomeWM.awful.spawn.with_shell("firefox " .. AwesomeWM.values.outlookLink)
 			AwesomeWM.widgets.pages.dashboard.toggle()
-		end
+		end,
 	},
 
 	{
-		name = 'githubLink',
-		text = 'github.com/' .. AwesomeWM.values.githubName,
+		name = "githubLink",
+		text = "github.com/" .. AwesomeWM.values.githubName,
 		test = AwesomeWM.values.githubName,
-		icon = '',
+		icon = "",
 		activeColor = AwesomeWM.beautiful.white,
 		inactiveColor = AwesomeWM.beautiful.white,
 		onClick = function()
-			AwesomeWM.awful.spawn.with_shell('firefox ' .. AwesomeWM.values.githubLink)
+			AwesomeWM.awful.spawn.with_shell("firefox " .. AwesomeWM.values.githubLink)
 			AwesomeWM.widgets.pages.dashboard.toggle()
-		end
+		end,
 	},
 
 	-- {
@@ -81,22 +80,21 @@ userProfileComponent.links = {
 	-- },
 
 	{
-		name = 'whatsappLink',
-		text = 'web.whatsapp.com',
+		name = "whatsappLink",
+		text = "web.whatsapp.com",
 		test = true,
-		icon = '󰖣',
+		icon = "󰖣",
 		activeColor = AwesomeWM.beautiful.green,
 		inactiveColor = AwesomeWM.beautiful.green,
 		onClick = function()
-			AwesomeWM.awful.spawn.with_shell('firefox https://web.whatsapp.com/')
+			AwesomeWM.awful.spawn.with_shell("firefox https://web.whatsapp.com/")
 			AwesomeWM.widgets.pages.dashboard.toggle()
-		end
-	}
+		end,
+	},
 }
 
-
 userProfileComponent.right = AwesomeWM.wibox.widget({
-	widget = AwesomeWM.wibox.layout.fixed.vertical
+	widget = AwesomeWM.wibox.layout.fixed.vertical,
 })
 
 for _, options in pairs(userProfileComponent.links) do
@@ -117,11 +115,11 @@ userProfileComponent.main = AwesomeWM.wibox.widget({
 	userProfileComponent.left,
 	{
 		userProfileComponent.right,
-		valign = 'center',
-		align = 'left',
-		widget = AwesomeWM.wibox.container.place
+		valign = "center",
+		align = "left",
+		widget = AwesomeWM.wibox.container.place,
 	},
-	widget = AwesomeWM.wibox.layout.ratio.horizontal
+	widget = AwesomeWM.wibox.layout.ratio.horizontal,
 })
 
 userProfileComponent.main:set_ratio(2, 0.6)

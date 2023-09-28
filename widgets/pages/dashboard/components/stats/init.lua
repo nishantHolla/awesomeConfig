@@ -1,6 +1,4 @@
-
 local statsComponent = {}
-
 
 local makeStat = function(_options)
 	_options = _options or {}
@@ -19,16 +17,16 @@ local makeStat = function(_options)
 	local stat = {}
 
 	stat.icon = AwesomeWM.wibox.widget({
-		image = '',
+		image = "",
 		resize = true,
-		widget = AwesomeWM.wibox.widget.imagebox
+		widget = AwesomeWM.wibox.widget.imagebox,
 	})
 
 	stat.indicator = AwesomeWM.wibox.widget({
-		text = tostring(_options.value) .. '%',
-		valign = 'center',
-		align = 'center',
-		widget = AwesomeWM.wibox.widget.textbox
+		text = tostring(_options.value) .. "%",
+		valign = "center",
+		align = "center",
+		widget = AwesomeWM.wibox.widget.textbox,
 	})
 
 	stat.bar = AwesomeWM.wibox.widget({
@@ -39,15 +37,15 @@ local makeStat = function(_options)
 		color = _options.fgColor,
 		background_color = _options.bgColor,
 		paddings = _options.paddings,
-		widget = AwesomeWM.wibox.widget.progressbar
+		widget = AwesomeWM.wibox.widget.progressbar,
 	})
 
 	stat.main = AwesomeWM.wibox.widget({
 		{
 			stat.icon,
-			valign = 'center',
-			align = 'center',
-			widget = AwesomeWM.wibox.container.place
+			valign = "center",
+			align = "center",
+			widget = AwesomeWM.wibox.container.place,
 		},
 		stat.indicator,
 		{
@@ -56,9 +54,9 @@ local makeStat = function(_options)
 			right = 10,
 			top = 37,
 			bottom = 37,
-			widget = AwesomeWM.wibox.container.margin
+			widget = AwesomeWM.wibox.container.margin,
 		},
-		widget = AwesomeWM.wibox.layout.ratio.horizontal
+		widget = AwesomeWM.wibox.layout.ratio.horizontal,
 	})
 
 	stat.main:ajust_ratio(2, 0.1, 0.2, 0.7)
@@ -67,7 +65,7 @@ local makeStat = function(_options)
 		stat.silentRefresh = function(_icon, _value)
 			_value = math.floor((_value * 100) / _options.maxValue)
 			stat.icon.image = _icon
-			stat.indicator.text = _value .. '%'
+			stat.indicator.text = _value .. "%"
 			stat.bar.value = _value
 		end
 
@@ -82,26 +80,26 @@ end
 statsComponent.volumeStat = makeStat({
 	refresh = AwesomeWM.functions.volume.findVolumeAnd,
 	bgColor = AwesomeWM.beautiful.white,
-	fgColor = AwesomeWM.beautiful.red
+	fgColor = AwesomeWM.beautiful.red,
 })
 
 statsComponent.brightnessStat = makeStat({
 	maxValue = 255,
 	refresh = AwesomeWM.functions.brightness.findBrightnessAnd,
 	bgColor = AwesomeWM.beautiful.white,
-	fgColor = AwesomeWM.beautiful.blue
+	fgColor = AwesomeWM.beautiful.blue,
 })
 
 statsComponent.storageStat = makeStat({
 	refresh = AwesomeWM.functions.storage.findStorageAnd,
 	bgColor = AwesomeWM.beautiful.white,
-	fgColor = AwesomeWM.beautiful.yellow
+	fgColor = AwesomeWM.beautiful.yellow,
 })
 
 statsComponent.batteryStat = makeStat({
 	refresh = AwesomeWM.functions.battery.findBatteryAnd,
 	bgColor = AwesomeWM.beautiful.white,
-	fgColor = AwesomeWM.beautiful.green
+	fgColor = AwesomeWM.beautiful.green,
 })
 
 statsComponent.main = AwesomeWM.wibox.widget({
@@ -110,11 +108,11 @@ statsComponent.main = AwesomeWM.wibox.widget({
 		statsComponent.brightnessStat.main,
 		statsComponent.storageStat.main,
 		statsComponent.batteryStat.main,
-		widget = AwesomeWM.wibox.layout.flex.vertical
+		widget = AwesomeWM.wibox.layout.flex.vertical,
 	},
 	left = 20,
 	right = 20,
-	widget = AwesomeWM.wibox.container.margin
+	widget = AwesomeWM.wibox.container.margin,
 })
 
 statsComponent.refresh = function()
@@ -126,8 +124,7 @@ end
 
 statsComponent.timer = AwesomeWM.gears.timer({
 	timeout = 3,
-	callback = statsComponent.refresh
+	callback = statsComponent.refresh,
 })
-
 
 return statsComponent
