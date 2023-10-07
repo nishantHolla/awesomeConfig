@@ -26,7 +26,7 @@ powerOptionsComponent.shutdown.overrides = AwesomeWM.functions.table.shallowCopy
 powerOptionsComponent.shutdown.button = helper_sm.makeButton({
 	widget = makeOption("powerShutdownWhite"),
 	onClick = function()
-		AwesomeWM.functions.shutdown()
+		AwesomeWM.functions.power.shutdown()
 	end,
 	overrides = powerOptionsComponent.shutdown.overrides,
 })

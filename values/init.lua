@@ -29,10 +29,9 @@ values_m.tags = {
 }
 values_m.tagLayouts = {
 	values_m.layoutSuit.max.fullscreen,
-	values_m.layoutSuit.spiral,
-	values_m.layoutSuit.fair.horizontal,
-	values_m.layoutSuit.floating,
+	values_m.layoutSuit.tile.right,
 	values_m.layoutSuit.tile.top,
+	values_m.layoutSuit.floating,
 }
 
 values_m.gmailLink = "https://mail.google.com/"

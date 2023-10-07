@@ -157,4 +157,13 @@ clients_sm.applyBorderColor = function(_client)
 	end
 end
 
+clients_sm.hasNotToKill = function()
+	for _, c in ipairs(AwesomeWM.client.get()) do
+		if c.notToKill then
+			return true
+		end
+	end
+	return false
+end
+
 return clients_sm

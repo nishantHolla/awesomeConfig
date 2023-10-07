@@ -63,14 +63,6 @@ functions_m.spawn_with_shell = function(_command)
 	AwesomeWM.awful.spawn.with_shell(_command)
 end
 
-functions_m.shutdown = function()
-	if AwesomeWM.user then
-		AwesomeWM.user.exit()
-	end
-	os.remove(AwesomeWM.values.restartFile)
-	AwesomeWM.awful.spawn.with_shell("shutdown now")
-end
-
 functions_m.initRestore = function()
 	if AwesomeWM.gears.filesystem.file_readable(AwesomeWM.values.restartFile) then
 		local restartFile = io.open(AwesomeWM.values.restartFile, "r")
@@ -94,6 +86,7 @@ functions_m.player = require("functions.player")
 functions_m.table = require("functions.table")
 functions_m.storage = require("functions.storage")
 functions_m.battery = require("functions.battery")
+functions_m.power = require("functions.power")
 
 functions_m.battery.timer:start()
 

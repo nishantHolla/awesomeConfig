@@ -67,14 +67,15 @@ theme_m.initTheme = function()
 	b.border_fullscreen = b.blue
 
 	b.notification_font = b.font
-	b.notification_bg = b.blue
+	b.notification_bg = b.black
 	b.notification_fg = b.white
+	b.notification_opacity = 0.7
 	b.notification_critical_bg = b.red
 	b.notification_critical_fg = b.black
 	b.notification_width = AwesomeWM.values.screenWidth
 	b.notification_height = AwesomeWM.values.screenHeight * 0.15
-	b.notification_border_color = b.border_normal
-	b.notification_border_width = b.border_width
+	b.notification_border_color = b.white
+	b.notification_border_width = theme_m.dpi(20)
 
 	b.tagIndicatorDeadBorderColor = b.gray
 	b.tagIndicatorDeadBackground = b.gray

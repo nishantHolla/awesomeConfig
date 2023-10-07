@@ -317,6 +317,41 @@ keymaps_m.list = {
 		},
 	},
 
+	["Client master-stack control"] = {
+		{
+			{ keymaps_m.modkey },
+			"minus",
+			function()
+				AwesomeWM.awful.tag.incmwfact(-0.05)
+			end,
+			"Decrease master client size",
+		},
+		{
+			{ keymaps_m.modkey },
+			"equal",
+			function()
+				AwesomeWM.awful.tag.incmwfact(0.05)
+			end,
+			"Increase master client size",
+		},
+		{
+			{ keymaps_m.modkey, "Shift" },
+			"minus",
+			function()
+				AwesomeWM.awful.tag.incnmaster(-1, nil, true)
+			end,
+			"Decrease master client count",
+		},
+		{
+			{ keymaps_m.modkey, "Shift" },
+			"equal",
+			function()
+				AwesomeWM.awful.tag.incnmaster(1, nil, true)
+			end,
+			"Increase master client count",
+		},
+	},
+
 	["Tag movement"] = {
 		{
 			{ keymaps_m.modkey },

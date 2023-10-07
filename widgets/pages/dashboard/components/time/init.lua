@@ -20,7 +20,7 @@ timeComponent.time.dayAndDate = AwesomeWM.wibox.widget({
 timeComponent.time.calendar = AwesomeWM.wibox.widget({
 	date = os.date("*t"),
 	font = AwesomeWM.beautiful.pagesFont .. " 14",
-	spacing = 20,
+	spacing = 10,
 	fn_embed = function(_widget, _flag, _date)
 		local rect = _widget
 

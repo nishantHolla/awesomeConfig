@@ -78,14 +78,13 @@ notesComponent.makeNote = function(_heading, _body, _options)
 end
 
 notesComponent.notes = AwesomeWM.wibox.widget({
-	notesComponent.makeNote("Hello world", "This is a test note").main,
 	spacing = 10,
 	widget = AwesomeWM.wibox.layout.fixed.vertical,
 })
 
 notesComponent.scroller = AwesomeWM.wibox.widget({
 	notesComponent.notes,
-	widget = AwesomeWM.wibox.container.scroll.vertical,
+	widget = AwesomeWM.wibox.layout.flex.vertical,
 })
 
 notesComponent.editButton = helper_sm.makeButton({

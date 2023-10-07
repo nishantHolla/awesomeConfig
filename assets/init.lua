@@ -35,7 +35,10 @@ assets_m.getLayout = function(_layoutName)
 		and _layoutName ~= "fullscreen"
 		and _layoutName ~= "floating"
 		and _layoutName ~= "fairh"
+		and _layoutName ~= "tile"
+		and _layoutName ~= "tiletop"
 	then
+		AwesomeWM.notify.critical("Could not find layout icon of layout" .. _layoutName)
 		return ""
 	end
 	return (assets_m.layoutsDir .. "/" .. _layoutName .. ".jpg")
