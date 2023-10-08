@@ -5,7 +5,7 @@ values_m.dataDir = os.getenv("XDG_DATA_HOME") .. "/awesome"
 
 values_m.restartFile = values_m.dataDir .. "/restart"
 values_m.startupFile = values_m.dataDir .. "/startup"
-values_m.notesFile = values_m.dataDir .. "/notes"
+values_m.remindersFile = values_m.dataDir .. "/reminders"
 values_m.mediaFile = values_m.dataDir .. "/media.png"
 
 values_m.terminal = os.getenv("TERMINAL") or "alacritty"

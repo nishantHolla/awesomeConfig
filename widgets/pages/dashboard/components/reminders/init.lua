@@ -1,9 +1,9 @@
-local notesComponent = {}
+local remindersComponent = {}
 local helper_sm = AwesomeWM.widgets.pages.helper
 local values_sm = AwesomeWM.widgets.pages.values
-notesComponent.noteFile = AwesomeWM.values.notesFile
+remindersComponent.reminderFile = AwesomeWM.values.remindersFile
 
-notesComponent.makeNote = function(_heading, _body, _options)
+remindersComponent.makeReminder = function(_heading, _body, _options)
 	_heading = _heading or "Heading"
 	_body = _body or "Body"
 	_options = _options or {}
@@ -77,17 +77,17 @@ notesComponent.makeNote = function(_heading, _body, _options)
 	return note
 end
 
-notesComponent.notes = AwesomeWM.wibox.widget({
+remindersComponent.reminders = AwesomeWM.wibox.widget({
 	spacing = 10,
 	widget = AwesomeWM.wibox.layout.fixed.vertical,
 })
 
-notesComponent.scroller = AwesomeWM.wibox.widget({
-	notesComponent.notes,
+remindersComponent.scroller = AwesomeWM.wibox.widget({
+	remindersComponent.reminders,
 	widget = AwesomeWM.wibox.layout.flex.vertical,
 })
 
-notesComponent.editButton = helper_sm.makeButton({
+remindersComponent.editButton = helper_sm.makeButton({
 	widget = AwesomeWM.wibox.widget({
 		markup = "<b>󰏫</b>",
 		valign = "center",
@@ -98,7 +98,7 @@ notesComponent.editButton = helper_sm.makeButton({
 
 	onClick = function()
 		AwesomeWM.awful.spawn(
-			AwesomeWM.values.terminal .. " -e " .. AwesomeWM.values.editor .. " " .. notesComponent.noteFile
+			AwesomeWM.values.terminal .. " -e " .. AwesomeWM.values.editor .. " " .. remindersComponent.reminderFile
 		)
 		AwesomeWM.widgets.pages.dashboard.toggle()
 	end,
@@ -113,55 +113,55 @@ notesComponent.editButton = helper_sm.makeButton({
 	},
 })
 
-notesComponent.layout = AwesomeWM.wibox.widget({
-	notesComponent.editButton.main,
-	notesComponent.scroller,
+remindersComponent.layout = AwesomeWM.wibox.widget({
+	remindersComponent.editButton.main,
+	remindersComponent.scroller,
 	spacing = 10,
 	widget = AwesomeWM.wibox.layout.fixed.vertical,
 })
 
-notesComponent.main = AwesomeWM.wibox.widget({
-	notesComponent.layout,
+remindersComponent.main = AwesomeWM.wibox.widget({
+	remindersComponent.layout,
 	margins = 10,
 	widget = AwesomeWM.wibox.container.margin,
 })
 
-notesComponent.refresh = function()
+remindersComponent.refresh = function()
 	local isHeading = true
 	local heading = ""
 	local counter = 1
-	notesComponent.list = {}
+	remindersComponent.list = {}
 
-	if AwesomeWM.gears.filesystem.file_readable(notesComponent.noteFile) == false then
-		AwesomeWM.notify.critical("Note file not readable")
+	if AwesomeWM.gears.filesystem.file_readable(remindersComponent.reminderFile) == false then
+		AwesomeWM.notify.critical("Reminder file not readable")
 		return
 	end
 
-	for line in io.lines(notesComponent.noteFile) do
+	for line in io.lines(remindersComponent.reminderFile) do
 		if line == "" then
 			isHeading = true
 			goto continue
 		end
 		if isHeading then
-			notesComponent.list[counter] = { heading = line, body = "" }
+			remindersComponent.list[counter] = { heading = line, body = "" }
 			heading = line
 			isHeading = false
 			counter = counter + 1
 		else
-			if notesComponent.list[counter - 1].body == "" then
-				notesComponent.list[counter - 1].body = line
+			if remindersComponent.list[counter - 1].body == "" then
+				remindersComponent.list[counter - 1].body = line
 			else
-				notesComponent.list[counter - 1].body = notesComponent.list[counter - 1].body .. "\n" .. line
+				remindersComponent.list[counter - 1].body = remindersComponent.list[counter - 1].body .. "\n" .. line
 			end
 		end
 		::continue::
 	end
 
-	notesComponent.notes:reset()
+	remindersComponent.reminders:reset()
 
-	for index, note in pairs(notesComponent.list) do
-		notesComponent.notes:add(notesComponent.makeNote(note.heading, note.body, {}).main)
+	for index, note in pairs(remindersComponent.list) do
+		remindersComponent.reminders:add(remindersComponent.makeReminder(note.heading, note.body, {}).main)
 	end
 end
 
-return notesComponent
+return remindersComponent
