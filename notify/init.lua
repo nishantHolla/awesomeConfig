@@ -24,6 +24,23 @@ notify_m.critical = function(_title, _text)
 	})
 end
 
-notify_m.initNotifications = function() end
+notify_m.initNotifications = function()
+	AwesomeWM.naughty.connect_signal("added", function(_notification)
+		local notificationFile = io.open(AwesomeWM.values.notificationHistoryFile, "a")
+		local section = "--------------------------------------\n"
+		if notificationFile then
+			notificationFile:write(
+				string.format(
+					"Title: %s\nMessage: %s\nTime: %s\n%s",
+					_notification.title,
+					_notification.text,
+					os.date("%Y-%m-%d %H:%M:%S"),
+					section
+				)
+			)
+			notificationFile:close()
+		end
+	end)
+end
 
 return notify_m
