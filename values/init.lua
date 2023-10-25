@@ -6,7 +6,9 @@ values_m.dataDir = os.getenv("XDG_DATA_HOME") .. "/awesome"
 values_m.restartFile = values_m.dataDir .. "/restart"
 values_m.startupFile = values_m.dataDir .. "/startup"
 values_m.remindersFile = values_m.dataDir .. "/reminders"
+values_m.remindersCache = values_m.dataDir .. "/remindersCache"
 values_m.mediaFile = values_m.dataDir .. "/media.png"
+values_m.notificationHistoryFile = values_m.dataDir .. "/notificationHistory.txt"
 
 values_m.terminal = os.getenv("TERMINAL") or "alacritty"
 values_m.editor = os.getenv("EDITOR") or "nvim"
@@ -43,9 +45,20 @@ values_m.getScript = function(_name)
 	return (values_m.awesomeDir .. "/scripts/" .. _name .. ".sh")
 end
 
-values_m.batteryLowThreshold = 15
-values_m.batteryLowNotified = false
-values_m.limitHeadphonesVolume = true
+values_m.batteryLowThresholds = {
+	{
+		level = 15,
+		notified = false,
+	},
+	{
+		level = 10,
+		notified = false,
+	},
+	{
+		level = 5,
+		notified = false,
+	},
+}
 
 values_m.initValues = function()
 	terminal = values_m.terminal

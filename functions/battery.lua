@@ -35,17 +35,29 @@ battery_sm.checkBattery = function()
 	battery_sm.findBatteryAnd(function(icon, value)
 		AwesomeWM.widgets.pages.dashboard.components.stats.batteryStat.silentRefresh(icon, value)
 
-		if value < AwesomeWM.values.batteryLowThreshold then
-			if AwesomeWM.values.batteryLowNotified == false then
-				if icon ~= AwesomeWM.assets.getIcon("batteryChargingWhite") then
-					AwesomeWM.widgets.lowBattery.show()
-					AwesomeWM.values.batteryLowNotified = true
-				end
-			end
-		elseif AwesomeWM.values.batteryLowNotified then
-			AwesomeWM.naughty.destroy(AwesomeWM.values.lowBatteryNotification, "Charged")
-			AwesomeWM.values.batteryLowNotified = false
+		if icon == AwesomeWM.assets.getIcon("batteryChargingWhite") then
+			return
 		end
+
+		for _, tier in pairs(AwesomeWM.values.batteryLowThresholds) do
+			if tier.notified == false and value <= tier.level then
+				tier.notified = true
+				AwesomeWM.widgets.lowBattery.show(value)
+				return
+			end
+		end
+
+		-- if value < AwesomeWM.values.batteryLowThreshold then
+		-- 	if AwesomeWM.values.batteryLowNotified == false then
+		-- 		if icon ~= AwesomeWM.assets.getIcon("batteryChargingWhite") then
+		-- 			AwesomeWM.widgets.lowBattery.show()
+		-- 			AwesomeWM.values.batteryLowNotified = true
+		-- 		end
+		-- 	end
+		-- elseif AwesomeWM.values.batteryLowNotified then
+		-- 	AwesomeWM.naughty.destroy(AwesomeWM.values.lowBatteryNotification, "Charged")
+		-- 	AwesomeWM.values.batteryLowNotified = false
+		-- end
 	end)
 
 	battery_sm.timer:again()
