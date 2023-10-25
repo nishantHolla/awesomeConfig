@@ -3,7 +3,6 @@ local values_sm = AwesomeWM.widgets.pages.values
 
 helper_sm.makeComponent = function(_options)
 	_options = _options or {}
-	_options.widget = _options.widget or AwesomeWM.wibox.widget()
 	_options.heading = _options.heading or "Heading not found"
 	_options.overrides = _options.overrides or {}
 	_options.values = AwesomeWM.functions.table.shallowCopy(values_sm)
@@ -29,13 +28,20 @@ helper_sm.makeComponent = function(_options)
 		widget = AwesomeWM.wibox.container.background,
 	})
 
-	component.layout = AwesomeWM.wibox.widget({
-		component.headingBackground,
-		_options.widget,
-		widget = AwesomeWM.wibox.layout.ratio.vertical,
-	})
+	if _options.widget then
+		component.layout = AwesomeWM.wibox.widget({
+			component.headingBackground,
+			_options.widget,
+			widget = AwesomeWM.wibox.layout.ratio.vertical,
+		})
 
-	component.layout:set_ratio(2, _options.values.contentRatio or 0.9)
+		component.layout:set_ratio(2, _options.values.contentRatio or 0.9)
+	else
+		component.layout = AwesomeWM.wibox.widget({
+			component.headingBackground,
+			widget = AwesomeWM.wibox.layout.ratio.vertical,
+		})
+	end
 
 	component.mainBackground = AwesomeWM.wibox.widget({
 		component.layout,
