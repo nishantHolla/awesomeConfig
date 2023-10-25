@@ -16,9 +16,7 @@ widgets_m.initWidgets = function()
 	widgets_m.indicators.tags = require("widgets.indicators.tags")
 	widgets_m.indicators.clientCount = require("widgets.indicators.clientCount")
 	widgets_m.indicators.time = require("widgets.indicators.time")
-
 	widgets_m.lowBattery = require("widgets.lowBattery")
-	widgets_m.lowBattery.init()
 
 	widgets_m.pages = {}
 	widgets_m.pages.values = require("widgets.pages.values")
