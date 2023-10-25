@@ -53,7 +53,7 @@ theme_m.initTheme = function()
 	b.red = "#F0504F"
 	b.blue = "#846FF7"
 	b.green = "#70E0BB"
-	b.yellow = "#F7F36F"
+	b.yellow = "#F2D475"
 	b.orange = "#F5793B"
 
 	b.useless_gap = theme_m.dpi(3)
@@ -72,7 +72,7 @@ theme_m.initTheme = function()
 	b.notification_opacity = 0.7
 	b.notification_critical_bg = b.red
 	b.notification_critical_fg = b.black
-	b.notification_width = AwesomeWM.values.screenWidth
+	b.notification_width = AwesomeWM.values.screenWidth * 0.3
 	b.notification_height = AwesomeWM.values.screenHeight * 0.15
 	b.notification_border_color = b.white
 	b.notification_border_width = theme_m.dpi(20)
