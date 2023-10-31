@@ -1,9 +1,14 @@
 local clients_sm = {}
 
+function string.starts(String, Start)
+	return string.sub(String, 1, string.len(Start)) == Start
+end
+
 clients_sm.initClients = function()
-	AwesomeWM.awful.rules.rules = {
+	clients_sm.list = {
 		{
 			rule = {},
+			description = "Rule for all clients",
 			properties = {
 				border_width = AwesomeWM.beautiful.border_width,
 				border_color = AwesomeWM.beautiful.border_normal,
@@ -12,41 +17,44 @@ clients_sm.initClients = function()
 				buttons = AwesomeWM.keymaps.getClientButtons(),
 				screen = AwesomeWM.awful.screen.preferred,
 				placement = AwesomeWM.awful.placement.no_overlap + AwesomeWM.awful.placement.no_offscreen,
+				size_hints_honor = true,
 			},
 		},
-
 		{
-			rule = { class = "firefox" },
+			rule = { class = "firefox", role = "toolbox" },
+			description = "Rule for firefox inspector",
 			properties = {
-				fullscreen = false,
-				floating = false,
-				maximized = false,
+				floating = true,
+				placement = AwesomeWM.awful.placement.top_right,
 			},
 		},
-
 		{
 			rule = { class = "Blender" },
+			description = "Rule for blender",
 			properties = {
-				fullscreen = false,
-				maximized = false,
 				floating = false,
+				fullscreen = false,
 			},
 		},
-
 		{
 			rule = { role = "GtkFileChooserDialog" },
+			description = "Rule for file chooser dialog",
 			properties = {
 				floating = true,
 			},
 		},
-
 		{
 			rule = { name = "Picture-in-Picture" },
+			description = "Rule for picture in picture mode",
 			properties = {
 				floating = true,
+				placement = AwesomeWM.awful.placement.top_right,
+				size_hints_honor = true,
 			},
 		},
 	}
+
+	AwesomeWM.ruled.client.append_rules(clients_sm.list)
 
 	AwesomeWM.client.connect_signal("unmanage", function(_client)
 		AwesomeWM.functions.clients.setClientCount()
@@ -114,30 +122,18 @@ clients_sm.toggleClientProperty = function(_propertyName)
 	end
 
 	if _propertyName == "sticky" then
+		focusedClient.sticky = not focusedClient.sticky
 		if focusedClient.sticky == false then
-			focusedClient.sticky = true
-		else
-			focusedClient.sticky = false
 			focusedClient:move_to_tag(focusedTag)
 		end
 	elseif _propertyName == "fullscreen" then
-		if focusedClient.fullscreen == false then
-			focusedClient.fullscreen = true
-		else
-			focusedClient.fullscreen = false
-		end
+		focusedClient.fullscreen = not focusedClient.fullscreen
 	elseif _propertyName == "floating" then
-		if focusedClient.floating == false then
-			focusedClient.floating = true
-		else
-			focusedClient.floating = false
-		end
+		focusedClient.floating = not focusedClient.floating
 	elseif _propertyName == "notToKill" then
-		if focusedClient.notToKill then
-			focusedClient.notToKill = false
-		else
-			focusedClient.notToKill = true
-		end
+		focusedClient.notToKill = not focusedClient.notToKill
+	elseif _propertyName == "ontop" then
+		focusedClient.ontop = not focusedClient.ontop
 	end
 
 	clients_sm.applyBorderColor(focusedClient)
