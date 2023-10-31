@@ -8,6 +8,7 @@ AwesomeWM.root = root
 AwesomeWM.screen = screen
 AwesomeWM.tag = tag
 AwesomeWM.client = client
+AwesomeWM.ruled = require("ruled")
 AwesomeWM.gears = require("gears")
 AwesomeWM.awful = require("awful")
 AwesomeWM.autofocus = require("awful.autofocus")

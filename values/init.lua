@@ -59,6 +59,7 @@ values_m.batteryLowThresholds = {
 		notified = false,
 	},
 }
+values_m.clientGeometryStep = 50
 
 values_m.initValues = function()
 	terminal = values_m.terminal

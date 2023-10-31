@@ -300,6 +300,14 @@ keymaps_m.list = {
 			"Make client floating",
 		},
 		{
+			{ keymaps_m.modkey, "Shift" },
+			"8",
+			function()
+				AwesomeWM.functions.clients.toggleClientProperty("ontop")
+			end,
+			"Make client stay on top",
+		},
+		{
 			{ keymaps_m.modkey },
 			"9",
 			function()
@@ -315,9 +323,6 @@ keymaps_m.list = {
 			end,
 			"Make client fullscreen",
 		},
-	},
-
-	["Client master-stack control"] = {
 		{
 			{ keymaps_m.modkey },
 			"minus",
@@ -349,6 +354,73 @@ keymaps_m.list = {
 				AwesomeWM.awful.tag.incnmaster(1, nil, true)
 			end,
 			"Increase master client count",
+		},
+	},
+
+	["Client resizing"] = {
+		{
+			{ keymaps_m.modkey },
+			"Right",
+			function()
+				AwesomeWM.client.focus:relative_move(AwesomeWM.values.clientGeometryStep, 0, 0, 0)
+			end,
+			"Move client right",
+		},
+		{
+			{ keymaps_m.modkey },
+			"Down",
+			function()
+				AwesomeWM.client.focus:relative_move(0, AwesomeWM.values.clientGeometryStep, 0, 0)
+			end,
+			"Move client right",
+		},
+		{
+			{ keymaps_m.modkey },
+			"Left",
+			function()
+				AwesomeWM.client.focus:relative_move(-1 * AwesomeWM.values.clientGeometryStep, 0, 0, 0)
+			end,
+			"Move client right",
+		},
+		{
+			{ keymaps_m.modkey },
+			"Up",
+			function()
+				AwesomeWM.client.focus:relative_move(0, -1 * AwesomeWM.values.clientGeometryStep, 0, 0)
+			end,
+			"Move client right",
+		},
+		{
+			{ keymaps_m.modkey, "Ctrl" },
+			"Right",
+			function()
+				AwesomeWM.client.focus:relative_move(0, 0, AwesomeWM.values.clientGeometryStep, 0)
+			end,
+			"Increase width of the client",
+		},
+		{
+			{ keymaps_m.modkey, "Ctrl" },
+			"Left",
+			function()
+				AwesomeWM.client.focus:relative_move(0, 0, -1 * AwesomeWM.values.clientGeometryStep, 0)
+			end,
+			"Decrease width of the client",
+		},
+		{
+			{ keymaps_m.modkey, "Ctrl" },
+			"Up",
+			function()
+				AwesomeWM.client.focus:relative_move(0, 0, 0, AwesomeWM.values.clientGeometryStep)
+			end,
+			"Increase height of the client",
+		},
+		{
+			{ keymaps_m.modkey, "Ctrl" },
+			"Down",
+			function()
+				AwesomeWM.client.focus:relative_move(0, 0, 0, -1 * AwesomeWM.values.clientGeometryStep)
+			end,
+			"Decrease height of the client",
 		},
 	},
 
