@@ -20,7 +20,7 @@ keymaps_m.list = {
 			"Show open clients",
 		},
 		{
-			{ keymaps_m.modkey },
+			{ keymaps_m.modkey, "Shift" },
 			"3",
 			function()
 				AwesomeWM.functions.spawn("betterlockscreen -l")
@@ -28,7 +28,7 @@ keymaps_m.list = {
 			"Lock the computer",
 		},
 		{
-			{ keymaps_m.modkey, "Shift" },
+			{ keymaps_m.modkey },
 			"3",
 			function()
 				AwesomeWM.functions.spawn_with_shell("sleep 1; xset dpms force off; betterlockscreen -l")

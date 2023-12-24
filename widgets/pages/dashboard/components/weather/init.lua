@@ -44,9 +44,10 @@ weatherComponent.dataList = {
 }
 
 weatherComponent.weatherToIcon = {
-	["rain"] = "",
 	["rainDay"] = "",
 	["rainNight"] = "",
+	["drizzleDay"] = "",
+	["drizzleNight"] = "",
 	["partlyCloudyDay"] = "",
 	["partlyCloudyNight"] = "",
 	["mistDay"] = "",
@@ -76,6 +77,8 @@ weatherComponent.refresh = function()
 			local hour = os.date("*t").hour
 			if lines[2] == "Rain" then
 				icon = "rain"
+			elseif lines[2] == "Rain, drizzle" then
+				icon = "drizzle"
 			elseif lines[2] == "Partly cloudy" then
 				icon = "partlyCloudy"
 			elseif lines[2] == "Mist" then

@@ -8,7 +8,7 @@ clientCount_sm.main = AwesomeWM.wibox.widget({
 	text = "0",
 	align = "center",
 	valign = "center",
-	font = "SometypeMono NFM 10",
+	font = AwesomeWM.beautiful.defaultFont .. " 10",
 	widget = AwesomeWM.wibox.widget.textbox,
 })
 
@@ -22,6 +22,12 @@ clientCount_sm.wibox = AwesomeWM.wibox({
 	height = clientCount_sm.height,
 	width = clientCount_sm.width,
 })
+
+clientCount_sm.refresh = function()
+	local clientCount = AwesomeWM.functions.clients.getClientCount()
+	local text = tostring(clientCount.localCount) .. "|" .. tostring(clientCount.globalCount)
+	AwesomeWM.widgets.indicators.clientCount.main.text = text
+end
 
 AwesomeWM.awful.placement.top_left(clientCount_sm.wibox, { margins = 0 })
 return clientCount_sm

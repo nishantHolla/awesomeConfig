@@ -13,13 +13,14 @@ tags_sm.moveToTag = function(_tagName)
 	end
 
 	AwesomeWM.theme.setWallpaper()
-	AwesomeWM.functions.clients.setClientCount()
+	AwesomeWM.widgets.indicators.clientCount.refresh()
 
 	if AwesomeWM.widgets.pages.dashboard.wibox.visible then
 		AwesomeWM.widgets.pages.dashboard.components.tags.refresh()
 	else
 		AwesomeWM.widgets.indicators.tags.show()
 	end
+	AwesomeWM.widgets.indicators.clentProperties.refresh()
 end
 
 tags_sm.cycleLayout = function(_order)
