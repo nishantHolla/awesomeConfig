@@ -279,13 +279,44 @@ keymaps_m.list = {
 					end
 
 					AwesomeWM.client.focus:kill()
+					AwesomeWM.widgets.indicators.minimizedBar.refresh()
 				end
 			end,
 			"Close client",
 		},
 		{
 			{ keymaps_m.modkey },
-			"7",
+			"m",
+			function()
+				if AwesomeWM.client.focus then
+					AwesomeWM.client.focus.minimized = true
+					AwesomeWM.widgets.indicators.minimizedBar.refresh()
+				end
+			end,
+			"Minimize current client",
+		},
+		{
+			{ keymaps_m.modkey, "Ctrl" },
+			"m",
+			function()
+				for _, c in ipairs(AwesomeWM.client.get()) do
+					c.minimized = false
+				end
+				AwesomeWM.widgets.indicators.minimizedBar.refresh()
+			end,
+			"Unminimize all clients",
+		},
+		{
+			{ keymaps_m.modkey, "Shift" },
+			"m",
+			function()
+				AwesomeWM.functions.clients.maximizeClient()
+			end,
+			"Unminimize selected client",
+		},
+		{
+			{ keymaps_m.modkey, "Shift" },
+			"c",
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty("notToKill")
 			end,
@@ -293,7 +324,7 @@ keymaps_m.list = {
 		},
 		{
 			{ keymaps_m.modkey },
-			"8",
+			"v",
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty("floating")
 			end,
@@ -301,7 +332,7 @@ keymaps_m.list = {
 		},
 		{
 			{ keymaps_m.modkey, "Shift" },
-			"8",
+			"v",
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty("ontop")
 			end,
@@ -309,7 +340,7 @@ keymaps_m.list = {
 		},
 		{
 			{ keymaps_m.modkey },
-			"9",
+			"b",
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty("sticky")
 			end,
@@ -317,7 +348,7 @@ keymaps_m.list = {
 		},
 		{
 			{ keymaps_m.modkey },
-			"0",
+			"n",
 			function()
 				AwesomeWM.functions.clients.toggleClientProperty("fullscreen")
 			end,

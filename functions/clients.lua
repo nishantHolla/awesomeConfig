@@ -104,6 +104,7 @@ clients_sm.initClients = function()
 
 	AwesomeWM.client.connect_signal("focus", function(_client)
 		AwesomeWM.widgets.indicators.clentProperties.refresh(_client)
+		AwesomeWM.widgets.indicators.minimizedBar.refresh()
 		clients_sm.applyBorderColor(_client)
 	end)
 
@@ -123,6 +124,36 @@ clients_sm.initClients = function()
 	AwesomeWM.awful.spawn("nm-applet")
 	AwesomeWM.awful.spawn("flameshot")
 	AwesomeWM.awful.spawn("playerctld daemon")
+end
+
+clients_sm.maximizeClient = function()
+	local rofiString = ""
+	for _, c in ipairs(AwesomeWM.client.get()) do
+		if c.minimized then
+			rofiString = rofiString .. c.class .. " - " .. c.pid .. "\n"
+		end
+	end
+
+	if rofiString == "" then
+		return
+	end
+
+	AwesomeWM.awful.spawn.easy_async_with_shell(
+		'echo -en "' .. rofiString .. '" | rofi -dmenu -i -p "Maximize: "',
+		function(out, err, message)
+			if out == "" then
+				return
+			end
+
+			for _, c in pairs(AwesomeWM.client.get()) do
+				if (c.class .. " - " .. c.pid .. "\n") == out then
+					c.minimized = false
+					AwesomeWM.widgets.indicators.minimizedBar.refresh()
+					c:jump_to()
+				end
+			end
+		end
+	)
 end
 
 clients_sm.getClientCount = function()

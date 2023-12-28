@@ -1,8 +1,7 @@
 local clientProperties_sm = {}
 
-clientProperties_sm.propertyWidth = 40
-clientProperties_sm.width = clientProperties_sm.propertyWidth
-clientProperties_sm.height = 15
+clientProperties_sm.width = 200
+clientProperties_sm.height = 30
 clientProperties_sm.opacity = 0.5
 
 clientProperties_sm.main = AwesomeWM.wibox.widget({
@@ -13,8 +12,13 @@ clientProperties_sm.main = AwesomeWM.wibox.widget({
 	widget = AwesomeWM.wibox.widget.textbox,
 })
 
+clientProperties_sm.layout = AwesomeWM.wibox.widget({
+	clientProperties_sm.main,
+	layout = AwesomeWM.wibox.layout.fixed.horizontal,
+})
+
 clientProperties_sm.wibox = AwesomeWM.wibox({
-	widget = clientProperties_sm.main,
+	widget = clientProperties_sm.layout,
 	visible = true,
 	opacity = clientProperties_sm.opacity,
 	ontop = true,
@@ -27,6 +31,7 @@ clientProperties_sm.wibox = AwesomeWM.wibox({
 clientProperties_sm.refresh = function(client)
 	client = client or AwesomeWM.client.focus
 	if not client then
+		clientProperties_sm.wibox.visible = false
 		clientProperties_sm.main.text = ""
 		return
 	end
@@ -59,10 +64,12 @@ clientProperties_sm.refresh = function(client)
 		propertyCount = propertyCount + 1
 	end
 
-	if propertyCount ~= 0 then
-		clientProperties_sm.wibox.width = propertyCount * clientProperties_sm.propertyWidth
-	end
 	clientProperties_sm.main.text = clientProperties
+	if propertyCount == 0 then
+		clientProperties_sm.wibox.visible = false
+	else
+		clientProperties_sm.wibox.visible = true
+	end
 end
 
 AwesomeWM.awful.placement.bottom_left(clientProperties_sm.wibox, { margins = 0 })
