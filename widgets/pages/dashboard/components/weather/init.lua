@@ -52,6 +52,7 @@ weatherComponent.weatherToIcon = {
 	["partlyCloudyNight"] = "",
 	["mistDay"] = "",
 	["mistNight"] = "",
+	["haze"] = "",
 }
 
 weatherComponent.refresh = function()
@@ -83,6 +84,9 @@ weatherComponent.refresh = function()
 				icon = "partlyCloudy"
 			elseif lines[2] == "Mist" then
 				icon = "mist"
+			elseif lines[2] == "Haze" then
+				icon = "haze"
+				goto continue
 			end
 
 			if hour > 18 then
@@ -90,6 +94,8 @@ weatherComponent.refresh = function()
 			else
 				icon = icon .. "Day"
 			end
+
+			::continue::
 
 			icon = weatherComponent.weatherToIcon[icon]
 			weatherComponent.icon.markup = weatherComponent.icon.leftMarkup .. icon .. weatherComponent.icon.rightMarkup

@@ -39,25 +39,15 @@ values_m.tagLayouts = {
 values_m.gmailLink = "https://mail.google.com/"
 values_m.outlookLink = "https://outlook.live.com/"
 values_m.githubLink = "https://github.com/"
--- values_m.redditLink = 'https://reddit.com/'
 
 values_m.getScript = function(_name)
 	return (values_m.awesomeDir .. "/scripts/" .. _name .. ".sh")
 end
 
 values_m.batteryLowThresholds = {
-	{
-		level = 15,
-		notified = false,
-	},
-	{
-		level = 10,
-		notified = false,
-	},
-	{
-		level = 5,
-		notified = false,
-	},
+	{ level = 15 },
+	{ level = 10 },
+	{ level = 5 },
 }
 values_m.clientGeometryStep = 50
 

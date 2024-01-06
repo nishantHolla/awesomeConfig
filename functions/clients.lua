@@ -127,10 +127,18 @@ clients_sm.initClients = function()
 end
 
 clients_sm.maximizeClient = function()
+	local formatItemString = function(c)
+		local class = c.class or "Unknown"
+		local pid = c.pid or "xxxxx"
+		local name = c.name or "Application"
+
+		return "[" .. class .. ":" .. pid .. "]" .. " " .. name .. "\n"
+	end
+
 	local rofiString = ""
 	for _, c in ipairs(AwesomeWM.client.get()) do
 		if c.minimized then
-			rofiString = rofiString .. c.class .. " - " .. c.pid .. "\n"
+			rofiString = rofiString .. formatItemString(c)
 		end
 	end
 
@@ -146,7 +154,7 @@ clients_sm.maximizeClient = function()
 			end
 
 			for _, c in pairs(AwesomeWM.client.get()) do
-				if (c.class .. " - " .. c.pid .. "\n") == out then
+				if formatItemString(c) == out then
 					c.minimized = false
 					AwesomeWM.widgets.indicators.minimizedBar.refresh()
 					c:jump_to()

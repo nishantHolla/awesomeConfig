@@ -42,7 +42,7 @@ end
 
 theme_m.initTheme = function()
 	b.defaultFont = "SometypeMono NFM"
-	b.pagesFont = "Quicksand"
+	b.pagesFont = "Noto Sans"
 	b.font = b.defaultFont .. " 12"
 	b.nerdFont = b.defaultFont
 

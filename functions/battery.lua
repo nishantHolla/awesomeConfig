@@ -40,7 +40,7 @@ battery_sm.checkBattery = function()
 		end
 
 		for _, tier in pairs(AwesomeWM.values.batteryLowThresholds) do
-			if tier.notified == false and value <= tier.level then
+			if not tier.notified and value <= tier.level then
 				tier.notified = true
 				AwesomeWM.widgets.lowBattery.show(value)
 				return

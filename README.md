@@ -21,7 +21,7 @@ simple.
 ### assets module
 
 Stores all the assets like images required by the config and provides api calls to get image
-paths relitively easy.
+paths easily.
 
 ### functions module
 
@@ -44,7 +44,7 @@ TODO: Port as much as possible to pure lua.
 
 ### theme module
 
-Defines theaming variables for awesome's beautiful module.
+Defines theming variables for awesome's beautiful module.
 
 ### values module
 
