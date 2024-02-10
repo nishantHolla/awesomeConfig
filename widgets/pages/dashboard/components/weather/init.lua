@@ -53,6 +53,8 @@ weatherComponent.weatherToIcon = {
 	["mistDay"] = "",
 	["mistNight"] = "",
 	["haze"] = "",
+	["clearDay"] = "",
+	["clearNight"] = "",
 }
 
 weatherComponent.refresh = function()
@@ -87,6 +89,8 @@ weatherComponent.refresh = function()
 			elseif lines[2] == "Haze" then
 				icon = "haze"
 				goto continue
+			elseif lines[2] == "Clear" then
+				icon = "clear"
 			end
 
 			if hour > 18 then
