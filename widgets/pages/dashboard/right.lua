@@ -20,7 +20,7 @@ dashboardRight_c.top = helper_sm.makeComponent({
 dashboardRight_c.center = {}
 
 dashboardRight_c.center = helper_sm.makeComponent({
-	heading = "Reminders",
+	heading = "Notes and Reminders",
 	widget = dashboardComponents.reminders.main,
 	overrides = {
 		contentRatio = 0.95,

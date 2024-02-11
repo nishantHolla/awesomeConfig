@@ -4,6 +4,7 @@ local values_sm = AwesomeWM.widgets.pages.values
 local helper_sm = AwesomeWM.widgets.pages.helper
 
 dashboard_sm.components = {}
+dashboard_sm.components.title = require("widgets.pages.dashboard.components.title")
 dashboard_sm.components.systemTray = require("widgets.pages.dashboard.components.systemTray")
 dashboard_sm.components.time = require("widgets.pages.dashboard.components.time")
 dashboard_sm.components.tags = require("widgets.pages.dashboard.components.tags")

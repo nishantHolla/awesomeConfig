@@ -11,7 +11,7 @@ local makeOption = function(_iconName)
 end
 
 local overrides = {
-	padding = 12,
+	padding = 10,
 	inactiveButtonBg = values_sm.inactiveContainerBg,
 	activeButtonBg = values_sm.activeButtonBg,
 	inactiveButtonBorderColor = AwesomeWM.beautiful.white,

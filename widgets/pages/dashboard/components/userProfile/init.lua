@@ -2,7 +2,7 @@ local userProfileComponent = {}
 local helper_sm = AwesomeWM.widgets.pages.helper
 
 userProfileComponent.image = AwesomeWM.wibox.widget({
-	image = AwesomeWM.assets.getAsset("icons/userIcon.png"),
+	image = AwesomeWM.assets.getAsset("images/profile.png"),
 	resize = true,
 	widget = AwesomeWM.wibox.widget.imagebox,
 })

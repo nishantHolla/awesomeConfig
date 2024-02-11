@@ -8,8 +8,9 @@ local helper_sm = AwesomeWM.widgets.pages.helper
 dashboardLeft_c.top = {}
 
 dashboardLeft_c.top = helper_sm.makeComponent({
-	heading = "Dashboard",
-	widget = AwesomeWM.widgets.testWidget("dashboard page"),
+	heading = "",
+	noHeading = true,
+	widget = dashboardComponents.title.main,
 	overrides = {
 		headingFontSize = 50,
 		contentRatio = 0.6,

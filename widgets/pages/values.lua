@@ -21,7 +21,7 @@ values_sm.inactiveButtonFg = AwesomeWM.beautiful.white
 values_sm.activeButtonBg = AwesomeWM.beautiful.red
 values_sm.activeButtonFg = AwesomeWM.beautiful.white
 
-values_sm.buttonBorderWidth = 5
+values_sm.buttonBorderWidth = 2
 values_sm.inactiveButtonBorderColor = AwesomeWM.beautiful.white
 values_sm.activeButtonBorderColor = AwesomeWM.beautiful.red
 

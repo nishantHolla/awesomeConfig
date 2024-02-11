@@ -22,6 +22,10 @@ helper_sm.makeComponent = function(_options)
 		widget = AwesomeWM.wibox.widget.textbox,
 	})
 
+	if _options.noHeading then
+		component.heading = nil
+	end
+
 	component.headingBackground = AwesomeWM.wibox.widget({
 		component.heading,
 		fg = _options.values.inactiveContainerFg,
@@ -36,6 +40,9 @@ helper_sm.makeComponent = function(_options)
 		})
 
 		component.layout:set_ratio(2, _options.values.contentRatio or 0.9)
+		if _options.noHeading then
+			component.layout:set_ratio(2, 1)
+		end
 	else
 		component.layout = AwesomeWM.wibox.widget({
 			component.headingBackground,
@@ -44,7 +51,11 @@ helper_sm.makeComponent = function(_options)
 	end
 
 	component.mainBackground = AwesomeWM.wibox.widget({
-		component.layout,
+		{
+			component.layout,
+			margins = { top = 5, bottom = 5 },
+			widget = AwesomeWM.wibox.container.margin,
+		},
 		bg = _options.values.inactiveContainerBg,
 		widget = AwesomeWM.wibox.container.background,
 	})
